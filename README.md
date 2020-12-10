@@ -1,5 +1,5 @@
 # Jordan's Portfolio
-Built using: <br />
+### Built using: <br />
 [Create React App](https://create-react-app.dev/) <br />
 [Simple Grid](https://simplegrid.io/) <br />
 [AWS S3](https://aws.amazon.com/s3/) <br />
