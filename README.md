@@ -1,5 +1,9 @@
 # Jordan's Portfolio
-# Built using Create React App
+Built using:
+[Create React App](https://create-react-app.dev/)
+[Simple Grid](https://simplegrid.io/)
+[AWS S3](https://aws.amazon.com/s3/)
+[AWS Cloudfront](https://aws.amazon.com/cloudfront/)
 
 ### Inspiration taken for some of the elements implemented
 [Riyaz Ahmed](https://github.com/riyaz942/web-portfolio) <br />
