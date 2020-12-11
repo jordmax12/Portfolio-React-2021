@@ -72,7 +72,7 @@ const techList = [
 
 
 
-function Test() {
+const Test = (props) => {
   const [isFirstAnimation, setIsFirstAnimation] = useState(false)
   const [selectedTechId, setSelectedTechId] = useState('react')
   const [imageAlignment, setImageAlignment] = useState(random(0,3))
@@ -82,15 +82,6 @@ function Test() {
       imageAlignment,
       isFirstAnimation
   ))
-  // const selectedTechId = 'react';
-  // const imageAlignment = random(0, 3);
-  // const imagePosition = getImagePosition(selectedTechId, imageAlignment);
-  // const backgroundTransition = getBackgroundTransition(
-  //   selectedTechId,
-  //   imageAlignment,
-  //   isFirstAnimation
-  // );
-  console.log('logging backgroundTransition', backgroundTransition, 'logging imagePosition', imagePosition)
   const [techTransitionAnimation, setTechTransitionAnimation] = useState({
     react: {
       ...backgroundTransition,
@@ -99,8 +90,6 @@ function Test() {
   })
 
   const onTechSelected = ({ selectedId }) => {
-    console.log(`logging selectedId: ${selectedId}`)
-
     const imageAlignment = random(0, 3);
     const imagePosition = getImagePosition(selectedId, imageAlignment);
     const backgroundTransition = getBackgroundTransition(
@@ -116,32 +105,12 @@ function Test() {
         imagePosition
       }
     })
-    // setState({
-    //   selectedTechId: selectedId, techTransitionAnimation: {
-    //     ...techTransitionAnimation,
-    //     [selectedId]: {
-    //       ...backgroundTransition,
-    //       imagePosition
-    //     }
-    //   }
-    // });
   };
 
   const tech = find(techList, techItem => {
     return techItem.id == selectedTechId;
   });
-  console.log('logging imagePosition in test', imagePosition)
   return (
-    // <div className="App">
-    //   <div className="project-holder">
-    //     <TimelineSelector
-    //         selectedId={selectedTechId}
-    //         listValue={techList}
-    //         tech
-    //         onItemSelected={onTechSelected}
-    //       />
-    //   </div>
-    // </div>
     <div style={{ width: '100%', height: '100%' }}>
         <Div row fillParent align="stretch" className={styles.timeline_container}>
             <img src={techDoodleImage} className={styles.background_static_image} />
@@ -159,7 +128,64 @@ function Test() {
                 />
                 </div>
                 <div className="col-3">
-                  Hello 
+                  <Div className={styles.timeline_container}>
+                    <Transition
+                      items={tech}
+                      keys={tech => tech.id}
+                      from={{ opacity: 0 }}
+                      enter={{ opacity: 1 }}
+                      leave={{ opacity: 0 }}
+                      >
+                      {tech => tech.id && (
+                          value => {
+                          const { imagePosition, from, enter, leave } = techTransitionAnimation[tech.id];
+                          const fromAnimation = tech.id == selectedTechId ? from : enter;
+                          const toAnimation = tech.id == selectedTechId ? enter : leave;
+                          const isReactRelated =
+                              tech.id == "react" ||
+                              tech.id == "react-native" ||
+                              tech.id == "electron";
+
+                          return (
+                              <Spring
+                              from={{
+                                  opacity: isReactRelated ? fromAnimation.opacity : 1,
+                                  transform: fromAnimation.transform,
+                              }}
+                              to={{
+                                  opacity: isReactRelated ? toAnimation.opacity : 1,
+                                  transform: toAnimation.transform,
+                              }}
+                              >
+                              {
+                                  props => (
+                                  <Div
+                                      style={{
+                                      opacity: isReactRelated ? props.opacity : 1,
+                                      transform: !isReactRelated ? props.transform : "unset"
+                                      }}
+                                      className={styles.background_image_container}
+                                  >
+                                      <img
+                                      src={tech.backgroundImage}
+                                      style={{
+                                          left: 0,
+                                          right: imagePosition.right,
+                                          top: 0,
+                                          bottom: imagePosition.bottom,
+                                          transform: props.transform
+                                      }}
+                                      className={styles.background_image}
+                                      ></img>
+                                  </Div>
+                                  )
+                              }
+                              </Spring>
+                          )
+                          }
+                      )}
+                      </Transition>
+                  </Div>
                 </div>
                 <div className="col-6">
                   World
@@ -187,62 +213,7 @@ function Test() {
                   )}
               </Transition> */}
             {/* </Div> */}
-            {/* <Transition
-            items={tech}
-            keys={tech => tech.id}
-            from={{ opacity: 0 }}
-            enter={{ opacity: 1 }}
-            leave={{ opacity: 0 }}
-            >
-            {tech => tech.id && (
-                value => {
-                const { imagePosition, from, enter, leave } = techTransitionAnimation[tech.id];
-                const fromAnimation = tech.id == selectedTechId ? from : enter;
-                const toAnimation = tech.id == selectedTechId ? enter : leave;
-                const isReactRelated =
-                    tech.id == "react" ||
-                    tech.id == "react-native" ||
-                    tech.id == "electron";
 
-                return (
-                    <Spring
-                    from={{
-                        opacity: isReactRelated ? fromAnimation.opacity : 1,
-                        transform: fromAnimation.transform,
-                    }}
-                    to={{
-                        opacity: isReactRelated ? toAnimation.opacity : 1,
-                        transform: toAnimation.transform,
-                    }}
-                    >
-                    {
-                        props => (
-                        <Div
-                            style={{
-                            opacity: isReactRelated ? props.opacity : 1,
-                            transform: !isReactRelated ? props.transform : "unset"
-                            }}
-                            className={styles.background_image_container}
-                        >
-                            <img
-                            src={tech.backgroundImage}
-                            style={{
-                                left: 0,
-                                right: imagePosition.right,
-                                top: 0,
-                                bottom: imagePosition.bottom,
-                                transform: props.transform
-                            }}
-                            className={styles.background_image}
-                            ></img>
-                        </Div>
-                        )
-                    }
-                    </Spring>
-                )
-                }
-            )}
-            </Transition> */}
 
             {/* <RightContainer
             item={tech}
