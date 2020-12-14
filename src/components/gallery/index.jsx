@@ -90,7 +90,7 @@ export const Gallery = () => {
   });
 
   return (
-    <div>
+    <div style={{maxWidth: '830px', marginRight: 'auto', marginLeft: 'auto'}}>
       <div style={{width: '100%'}}>
         <button onClick={toggle_divs}>SHOW/HIDE</button>
       </div>

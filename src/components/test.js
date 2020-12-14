@@ -127,67 +127,70 @@ const Test = (props) => {
                     onItemSelected={onTechSelected}
                 />
                 </div>
-                <div className="col-2">
+                {/* <div className="col-2">
                   <Div className={styles.timeline_container}>
-                    <Transition
-                      items={tech}
-                      keys={tech => tech.id}
-                      from={{ opacity: 0 }}
-                      enter={{ opacity: 1 }}
-                      leave={{ opacity: 0 }}
-                      >
-                      {tech => tech.id && (
-                          value => {
-                          const { imagePosition, from, enter, leave } = techTransitionAnimation[tech.id];
-                          const fromAnimation = tech.id == selectedTechId ? from : enter;
-                          const toAnimation = tech.id == selectedTechId ? enter : leave;
-                          const isReactRelated =
-                              tech.id == "react" ||
-                              tech.id == "react-native" ||
-                              tech.id == "electron";
-
-                          return (
-                              <Spring
-                              from={{
-                                  opacity: isReactRelated ? fromAnimation.opacity : 1,
-                                  transform: fromAnimation.transform,
-                              }}
-                              to={{
-                                  opacity: isReactRelated ? toAnimation.opacity : 1,
-                                  transform: toAnimation.transform,
-                              }}
-                              >
-                              {
-                                  props => (
-                                  <Div
-                                      style={{
-                                      opacity: isReactRelated ? props.opacity : 1,
-                                      transform: !isReactRelated ? props.transform : "unset"
-                                      }}
-                                      className={styles.background_image_container}
-                                  >
-                                      <img
-                                      src={tech.backgroundImage}
-                                      style={{
-                                          left: 0,
-                                          right: imagePosition.right,
-                                          top: 0,
-                                          bottom: imagePosition.bottom,
-                                          transform: props.transform
-                                      }}
-                                      className={styles.background_image}
-                                      ></img>
-                                  </Div>
-                                  )
-                              }
-                              </Spring>
-                          )
-                          }
-                      )}
-                      </Transition>
+                    
                   </Div>
-                </div>
-                <div className="col-8">
+                </div> */}
+                <div className="col-10">
+                  <div className="gallery_container">
+                    <Transition
+                        items={tech}
+                        keys={tech => tech.id}
+                        from={{ opacity: 0 }}
+                        enter={{ opacity: 1 }}
+                        leave={{ opacity: 0 }}
+                        >
+                        {tech => tech.id && (
+                            value => {
+                            const { imagePosition, from, enter, leave } = techTransitionAnimation[tech.id];
+                            const fromAnimation = tech.id == selectedTechId ? from : enter;
+                            const toAnimation = tech.id == selectedTechId ? enter : leave;
+                            const isReactRelated =
+                                tech.id == "react" ||
+                                tech.id == "react-native" ||
+                                tech.id == "electron";
+
+                            return (
+                                <Spring
+                                from={{
+                                    opacity: isReactRelated ? fromAnimation.opacity : 1,
+                                    transform: fromAnimation.transform,
+                                }}
+                                to={{
+                                    opacity: isReactRelated ? toAnimation.opacity : 1,
+                                    transform: toAnimation.transform,
+                                }}
+                                >
+                                {
+                                    props => (
+                                    <Div
+                                        style={{
+                                        opacity: isReactRelated ? props.opacity : 1,
+                                        transform: !isReactRelated ? props.transform : "unset"
+                                        }}
+                                        className={styles.background_image_container}
+                                    >
+                                        <img
+                                        src={tech.backgroundImage}
+                                        style={{
+                                            left: 0,
+                                            right: imagePosition.right,
+                                            top: 0,
+                                            bottom: imagePosition.bottom,
+                                            transform: props.transform
+                                        }}
+                                        className={styles.background_image}
+                                        ></img>
+                                    </Div>
+                                    )
+                                }
+                                </Spring>
+                            )
+                            }
+                        )}
+                      </Transition>
+                    </div>
                     <Gallery />
                 </div>
               </div>
