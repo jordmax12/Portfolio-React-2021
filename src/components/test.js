@@ -14,7 +14,7 @@ import androidBackgroundImage from '../assets/android-background-image.png';
 import laravelBackgroundImage from '../assets/laravel-background-image.png';
 import electronBackgroundImage from '../assets/electron-background-image.png';
 
-
+import Gallery from './gallery'
 import styles from "./projects.module.scss";
 import Div from "./div";
 import find from "lodash/find";
@@ -119,7 +119,7 @@ const Test = (props) => {
             {/* <Div className={styles.left_container}> */}
             <div className="container">
               <div className="row">
-                <div className="col-3">
+                <div className="col-2">
                   <TimelineSelector
                     selectedId={selectedTechId}
                     listValue={techList}
@@ -127,7 +127,7 @@ const Test = (props) => {
                     onItemSelected={onTechSelected}
                 />
                 </div>
-                <div className="col-3">
+                <div className="col-2">
                   <Div className={styles.timeline_container}>
                     <Transition
                       items={tech}
@@ -187,38 +187,11 @@ const Test = (props) => {
                       </Transition>
                   </Div>
                 </div>
-                <div className="col-6">
-                  World
+                <div className="col-8">
+                    <Gallery />
                 </div>
               </div>
             </div>
-
-
-              {/* <Transition
-                  items={tech}
-                  keys={tech => tech.id}
-                  from={{ opacity: 0 }}
-                  enter={{ opacity: 1 }}
-                  leave={{ opacity: 0 }}
-              >
-                  {tech => props => (
-                  <Div style={props} className={styles.content_container}> */}
-                      {/* <div className={styles.title}>{tech.name}</div> */}
-
-                      {/* <Div align="start" className={styles.description_container}>
-                      <div className={styles.description}>{parseNewLine(tech.description)}</div> */}
-                      {/* <div className={styles.description}>{tech.position}</div> */}
-                  {/* </Div>
-                  // </Div>
-                  )}
-              </Transition> */}
-            {/* </Div> */}
-
-
-            {/* <RightContainer
-            item={tech}
-            className={styles.right_container}
-            /> */}
         </Div>
     </div>
     

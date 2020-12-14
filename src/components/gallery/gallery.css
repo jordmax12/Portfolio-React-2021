@@ -1,0 +1,12 @@
+.App {
+  /* align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 2rem;
+  justify-items: center;
+  min-height: 70vh; */
+  padding: 2rem;
+  text-align: center;
+  width:100%;
+  /* max-width: 900px; */
+}
