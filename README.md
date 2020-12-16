@@ -1,4 +1,4 @@
-# Jordan's Portfolio
+# Jordan's Portfolio 
 ### Built using: <br />
 [Create React App](https://create-react-app.dev/) <br />
 [Simple Grid](https://simplegrid.io/) <br />
