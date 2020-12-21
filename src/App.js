@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.scss';
 import './assets/scss/simple-grid.scss'
 import { Suspense } from 'react'
-import Test from './components/test'
+// import Test from './components/test'
+import Projects from './views/Projects/projects';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // const PageTransitionExample = React.lazy(() => import("./examples/pageTransition"));
 // const Landing = React.lazy(() => import("./modules/landing/landing"));
@@ -20,8 +21,8 @@ function App() {
 
             <Route path="/">
               {/* <Loader> */}
-                <Test />
-                {/* <Route 
+              <Projects />
+              {/* <Route 
                   exact
                   path="/project/:projectSlug?"
                   children={(props) => (
