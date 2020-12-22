@@ -18,7 +18,6 @@ import styles from "./projects.module.scss";
 import Div from "../../components/div";
 import find from "lodash/find";
 import { Transition, Spring } from "react-spring/renderprops";
-import RightContainer from "../../components/rightContainer";
 import techDoodleImage from "../../assets/tech-doodle-background-image.png";
 
 const techList = [
