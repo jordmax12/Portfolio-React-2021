@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import styles from "./loader.scss";
+import styles from "./loader.module.scss";
 import { loaderPageStates } from "./loaderConstants";
 import { Transition, Spring } from "react-spring/renderprops";
 import Div from "../div";
@@ -105,10 +105,14 @@ class Loader extends Component {
       if (isLastPercentage) {
         this.incrementLoading();
       }
+
+      const contentLoadedPercentage = Math.trunc(
+        (this.itemsLoaded / this.totalItems) * 100
+      )
+
+      console.log('logging contentLoadedPercentage', contentLoadedPercentage)
       this.setState({
-        contentLoadedPercentage: Math.trunc(
-          (this.itemsLoaded / this.totalItems) * 100
-        )
+        contentLoadedPercentage
       });
       if (this.itemsLoaded >= this.totalItems) {
         this.completeLoading();
@@ -181,7 +185,7 @@ class Loader extends Component {
   render() {
     const { children } = this.props;
     const { contentLoadedPercentage, pageState, showBackground } = this.state;
-
+    console.log(styles)
     return (
       <Div className={styles.loader_top_container}>
         {pageState == loaderPageStates.SHOW_PAGE && children}

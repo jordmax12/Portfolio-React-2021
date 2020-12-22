@@ -30,7 +30,18 @@ function App() {
           <Switch>
             <Route path="/">
               <Loader>
-                <Home />
+                {/* <Home /> */}
+                <Route
+                  exact
+                  path="/"
+                  children={(props) => (
+                    <AnimationLifecycle
+                      component={Home}
+                      whenToRender={(match) => match}
+                      {...props}
+                    />
+                  )}
+                />
                 <Route
                   exact
                   path="/projects"
