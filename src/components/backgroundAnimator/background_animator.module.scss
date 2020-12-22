@@ -1,0 +1,45 @@
+$color-dark: #333333;
+$color-green: #4caf50;
+$color-blue: #2196f3;
+$color-brown-grey: #878787;
+
+$mobile-width: "only screen and (max-width : 450px)";
+$tablet-width: "only screen and (max-width : 720px)";
+$desktop-width: "only screen and (max-width : 1024px)";
+
+@mixin small {
+  @media #{$mobile-width}{
+    @content;
+  }
+}
+
+@mixin medium {
+  @media #{$tablet-width}{
+    @content;
+  }
+}
+
+@mixin large {
+  @media #{$desktop-width}{
+    @content;
+  }
+}
+
+.background_image_layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  
+  background-size: cover;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+
+
+@include medium {
+  .background_image_layer {
+    width: 120%;
+  }
+}

@@ -2,23 +2,23 @@
 import TimelineSelector from '../../components/timelineSelector'
 import { useState } from 'react'
 import { getImagePosition, getBackgroundTransition, random, parseNewLine } from '../../helpers/helper';
-import reactIcon from '../../assets/react-tech-icon.png';
-import reactNativeIcon from '../../assets/react-native-tech-icon.png';
-import androidIcon from '../../assets/android-tech-icon.png';
-import laravelIcon from '../../assets/laravel-tech-icon.png';
-import electronIcon from '../../assets/electron-tech-icon.png';
-import reactBackgroundImage from '../../assets/react-background-image.png';
-import reactNativeBackgroundImage from '../../assets/react-native-background-image.png';
-import androidBackgroundImage from '../../assets/android-background-image.png';
-import laravelBackgroundImage from '../../assets/laravel-background-image.png';
-import electronBackgroundImage from '../../assets/electron-background-image.png';
+import reactIcon from '../../assets/images/technology/react-tech-icon.png';
+import reactNativeIcon from '../../assets/images/technology/react-native-tech-icon.png';
+import androidIcon from '../../assets/images/technology/android-tech-icon.png';
+import laravelIcon from '../../assets/images/technology/laravel-tech-icon.png';
+import electronIcon from '../../assets/images/technology/electron-tech-icon.png';
+import reactBackgroundImage from '../../assets/images/backgrounds/react-background-image.png';
+import reactNativeBackgroundImage from '../../assets/images/backgrounds/react-native-background-image.png';
+import androidBackgroundImage from '../../assets/images/backgrounds/android-background-image.png';
+import laravelBackgroundImage from '../../assets/images/backgrounds/laravel-background-image.png';
+import electronBackgroundImage from '../../assets/images/backgrounds/electron-background-image.png';
 
 import Gallery from '../../components/gallery'
 import styles from "./projects.module.scss";
 import Div from "../../components/div";
 import find from "lodash/find";
 import { Transition, Spring } from "react-spring/renderprops";
-import techDoodleImage from "../../assets/tech-doodle-background-image.png";
+import techDoodleImage from "../../assets/images/backgrounds/tech-doodle-background-image.png";
 
 const techList = [
   {
