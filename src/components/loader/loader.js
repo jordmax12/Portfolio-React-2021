@@ -114,7 +114,7 @@ class Loader extends Component {
         contentLoadedPercentage
       });
       if (this.itemsLoaded >= this.totalItems) {
-        // this.completeLoading();
+        this.completeLoading();
       } else {
         this.valuateProgress();
       }
