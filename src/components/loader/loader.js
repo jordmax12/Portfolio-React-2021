@@ -110,12 +110,11 @@ class Loader extends Component {
         (this.itemsLoaded / this.totalItems) * 100
       )
 
-      console.log('logging contentLoadedPercentage', contentLoadedPercentage)
       this.setState({
         contentLoadedPercentage
       });
       if (this.itemsLoaded >= this.totalItems) {
-        this.completeLoading();
+        // this.completeLoading();
       } else {
         this.valuateProgress();
       }
@@ -191,7 +190,7 @@ class Loader extends Component {
         {pageState == loaderPageStates.SHOW_PAGE && children}
         {
           showBackground && (
-            <Div row align className={styles.background_loader_container}>
+            <Div align className={styles.background_loader_container}>
               <div className={styles.background_container}>
                 <div className={styles.background}>
                   <BackgroundAnimator clientX={0} clientY={0} />
@@ -209,7 +208,7 @@ class Loader extends Component {
                     <Fragment>
                       <Spring
                         to={{
-                          width: `calc(100vw - ${contentLoadedPercentage}vw)`,
+                          height: `calc(100vw - ${contentLoadedPercentage}vw)`,
                           x: contentLoadedPercentage
                         }}
                       >
@@ -219,7 +218,7 @@ class Loader extends Component {
                               <div style={transitionProps} className={styles.percentage_text}>{Math.floor(springProps.x)}</div>
                               <div style={{
                                 opacity: transitionProps.opacity,
-                                width: springProps.width,
+                                height: springProps.height,
                               }} className={styles.loading_text_container}>
                                 <div className={styles.loading_text}>
                                   Loading...

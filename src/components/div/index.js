@@ -18,7 +18,7 @@ class Div extends Component {
       passRef,
       ...rest
     } = this.props;
-
+    console.log('logging row', row);
     const classNameArray = [
       row ? styles.div_row : styles.div_column,
       align
