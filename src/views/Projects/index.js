@@ -3,9 +3,11 @@ import TimelineSelector from '../../components/timelineSelector'
 import { useState } from 'react'
 import { getImagePosition, getBackgroundTransition, random, parseNewLine } from '../../helpers/helper';
 import reactIcon from '../../assets/images/technology/react-tech-icon.png';
-import npmIcon from '../../assets/images/technology/npm-tech-icon.png';
-import awsIcon from '../../assets/images/technology/aws-tech-icon.png';
-import nodejsIcon from '../../assets/images/technology/nodejs-tech-icon.png';
+import npmIcon from '../../assets/images/technology/npm-tech-icon2.png';
+// import awsIcon from '../../assets/images/technology/aws-tech-icon.png';
+import awsIcon from '../../assets/images/technology/aws-tech-icon4.png';
+import nodejsIcon from '../../assets/images/technology/nodejs-tech-icon2.png';
+import pythonIcon from '../../assets/images/technology/python-tech-icon.png';
 import reactNativeIcon from '../../assets/images/technology/react-native-tech-icon.png';
 import androidIcon from '../../assets/images/technology/android-tech-icon.png';
 import laravelIcon from '../../assets/images/technology/laravel-tech-icon.png';
@@ -64,7 +66,7 @@ const techList = [
   {
     id: 'python',
     name: 'Python',
-    firstLogo: electronIcon,
+    firstLogo: pythonIcon,
     backgroundImage: electronBackgroundImage,
     description: 'I have experience in creating an electron app with the help of React while also considering platform specific technicalities during development like, Desktop/Web notifications, screen routing, storage.<br/><br/>Written configurations to bundle Web app and Electron app seperatly for both.',
     projects: ['snapteam']
