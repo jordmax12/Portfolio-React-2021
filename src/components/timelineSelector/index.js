@@ -23,7 +23,6 @@ class TimelineSelector extends Component {
 
   render() {
     const { tech, className, listValue, selectedId } = this.props;
-    console.log('logging tech', tech)
     // margin-left: 39px;
     // padding-right: 10px;
     // /* display: none; */

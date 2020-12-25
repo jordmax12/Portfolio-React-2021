@@ -69,6 +69,7 @@ const Projects = (props) => {
   const [isFirstAnimation, setIsFirstAnimation] = useState(false)
   const [selectedTechId, setSelectedTechId] = useState('nodejs')
   const [matchedProjects, setMatchedProjects] = useState(projects)
+  const [changeProjects, setChangeProducts] = useState(false);
   const [imageAlignment, setImageAlignment] = useState(random(0, 3))
   const [imagePosition, setImagePosition] = useState(getImagePosition(selectedTechId, imageAlignment))
   const [backgroundTransition, setBackgroundTransition] = useState(getBackgroundTransition(
@@ -84,14 +85,32 @@ const Projects = (props) => {
   })
 
   useEffect(() => {
-    const build_projects = []
-    projects.forEach(p => {
-      if (p.stack.includes(selectedTechId))
-        build_projects.push(p);
-    })
+    if (changeProjects) {
+      const build_projects = []
+      setChangeProducts(false)
+      projects.forEach(p => {
+        if (p.stack.includes(selectedTechId))
+          build_projects.push(p);
+      })
 
-    console.log('logging build_projects', build_projects)
-    setMatchedProjects(build_projects)
+      console.log('logging build_projects', build_projects)
+      setMatchedProjects(build_projects)
+    }
+  }, [changeProjects])
+
+  useEffect(() => {
+    console.log('tech changed')
+    setMatchedProjects([]);
+    setChangeProducts(true)
+    //   console.log('inside callback?')
+    //   projects.forEach(p => {
+    //     if (p.stack.includes(selectedTechId))
+    //       build_projects.push(p);
+    //   })
+
+    //   console.log('logging build_projects', build_projects)
+    //   setMatchedProjects(build_projects)
+    // })
   }, [selectedTechId])
 
   const onTechSelected = ({ selectedId }) => {
