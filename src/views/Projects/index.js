@@ -93,24 +93,13 @@ const Projects = (props) => {
           build_projects.push(p);
       })
 
-      console.log('logging build_projects', build_projects)
       setMatchedProjects(build_projects)
     }
   }, [changeProjects])
 
   useEffect(() => {
-    console.log('tech changed')
     setMatchedProjects([]);
     setChangeProducts(true)
-    //   console.log('inside callback?')
-    //   projects.forEach(p => {
-    //     if (p.stack.includes(selectedTechId))
-    //       build_projects.push(p);
-    //   })
-
-    //   console.log('logging build_projects', build_projects)
-    //   setMatchedProjects(build_projects)
-    // })
   }, [selectedTechId])
 
   const onTechSelected = ({ selectedId }) => {
