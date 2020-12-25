@@ -7,11 +7,6 @@ import npmIcon from '../../assets/images/technology/npm-tech-icon.png';
 import awsIcon from '../../assets/images/technology/aws-tech-icon.png';
 import nodejsIcon from '../../assets/images/technology/nodejs-tech-icon.png';
 import pythonIcon from '../../assets/images/technology/python-tech-icon.png';
-import reactBackgroundImage from '../../assets/images/backgrounds/react-background-image.png';
-import awsBackgroundImage from '../../assets/images/backgrounds/aws-background-image.png';
-import androidBackgroundImage from '../../assets/images/backgrounds/android-background-image.png';
-import laravelBackgroundImage from '../../assets/images/backgrounds/laravel-background-image.png';
-import electronBackgroundImage from '../../assets/images/backgrounds/electron-background-image.png';
 
 import Gallery from '../../components/gallery'
 import styles from "./projects.module.scss";
@@ -112,9 +107,6 @@ const Projects = (props) => {
     <div style={{ width: '100%', height: '100%' }}>
       <Div row fillParent align="stretch" className={styles.timeline_container}>
         <img src={techDoodleImage} className={styles.background_static_image} />
-        {/* <div className={styles.left_background_gradient}></div> */}
-
-        {/* <Div className={styles.left_container}> */}
         <div className="container">
           <div className="row">
             <div className="col-2">
@@ -125,11 +117,6 @@ const Projects = (props) => {
                 onItemSelected={onTechSelected}
               />
             </div>
-            {/* <div className="col-2">
-                  <Div className={styles.timeline_container}>
-                    
-                  </Div>
-                </div> */}
             <div className="col-10">
               <div className="gallery_container">
                 <Transition

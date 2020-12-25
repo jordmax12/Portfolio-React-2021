@@ -8,76 +8,71 @@ const get_number_inbetween = (min, max) => {
   return Math.floor(Math.random() * max) + (min)
 }
 
-const test_1 = [
+const projects = [
   {
     title: "simple-fs",
-    key: '1'
+    key: '1',
+    stack: [
+      "npm",
+      "nodejs"
+    ]
   },
   {
     title: "serverless-generator",
-    key: '2'
+    key: '2',
+    stack: [
+      "npm",
+      "nodejs",
+      "aws"
+    ]
   },
   {
     title: "enogen",
-    key: '3'
+    key: '3',
+    stack: [
+      "aws",
+      "nodejs"
+    ]
   },
   {
     title: "databus",
-    key: '4'
+    key: '4',
+    stack: [
+      "python",
+      "aws"
+    ]
   },
   {
     title: "agriedge",
-    key: '5'
+    key: '5',
+    stack: [
+      "nodejs"
+    ]
   },
   {
     title: 'FCB AI',
-    key: '6'
-  }
-]
-
-const test_2 = [
-  {
-    title: "other project",
-    key: '7'
-  },
-  {
-    title: "enogen",
-    key: '3'
-  },
-  {
-    title: "other project 3",
-    key: '9'
-  },
-  {
-    title: "agriedge",
-    key: '5'
-  },
-  {
-    title: "other project 5",
-    key: '10'
+    key: '6',
+    stack: [
+      "nodejs"
+    ]
   }
 ]
 
 export const Gallery = () => {
-  const [cards, setCards] = useState(test_1)
-
-  console.log('logging cards', cards)
+  const [cards, setCards] = useState(projects);
 
   const toggle_divs = () => {
+    let test = [];
     setCards(
-      test_1.filter((x) => x.title == "enogen" || x.title == "agriedge")
+      test = projects.filter((x) => x.title == "enogen" || x.title == "agriedge")
     );
     setTimeout(() => {
-      setCards(test_2);
+      console.log('logging test', test);
+      setCards(test);
     }, 800);
   };
 
   const transitions = useTransition(cards, card => card.key, {
-    // config: {
-    //   tension: 50,
-    //   mass: 7,
-    //   velocity: 3
-    // },
     from: { transform: "translate3d(0,-4000px,0)", opacity: 0, display: 'inline-block', padding: '10px' },
     enter: { transform: "translate3d(0,0px,0)", opacity: 1, display: 'inline-block', padding: '10px' },
     leave: { transform: "translate3d(0,-4000px,0)", opacity: 0, display: 'inline-block', padding: '10px' },
@@ -91,15 +86,11 @@ export const Gallery = () => {
       <div style={{width: '100%'}}>
         <button onClick={toggle_divs}>SHOW/HIDE</button>
       </div>
-      {/* <div className="Gallery"> */}
         {transitions.map(({ item, key, props }) =>
             item && <animated.div key={key} style={props}>
               <RatingsCard key={key} {...item}  />
-              {/* {item.title} */}
             </animated.div>
           )}
-        
-      {/* </div> */}
     </div>
     
   );
