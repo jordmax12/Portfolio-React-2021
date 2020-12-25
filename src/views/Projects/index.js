@@ -1,13 +1,13 @@
 // import logo from '../logo.svg';
 import TimelineSelector from '../../components/timelineSelector'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { getImagePosition, getBackgroundTransition, random, parseNewLine } from '../../helpers/helper';
 import reactIcon from '../../assets/images/technology/react-tech-icon.png';
 import npmIcon from '../../assets/images/technology/npm-tech-icon.png';
 import awsIcon from '../../assets/images/technology/aws-tech-icon.png';
 import nodejsIcon from '../../assets/images/technology/nodejs-tech-icon.png';
 import pythonIcon from '../../assets/images/technology/python-tech-icon.png';
-
+import { projects } from '../../assets/utils/projects';
 import Gallery from '../../components/gallery'
 import styles from "./projects.module.scss";
 import Div from "../../components/div";
@@ -68,6 +68,7 @@ const techList = [
 const Projects = (props) => {
   const [isFirstAnimation, setIsFirstAnimation] = useState(false)
   const [selectedTechId, setSelectedTechId] = useState('nodejs')
+  const [matchedProjects, setMatchedProjects] = useState(projects)
   const [imageAlignment, setImageAlignment] = useState(random(0, 3))
   const [imagePosition, setImagePosition] = useState(getImagePosition(selectedTechId, imageAlignment))
   const [backgroundTransition, setBackgroundTransition] = useState(getBackgroundTransition(
@@ -81,6 +82,17 @@ const Projects = (props) => {
       imagePosition
     }
   })
+
+  useEffect(() => {
+    const build_projects = []
+    projects.forEach(p => {
+      if (p.stack.includes(selectedTechId))
+        build_projects.push(p);
+    })
+
+    console.log('logging build_projects', build_projects)
+    setMatchedProjects(build_projects)
+  }, [selectedTechId])
 
   const onTechSelected = ({ selectedId }) => {
     const imageAlignment = random(0, 3);
@@ -98,6 +110,7 @@ const Projects = (props) => {
         imagePosition
       }
     })
+
   };
 
   const tech = find(techList, techItem => {
@@ -131,11 +144,7 @@ const Projects = (props) => {
                       const { imagePosition, from, enter, leave } = techTransitionAnimation[tech.id];
                       const fromAnimation = tech.id == selectedTechId ? from : enter;
                       const toAnimation = tech.id == selectedTechId ? enter : leave;
-                      const isReactRelated =
-                        tech.id == "react" ||
-                        tech.id == "react-native" ||
-                        tech.id == "electron";
-
+                      const isReactRelated = tech.id == "react"
                       return (
                         <Spring
                           from={{
@@ -176,7 +185,8 @@ const Projects = (props) => {
                   )}
                 </Transition>
               </div>
-              <Gallery />
+              <Gallery
+                projects={matchedProjects} />
             </div>
           </div>
         </div>

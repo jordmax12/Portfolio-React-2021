@@ -20,7 +20,6 @@ const inverseOpacity = o => 1 - o;
 const inverseTransform = t => `${t} rotateY(180deg)`;
 
 export const RatingsCard = ({ title, rating, props: main_props }) => {
-  console.log('logging title', title)
   // Hold state for selection and rating
   const [selected, setSelected] = useState(false);
   const [currentRating, setRating] = useState(rating);
