@@ -92,8 +92,10 @@ const Projects = (props) => {
         if (p.stack.includes(selectedTechId))
           build_projects.push(p);
       })
+      setTimeout(() => {
+        setMatchedProjects(build_projects)
+      }, 300)
 
-      setMatchedProjects(build_projects)
     }
   }, [changeProjects])
 
