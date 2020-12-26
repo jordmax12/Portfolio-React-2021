@@ -8,6 +8,7 @@ import Loader from './components/loader/loader'
 import AnimationLifecycle from './components/animationLifecycle';
 const Projects = React.lazy(() => import("./views/Projects"));
 const Home = React.lazy(() => import("./views/Home"));
+const Blog = React.lazy(() => import("./views/Blog"));
 function App() {
   return (
     <div className="App">
@@ -33,6 +34,17 @@ function App() {
                   children={(props) => (
                     <AnimationLifecycle
                       component={Projects}
+                      whenToRender={(match) => match}
+                      {...props}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/blog"
+                  children={(props) => (
+                    <AnimationLifecycle
+                      component={Blog}
                       whenToRender={(match) => match}
                       {...props}
                     />
