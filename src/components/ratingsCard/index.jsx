@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
-import StarRating from "../star-rating";
 
 import "./styles.css";
 
@@ -12,8 +11,8 @@ const calculateValues = (x, y) => [
 ];
 
 // Apply values to transform property
-const transformCard = (x, y, scale) =>
-  `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg) scale(${scale})`;
+// const transformCard = (x, y, scale) =>
+//   `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg) scale(${scale})`;
 
 // Functions that interpolate the values for the flipping animation
 const inverseOpacity = o => 1 - o;
@@ -22,9 +21,9 @@ const inverseTransform = t => `${t} rotateY(180deg)`;
 export const RatingsCard = ({ title, rating, props: main_props }) => {
   // Hold state for selection and rating
   const [selected, setSelected] = useState(false);
-  const [currentRating, setRating] = useState(rating);
 
   // Card tilt
+  /* eslint-disable no-unused-vars */
   const [props, set] = useSpring(() => ({
     state: [0, 0, 1]
   }));
@@ -71,10 +70,6 @@ export const RatingsCard = ({ title, rating, props: main_props }) => {
           transform: transform.interpolate(inverseTransform)
         }}
       >
-        {/* Show rating only if the card is selected */}
-        {selected && (
-          <StarRating rating={currentRating} setRating={setRating} />
-        )}
       </animated.div>
     </animated.div>
   );

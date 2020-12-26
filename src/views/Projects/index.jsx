@@ -1,77 +1,26 @@
-// import logo from '../logo.svg';
 import TimelineSelector from '../../components/timelineSelector'
 import { useState, useEffect } from 'react'
-import { getImagePosition, getBackgroundTransition, random, parseNewLine } from '../../helpers/helper';
-import reactIcon from '../../assets/images/technology/react-tech-icon.png';
-import npmIcon from '../../assets/images/technology/npm-tech-icon.png';
-import awsIcon from '../../assets/images/technology/aws-tech-icon.png';
-import nodejsIcon from '../../assets/images/technology/nodejs-tech-icon.png';
-import pythonIcon from '../../assets/images/technology/python-tech-icon.png';
-import { projects } from '../../assets/utils/projects';
+import { getImagePosition, getBackgroundTransition, random } from '../../helpers/helper';
+import { projects } from '../../helpers/projectsConstants';
 import Gallery from '../../components/gallery'
 import styles from "./projects.module.scss";
 import Div from "../../components/div";
 import find from "lodash/find";
 import { Transition, Spring } from "react-spring/renderprops";
 import techDoodleImage from "../../assets/images/backgrounds/tech-doodle-background-image.png";
-
-const techList = [
-  {
-    id: 'nodejs',
-    name: 'NodeJS',
-    firstLogo: nodejsIcon,
-    backgroundImage: nodejsIcon,
-    description: `I have the most as well as recent experience in React compared to other technology in my list. I have created and architected web projects from scratch as well as jumped on ongoing projects.
-    <br/><br/>I am familiar with recent techniques and libraries used in react like code-splitting, Hooks, React-Router, Final-Form, Redux, Redux-api-middleware, css in js, etc.`,
-    projects: ['snapteam', 'nykaa', 'wakency'],
-  },
-  {
-    id: 'aws',
-    name: 'AWS',
-    firstLogo: awsIcon,
-    backgroundImage: awsIcon, //but recently have not touched on Android development so have to freshen up a bit on it.
-    description: `I started my development journey with Android and have the most experience in it along with React.<br/><br/>
-    I have complete lifecycle experience on Android app developement from creating to publishing and managing, and have experience with needed android libraries which includes: Retrofit, Dagger, Picasso, ActiveAndroid, etc.`,
-    projects: ['vc_music_player', 'measure']
-  },
-  {
-    id: 'npm',
-    name: 'NPM',
-    firstLogo: npmIcon,
-    backgroundImage: npmIcon,
-    description: `I have created and published a React-Native app for iOS and Android so i am familiar with its lifecycle, while working with React-Native CLI.<br/><br/>
-    I have contributed some bug fixes to some open source React-Native libraries during my period developing on react native.
-    `,
-    projects: ['lighthouse', 'pulse']
-  },
-  {
-    id: 'react',
-    name: 'React',
-    firstLogo: reactIcon,
-    backgroundImage: reactIcon,
-    description: `I have a bit of experience in Laravel and backend development although have not created any project from scratch but have worked on seperate modules and features.<br/><br/>
-    I am familiar with backend development and the frameworks features like: MVC architecture, HTML template engine (blade), Eloquent ORM, Artisan and Seeders.`,
-    projects: ['benefactory', 'snapteam']
-  },
-  {
-    id: 'python',
-    name: 'Python',
-    firstLogo: pythonIcon,
-    backgroundImage: pythonIcon,
-    description: 'I have experience in creating an electron app with the help of React while also considering platform specific technicalities during development like, Desktop/Web notifications, screen routing, storage.<br/><br/>Written configurations to bundle Web app and Electron app seperatly for both.',
-    projects: ['snapteam']
-  }
-];
-
-
-
-const Projects = (props) => {
-  const [isFirstAnimation, setIsFirstAnimation] = useState(false)
+import { technologies } from '../../helpers/projectsConstants';
+const Projects = () => {
   const [selectedTechId, setSelectedTechId] = useState('nodejs')
   const [matchedProjects, setMatchedProjects] = useState(projects)
   const [changeProjects, setChangeProducts] = useState(false);
+  // TODO: is the following needed? review.
+  /* eslint-disable no-unused-vars */
+  const [isFirstAnimation, setIsFirstAnimation] = useState(false)
+  /* eslint-disable no-unused-vars */
   const [imageAlignment, setImageAlignment] = useState(random(0, 3))
+  /* eslint-disable no-unused-vars */
   const [imagePosition, setImagePosition] = useState(getImagePosition(selectedTechId, imageAlignment))
+  /* eslint-disable no-unused-vars */
   const [backgroundTransition, setBackgroundTransition] = useState(getBackgroundTransition(
     selectedTechId,
     imageAlignment,
@@ -94,9 +43,10 @@ const Projects = (props) => {
       })
       setTimeout(() => {
         setMatchedProjects(build_projects)
-      }, 300)
+      }, 100)
 
     }
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, [changeProjects])
 
   useEffect(() => {
@@ -123,19 +73,19 @@ const Projects = (props) => {
 
   };
 
-  const tech = find(techList, techItem => {
-    return techItem.id == selectedTechId;
+  const tech = find(technologies, techItem => {
+    return techItem.id === selectedTechId;
   });
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <Div row fillParent align="stretch" className={styles.timeline_container}>
-        <img src={techDoodleImage} className={styles.background_static_image} />
+        <img alt="tech-logo" src={techDoodleImage} className={styles.background_static_image} />
         <div className="container">
           <div className="row">
             <div className="col-2">
               <TimelineSelector
                 selectedId={selectedTechId}
-                listValue={techList}
+                listValue={technologies}
                 tech={tech}
                 onItemSelected={onTechSelected}
               />
@@ -152,9 +102,9 @@ const Projects = (props) => {
                   {tech => tech.id && (
                     value => {
                       const { imagePosition, from, enter, leave } = techTransitionAnimation[tech.id];
-                      const fromAnimation = tech.id == selectedTechId ? from : enter;
-                      const toAnimation = tech.id == selectedTechId ? enter : leave;
-                      const isReactRelated = tech.id == "react"
+                      const fromAnimation = tech.id === selectedTechId ? from : enter;
+                      const toAnimation = tech.id === selectedTechId ? enter : leave;
+                      const isReactRelated = tech.id === "react"
                       return (
                         <Spring
                           from={{
@@ -176,6 +126,7 @@ const Projects = (props) => {
                                 className={styles.background_image_container}
                               >
                                 <img
+                                  alt="background"
                                   src={tech.backgroundImage}
                                   style={{
                                     left: 0,

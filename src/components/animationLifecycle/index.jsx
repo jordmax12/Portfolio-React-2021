@@ -11,7 +11,7 @@ const AnimationLifecycle = ({ match, whenToRender, component: Component, ...rest
       setStartPageEndAnimation(true);
     }
 
-  }, [match, whenToRender])
+  }, [match, whenToRender, showComponent])
 
   const onPageAnimationEnd = () => {
     setShowComponent(false);

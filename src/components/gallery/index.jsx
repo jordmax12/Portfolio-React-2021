@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import RatingsCard from "../ratings-card";
+import RatingsCard from "../ratingsCard";
 import { animated,  useTransition } from "react-spring";
-import "./gallery.css";
 
 export const Gallery = (props) => {
   const { projects } = props;
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    setCards(props.projects)
-  }, [props.projects])
+    setCards(projects)
+  }, [projects])
 
   const transitions = useTransition(cards, card => card.key, {
     from: { transform: "translate3d(0,-4000px,0)", opacity: 0, display: 'inline-block', padding: '10px' },

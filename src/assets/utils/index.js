@@ -16,27 +16,27 @@ export const parseNewLine = object => {
 
 export const animationFrameTimeout = (callback, millisecond) => {
   const requestAnimationFrame =
-  window.requestAnimationFrame ||
-  window.mozRequestAnimationFrame ||
-  window.webkitRequestAnimationFrame ||
-  window.msRequestAnimationFrame;
+    window.requestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.msRequestAnimationFrame;
 
   let lastUpdated;
   let animationFrameRequest;
 
-  const animationCallback =  (timestamp) => {
-    if (lastUpdated == undefined)
+  const animationCallback = (timestamp) => {
+    if (lastUpdated === undefined)
       lastUpdated = timestamp;
 
     if (timestamp - lastUpdated >= millisecond) {
       callback();
       cancelAnimationFrame(animationFrameRequest);
     } else {
-      animationFrameRequest = requestAnimationFrame.call(window,animationCallback)
+      animationFrameRequest = requestAnimationFrame.call(window, animationCallback)
     }
-    
+
   };
-  animationFrameRequest = requestAnimationFrame.call(window,animationCallback);
+  animationFrameRequest = requestAnimationFrame.call(window, animationCallback);
 }
 
 const cancelAnimationFrame = (animationFrameRequest) => {

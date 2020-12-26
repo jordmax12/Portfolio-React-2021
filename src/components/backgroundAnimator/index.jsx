@@ -1,6 +1,6 @@
-import React, { Component, Fragment, memo } from 'react';
+import React, { Fragment, memo } from 'react';
 import styles from './background_animator.module.scss';
-import { useSpring, animated, useTransition, config } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 import backgroundDarkDoodleFixed from '../../assets/images/backgrounds/background-dark-doodle-fixed-layer.png';
 import backgroundDarkDoodleFirst from '../../assets/images/backgrounds/background-dark-doodle-first-layer.png';
 import backgroundDarkDoodleSecond from '../../assets/images/backgrounds/background-dark-doodle-second-layer.png';
