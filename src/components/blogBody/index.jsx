@@ -2,9 +2,9 @@ import React from 'react'
 import './blogBody.module.scss'
 
 const BlogBody = (props) => {
-
+  const { children } = props;
   return (
-    <div> BLOG Body </div>
+    <div> {children} </div>
   )
 }
 
