@@ -184,7 +184,6 @@ class Loader extends Component {
   render() {
     const { children } = this.props;
     const { contentLoadedPercentage, pageState, showBackground } = this.state;
-    console.log(styles)
     return (
       <Div className={styles.loader_top_container}>
         {pageState === loaderPageStates.SHOW_PAGE && children}
