@@ -3,7 +3,7 @@ import './blogPost.module.scss'
 import Div from '../div'
 
 const BlogPost = (props) => {
-  const { headline, picture, children, link } = props;
+  const { headline, picture, children, link, date } = props;
   const authorPage = "https://jordanmax.medium.com/"
   return (
     <div className="container">
@@ -16,7 +16,7 @@ const BlogPost = (props) => {
             <p className="blogLink" onClick={() => {  window.open(authorPage, "_blank") }}>Jordan Max</p>
           </div>
           <div className="col-6-sm tar">
-            <p>December 24, 2020</p>
+            <p>{date}</p>
           </div>
         </div>
         <div className="col-12">
