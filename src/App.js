@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Loader from './components/loader/loader'
 import AnimationLifecycle from './components/animationLifecycle';
+const Header = React.lazy(() => import("./components/header"))
 const Projects = React.lazy(() => import("./views/Projects"));
 const Home = React.lazy(() => import("./views/Home"));
 const Blog = React.lazy(() => import("./views/Blog"));
@@ -16,6 +17,7 @@ function App() {
         <Suspense fallback={null}>
           <Switch>
             <Route path="/">
+              <Header />
               <Loader>
                 <Route
                   exact
