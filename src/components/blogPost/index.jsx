@@ -3,19 +3,20 @@ import './blogPost.module.scss'
 import Div from '../div'
 
 const BlogPost = (props) => {
-  const { headline, picture, children, link } = props
+  const { headline, picture, children, link } = props;
+  const authorPage = "https://jordanmax.medium.com/"
   return (
     <div className="container">
       <div className="row">
         <div className="col-12">
-          { headline }
+          <h1 className="blogLink" onClick={() => { window.open(link, "_blank") }}>{ headline }</h1>
         </div>
         <div className="col-12">
           <div className="col-6-sm tal">
-            ByLine
+            <p className="blogLink" onClick={() => {  window.open(authorPage, "_blank") }}>Jordan Max</p>
           </div>
           <div className="col-6-sm tar">
-            Date
+            <p>December 24, 2020</p>
           </div>
         </div>
         <div className="col-12">
@@ -25,7 +26,7 @@ const BlogPost = (props) => {
           {children}
         </div>
         <div className="col-12 tal">
-          <button onClick={() => { window.open(link, "_blank") }}>
+          <button className="button" onClick={() => { window.open(link, "_blank") }}>
             Read More
           </button>
         </div>
