@@ -103,11 +103,19 @@ code {
   cursor: pointer;
   transition: transform 500ms cubic-bezier(0.1, 0.82, 0.25, 1);
 
-  &:hover {
+  &:hover:not(.ignoreTextHover) {
     transform: scale(1.1);
     opacity: 0.9;
     color: #fff;
   }
+}
+
+.source {
+  color: #4db2ec;
+}
+
+.blogHeadline {
+  display: inline-block;
 }
 
 .blogLink {
@@ -120,11 +128,6 @@ code {
 }
 
 .button {
-  // font-size: 14px;
-  // border-radius: 7.8px;
-  // margin-top: 22px;
-  // border: solid 1px white;
-  // padding: 3px 14px;
   background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
   color:rgb(59, 59, 59);
   display: inline-block;
@@ -143,7 +146,7 @@ code {
   background-color: #4db2ec;
 }
 
-a,p,div,h1,h2,h3,h4,h5,h6 {
+a,p,div,h1,h2,h3,h4,h5,h6, span {
   font-family: 'Raleway', sans-serif;
 }
 

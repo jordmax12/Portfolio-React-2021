@@ -3,17 +3,17 @@ import './blogPost.module.scss'
 import Div from '../div'
 
 const BlogPost = (props) => {
-  const { headline, picture, children, link, date } = props;
+  const { children, date, headline, link, picture, source} = props;
   const authorPage = "https://jordanmax.medium.com/"
   return (
     <div className="container">
       <div className="row">
-        <div className="col-12">
-          <h1 className="blogLink" onClick={() => { window.open(link, "_blank") }}>{ headline }</h1>
+        <div className="col-12 tal">
+          <h1 className="blogLink blogHeadline" onClick={() => { window.open(link, "_blank") }}>{ headline }</h1>
         </div>
         <div className="col-12">
           <div className="col-6-sm tal">
-            <p className="blogLink" onClick={() => {  window.open(authorPage, "_blank") }}>Jordan Max</p>
+            <p><span  className="blogLink" onClick={() => {  window.open(authorPage, "_blank") }}>Jordan Max</span> via <span className="source">{source}</span></p>
           </div>
           <div className="col-6-sm tar">
             <p>{date}</p>
