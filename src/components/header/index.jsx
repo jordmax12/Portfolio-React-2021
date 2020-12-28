@@ -52,6 +52,10 @@ const BlogPost = (props) => {
     setHamburgerIsOpen(true);
   }
 
+  const handleItemClick = (path) => {
+    window.location = path;
+  }
+
   return (
     <div className="container">
       <div className="row">
@@ -61,16 +65,16 @@ const BlogPost = (props) => {
               <i className="fa fa-bars"></i>
             </a>
           </div>
-          <div className={menuClasses}>
+          <div className={menuClasses} onClick={() => handleItemClick('/')}>
 						Home
           </div>
-          <div className={menuClasses}>
+          <div className={menuClasses} onClick={() => handleItemClick('/resume')}>
 						Resume
 					</div>
-					<div className={menuClasses}>
+					<div className={menuClasses} onClick={() => handleItemClick('/projects')}>
 						Projects
 					</div>
-					<div className={menuClasses}>
+					<div className={menuClasses} onClick={() => handleItemClick('/blog')}>
 						Blog
 					</div>
         </div>
