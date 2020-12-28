@@ -3,7 +3,7 @@ import Div from "../div";
 import styles from "./timeline_selector.module.scss";
 import map from "lodash/map";
 import { Spring } from "react-spring/renderprops";
-
+// TODO: need to redo this in functional
 class TimelineSelector extends Component {
 
   onClickitemItem = selecteditem => {
