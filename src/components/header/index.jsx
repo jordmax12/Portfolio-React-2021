@@ -58,7 +58,7 @@ const BlogPost = (props) => {
   }
 
   return (
-    <div className="container">
+    <div className={`${styles.headerContainer}`}>
       <div className="row">
         <div className="col-12">
           <div className={`col-12 ${styles.hamburger}`}>

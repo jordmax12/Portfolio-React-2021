@@ -62,7 +62,7 @@ class Loader extends Component {
     import("../../views/Home").then(Home => this.incrementLoading()); // increment manually being called.
     import("../../views/Projects").then(Projects => { }); // Asyncronysly complete on background. //Todo unless if its the projects page .. use routeMatch
 
-    this.totalItems = images.length + 2
+    this.totalItems = images.length;
     let areImagesLoaded = true;
 
     // enables flag to hide loader if all the images are loaded 
@@ -106,6 +106,8 @@ class Loader extends Component {
         this.incrementLoading();
       }
 
+      console.log('here??', this.itemsLoaded, this.totalItems)
+
       const contentLoadedPercentage = Math.trunc(
         (this.itemsLoaded / this.totalItems) * 100
       )
@@ -115,6 +117,7 @@ class Loader extends Component {
       });
       if (this.itemsLoaded >= this.totalItems) {
         this.completeLoading();
+        // 2559.33 x 1267.33
       } else {
         this.valuateProgress();
       }

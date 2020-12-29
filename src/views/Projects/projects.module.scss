@@ -33,7 +33,7 @@ $desktop-width: "only screen and (max-width : 1024px)";
 }
 
 .timeline_container {
-  padding: 60px 0px 0px 0px;
+  // padding: 60px 0px 0px 0px;
   position: relative;
   height: 100%;
   // overflow: hidden;
@@ -43,6 +43,7 @@ $desktop-width: "only screen and (max-width : 1024px)";
     position: absolute;
     object-position: left top;
     object-fit: cover;
+    // background-size: cover;
     opacity: 0.04;
 
     top: 0;
