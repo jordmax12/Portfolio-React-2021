@@ -60,9 +60,10 @@ class Loader extends Component {
     ));
 
     import("../../views/Home").then(Home => this.incrementLoading()); // increment manually being called.
-    import("../../views/Projects").then(Projects => { }); // Asyncronysly complete on background. //Todo unless if its the projects page .. use routeMatch
+    import("../../views/Projects").then(Projects => this.incrementLoading()); // Asyncronysly complete on background. //Todo unless if its the projects page .. use routeMatch
+    import("../../views/Blog").then(Home => this.incrementLoading()); // increment manually being called.
 
-    this.totalItems = images.length;
+    this.totalItems = images.length + 3;
     let areImagesLoaded = true;
 
     // enables flag to hide loader if all the images are loaded 
@@ -116,7 +117,9 @@ class Loader extends Component {
         contentLoadedPercentage
       });
       if (this.itemsLoaded >= this.totalItems) {
-        this.completeLoading();
+        setTimeout(() => {
+          this.completeLoading();
+        }, 1500)
         // 2559.33 x 1267.33
       } else {
         this.valuateProgress();
@@ -193,11 +196,6 @@ class Loader extends Component {
         {
           showBackground && (
             <Div align className={styles.background_loader_container}>
-              <div className={styles.background_container}>
-                <div className={styles.background}>
-                  <BackgroundAnimator clientX={0} clientY={0} />
-                </div>
-              </div>
               <Transition
                 items={pageState}
                 from={{ opacity: 1 }}
@@ -210,20 +208,19 @@ class Loader extends Component {
                     <Fragment>
                       <Spring
                         to={{
-                          height: `calc(100vw - ${contentLoadedPercentage}vw)`,
+                          height: '100vh',
                           x: contentLoadedPercentage
                         }}
                       >
                         {
                           springProps => (
                             <Fragment>
-                              <div style={transitionProps} className={styles.percentage_text}>{Math.floor(springProps.x)}</div>
                               <div style={{
                                 opacity: transitionProps.opacity,
-                                height: springProps.height,
+                                height: '100vh',
                               }} className={styles.loading_text_container}>
                                 <div className={styles.loading_text}>
-                                  Loading...
+                                {Math.floor(springProps.x)} Loading...
                                 </div>
                               </div>
                             </Fragment>
@@ -231,29 +228,13 @@ class Loader extends Component {
                         }
                       </Spring>
                     </Fragment>
-                  ))}
+                  )
+                  
+                  )}
               </Transition>
             </Div>
           )
         }
-
-        {/* Intro Animation */}
-        {/* <Transition
-          items={pageState}
-          from={{ opacity: 0 }}
-          enter={{ opacity: 1 }}
-          leave={{ opacity: 0 }}
-        >
-          {pageState =>
-            pageState == loaderPageStates.SHOW_INTRO &&
-            (props => (
-              <Intro
-                style={props}
-                onAnimationEnd={() => this.onIntroAnimationEnd()}
-              />
-            ))
-          }
-        </Transition> */}
       </Div>
     );
   }

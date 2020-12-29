@@ -15,8 +15,8 @@ const BackgroundAnimator = ({ clientX, clientY }) => {
   const animationProps = useSpring({ xy: calc(clientX, clientY), config: { mass: 10, tension: 550, friction: 240 } });
   return (
     <div className={styles.background_container}>
-      <animated.div className={styles.background_image_layer} style={{ transform: animationProps.xy.interpolate(trans1) }}>
-      </animated.div>
+      {/* <animated.div className={styles.background_image_layer} style={{ transform: animationProps.xy.interpolate(trans1) }}>
+      </animated.div> */}
       {/* <animated.img
         className={styles.background_image_layer}
         src={backgroundTest}
