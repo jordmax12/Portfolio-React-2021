@@ -1,6 +1,5 @@
 import React from 'react'
 import './blogPost.module.scss'
-import Div from '../div'
 
 const BlogPost = (props) => {
   const { children, date, headline, link, picture, source} = props;
@@ -20,7 +19,7 @@ const BlogPost = (props) => {
           </div>
         </div>
         <div className="col-12">
-          <img src={picture} />
+          <img alt="blog post" src={picture} />
         </div>
         <div className="col-12 tal">
           {children}

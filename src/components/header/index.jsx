@@ -10,6 +10,7 @@ const BlogPost = (props) => {
   const defaultMenuClasses = `col-3 ${styles.navigation}`
   const [hamburgerIsOpen, setHamburgerIsOpen] = useState(false);
   const [menuClasses, setMenuClasses] = useState(defaultMenuClasses);
+  /* eslint-disable no-unused-vars */
   const [width, setWidth] = useState(getWidth());
 
   useEffect(() => {
@@ -32,7 +33,7 @@ const BlogPost = (props) => {
       // remove resize listener
       window.removeEventListener('resize', resizeListener);
     }
-  }, [])
+  }, [defaultMenuClasses])
 
   useEffect(() => {
     if(hamburgerIsOpen) {
@@ -40,7 +41,7 @@ const BlogPost = (props) => {
     } else {
       setMenuClasses(defaultMenuClasses)
     }
-  }, [hamburgerIsOpen])
+  }, [hamburgerIsOpen, defaultMenuClasses])
 
   const handleHamburger = (e) => {
     e.preventDefault();
@@ -61,6 +62,7 @@ const BlogPost = (props) => {
       <div className="row">
         <div className="col-12">
           <div className={`col-12 ${styles.hamburger}`}>
+            {/* eslint-disable jsx-a11y/anchor-is-valid */}
             <a href="#" className="icon" onClick={handleHamburger}>
               <i className="fa fa-bars"></i>
             </a>

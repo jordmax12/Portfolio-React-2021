@@ -8,6 +8,7 @@ import Div from "../../components/div";
 import find from "lodash/find";
 import { Transition, Spring } from "react-spring/renderprops";
 import techDoodleImage from "../../assets/images/backgrounds/tech-doodle-background-image.png";
+import bgTest from "../../assets/images/backgrounds/background-test.png";
 import { technologies } from '../../helpers/projectsConstants';
 const Projects = () => {
   const [selectedTechId, setSelectedTechId] = useState('nodejs')
@@ -79,7 +80,7 @@ const Projects = () => {
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <Div row fillParent align="stretch" className={styles.timeline_container}>
-        <img alt="tech-logo" src={techDoodleImage} className={styles.background_static_image} />
+        <img alt="tech-logo" src={bgTest} className={styles.background_static_image} />
         <div className="container">
           <div className="row">
             <div className="col-2">
