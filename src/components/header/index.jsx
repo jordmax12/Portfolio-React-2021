@@ -7,14 +7,21 @@ const getWidth = () => window.innerWidth
   || document.body.clientWidth;
 
 const BlogPost = (props) => {
+  const { showHeader, showHeaderWidth } = props;
+  console.log('logging showHeaderWidth', showHeaderWidth);
   const defaultMenuClasses = `col-3 ${styles.navigation}`
   const [hamburgerIsOpen, setHamburgerIsOpen] = useState(false);
   const [menuClasses, setMenuClasses] = useState(defaultMenuClasses);
+  const [containerClasses, setContainerClases] = useState(styles.dn)
   /* eslint-disable no-unused-vars */
   const [width, setWidth] = useState(getWidth());
 
   useEffect(() => {
     const resizeListener = () => {
+      console.log(containerClasses, styles.dn)
+      if(containerClasses === styles.dn && showHeader) {
+        setContainerClases('row')
+      }
       // change width from the state object
       // TODO: this isnt working for some reason?
       // const lastWidth = width;
@@ -34,6 +41,12 @@ const BlogPost = (props) => {
       window.removeEventListener('resize', resizeListener);
     }
   }, [defaultMenuClasses])
+
+  useEffect(() => {
+    if(containerClasses === styles.dn && showHeader) {
+      setContainerClases('row')
+    } 
+  }, [showHeader])
 
   useEffect(() => {
     if(hamburgerIsOpen) {
@@ -58,8 +71,8 @@ const BlogPost = (props) => {
   }
 
   return (
-    <div className={`${styles.headerContainer}`}>
-      <div className="row">
+    <div className={styles.headerContainer} style={{ width: `${showHeaderWidth}%`}}>
+      <div className={containerClasses}>
         <div className="col-12">
           <div className={`col-12 ${styles.hamburger}`}>
             {/* eslint-disable jsx-a11y/anchor-is-valid */}

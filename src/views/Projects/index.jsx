@@ -80,7 +80,7 @@ const Projects = () => {
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <Div row fillParent align="stretch" className={styles.timeline_container}>
-        <img alt="tech-logo" src={bgTest} className={styles.background_static_image} />
+        {/* <img alt="tech-logo" src={bgTest} className={styles.background_static_image} /> */}
         <div className="container">
           <div className="row">
             <div className="col-2">

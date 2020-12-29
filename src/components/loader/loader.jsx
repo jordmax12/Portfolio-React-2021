@@ -39,6 +39,8 @@ class Loader extends Component {
     this.lastUpdated = 0;
     this.itemsLoaded = 0;
     this.totalItems = 0;
+    this.showHeaderAfterLoader = props.showHeaderAfterLoader;
+    this.updateHeaderWidth = props.updateHeaderWidth;
   }
 
   componentDidMount() {
@@ -107,8 +109,6 @@ class Loader extends Component {
         this.incrementLoading();
       }
 
-      console.log('here??', this.itemsLoaded, this.totalItems)
-
       const contentLoadedPercentage = Math.trunc(
         (this.itemsLoaded / this.totalItems) * 100
       )
@@ -120,7 +120,6 @@ class Loader extends Component {
         setTimeout(() => {
           this.completeLoading();
         }, 1500)
-        // 2559.33 x 1267.33
       } else {
         this.valuateProgress();
       }
@@ -159,9 +158,10 @@ class Loader extends Component {
     this.setState({
       pageState: loaderPageStates.COMPLETED_LOADING // complete loading animation takes around 400 ms to hide
     });
-
+    
     // so created a timeout to not show content immediately
     animationFrameTimeout(() => {
+      
       if (!disableIntro && !introAlreadyShown) {
         this.setState({
           pageState: loaderPageStates.SHOW_INTRO
@@ -170,7 +170,10 @@ class Loader extends Component {
         this.setState({
           pageState: loaderPageStates.SHOW_PAGE
         });
-        animationFrameTimeout(() => this.setState({ showBackground: false }), 400)
+        animationFrameTimeout(() => {
+          this.showHeaderAfterLoader();
+          this.setState({ showBackground: false })
+        }, 400)
       }
     }, 500);
   };
@@ -213,18 +216,35 @@ class Loader extends Component {
                         }}
                       >
                         {
-                          springProps => (
-                            <Fragment>
-                              <div style={{
-                                opacity: transitionProps.opacity,
-                                height: '100vh',
-                              }} className={styles.loading_text_container}>
-                                <div className={styles.loading_text}>
-                                {Math.floor(springProps.x)} Loading...
+                          springProps => {
+                            console.log('logging contentLoadedPercentage', Math.floor(springProps.x))
+                            this.updateHeaderWidth(Math.floor(springProps.x));
+                            return (
+                              <Fragment>
+                                <div style={{
+                                  opacity: transitionProps.opacity,
+                                  height: '100vh',
+                                }} className={styles.loading_text_container}>
+                                  {/* <div style={{ width: '100%'}}>
+                                    <div style={{
+                                      width: `${Math.floor(springProps.x)}%`,
+                                      backgroundColor: 'blue',
+                                      height: '50px',
+                                      position: 'absolute',
+                                      top: '0',
+                                      left: '0'
+                                    }}></div>
+                                  </div> */}
+                                  <div className={styles.loading_text}>
+                                  {Math.floor(springProps.x)} Loading...
+                                  </div>
                                 </div>
-                              </div>
-                            </Fragment>
-                          )
+                              </Fragment>
+                            )
+
+                          }
+                          
+                          
                         }
                       </Spring>
                     </Fragment>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.scss';
 import './assets/scss/simple-grid.scss'
 import { Suspense } from 'react'
@@ -10,15 +10,32 @@ const Header = React.lazy(() => import("./components/header"))
 const Projects = React.lazy(() => import("./views/Projects"));
 const Home = React.lazy(() => import("./views/Home"));
 const Blog = React.lazy(() => import("./views/Blog"));
+
+
+
+
+
 function App() {
+  const [showHeader, setShowHeader] = useState(false);
+  const [showHeaderWidth, setShowHeaderWidth] = useState(0);
+
+  const updateHeaderWidth = (width) => {
+    setShowHeaderWidth(width)
+  }
+
+  const showHeaderAfterLoader = () => {
+    console.log('here?')
+    setShowHeader(true);
+  }
+
   return (
     <div className="App">
       <Router>
         <Suspense fallback={null}>
           <Switch>
             <Route path="/">
-              <Header />
-              <Loader>
+              <Header showHeader={showHeader} showHeaderWidth={showHeaderWidth} />
+              <Loader updateHeaderWidth={updateHeaderWidth} showHeaderAfterLoader={showHeaderAfterLoader}>
                 <Route
                   exact
                   path="/"
