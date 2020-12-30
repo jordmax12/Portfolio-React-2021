@@ -5,7 +5,7 @@ import { Transition, Spring } from "react-spring/renderprops";
 import Div from "../div";
 import { withRouter, matchPath } from "react-router";
 import { CookieService } from "../../assets/utils/cookieService"
-import BackgroundAnimator from "../backgroundAnimator";
+// import BackgroundAnimator from "../backgroundAnimator";
 import { animationFrameTimeout } from '../../assets/utils';
 import { preloadImage, getImagesFromContext } from './loaderHelper';
 import Balloon from './balloon'
@@ -124,7 +124,6 @@ const Loader = (props) => {
 
 		const completeLoading = showImmediately => {
 			console.log('hit complete loading', showImmediately)
-			// const { contentLoadedPercentage, disableIntro } = this.state;
 			const introAlreadyShown = CookieService.get("INTRO_COMPLETED");
 	
 			// Loading background images in the background, without a loader tracking progress
@@ -136,42 +135,25 @@ const Loader = (props) => {
 	
 	
 			if (showImmediately) {
-				// return this.setState({
-				// 	pageState: loaderPageStates.SHOW_PAGE,
-				// 	showBackground: false
-				// });
 				setPageState(loaderPageStates.SHOW_PAGE);
 				setShowBackground(false);
 			}
 	
 			if (contentLoadedPercentage !== 100) {
 				// if by chance its not 100 then show 100 on page
-				// this.setState({ contentLoadedPercentage: 100 });
 				setContentLoadedPercentage(100);
 			}
 	
-			// this.setState({
-			// 	pageState: loaderPageStates.COMPLETED_LOADING // complete loading animation takes around 400 ms to hide
-			// });
 			setPageState(loaderPageStates.COMPLETED_LOADING)
 			
 			// so created a timeout to not show content immediately
 			animationFrameTimeout(() => {
 				
 				if (!disableIntro && !introAlreadyShown) {
-					// this.setState({
-					// 	pageState: loaderPageStates.SHOW_INTRO
-					// });
 					setPageState(loaderPageStates.SHOW_INTRO)
-				} else {
-					// this.setState({
-					// 	pageState: loaderPageStates.SHOW_PAGE
-					// });
-					
+				} else {					
 					animationFrameTimeout(() => {
                         showHeaderAfterLoader();
-						// this.setState({ showBackground: false })
-                        // setShowBackground(false);
                         setTimeout(() => {
                             setPageState(loaderPageStates.SHOW_PAGE);
                         }, 300)
@@ -180,8 +162,6 @@ const Loader = (props) => {
 			}, 500);
 		};
   /* --------------------------------------------------Render------------------------------------------- */
-    // const { children } = this.props;
-    // const { contentLoadedPercentage, pageState, showBackground } = this.state;
     return (
         <div className={styles.loader_top_container}>
 			{(
@@ -213,10 +193,9 @@ const Loader = (props) => {
                                   opacity: transitionProps.opacity,
                                   height: '100vh',
                                 }} className={styles.loading_text_container}>
-                                  <div className={styles.loading_text}>
-									<Balloon percent={Math.floor(springProps.x)} />
-                                  	{/* {Math.floor(springProps.x)} Loading... */}
-                                  </div>
+                                  {/* <div className={styles.loading_text}> */}
+									<Balloon percent={Math.floor(springProps.x)} text={'Loading...'} />
+                                  {/* </div> */}
                                 </div>
                               </Fragment>
                             )
@@ -235,10 +214,6 @@ const Loader = (props) => {
           )
         }
         </div>
-    //   <Div className={styles.loader_top_container}>
-    //     {pageState === loaderPageStates.SHOW_PAGE && children}
-        
-    //   </Div>
     )
 }
 

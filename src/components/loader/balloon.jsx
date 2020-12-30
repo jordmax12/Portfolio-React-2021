@@ -21,35 +21,42 @@ const Balloon = (props) => {
     const findWidth = () => {
         // min width = 120
         // max width = 290
-        const newWidth = 120 + Math.ceil(percent * 1.7);
+        // const newWidth = 120 + Math.ceil(percent * 1.7);
+        const newWidth = 120 + Math.ceil(percent * 3.7);
         return newWidth;
     }
     
     const findHeight = () => {
         // min height = 145
         // max height = 360
-        const newHeight = 145 + Math.ceil(percent * 2.15);
+        // const newHeight = 145 + Math.ceil(percent * 2.15);
+        const newHeight = 145 + Math.ceil(percent * 4.15);
         return newHeight;
     }
 
-    const [balloonWidth, setBalloonWidth] = useState(findWidth())
-    const [balloonHeight, setBalloonHeight] = useState(findHeight())
-    const [balloonClass, setBalloonClass] = useState(styles.balloon)
+    const [balloonWidth, setBalloonWidth] = useState(findWidth());
+    const [balloonHeight, setBalloonHeight] = useState(findHeight());
+    const [balloonClass, setBalloonClass] = useState(styles.balloon);
+    const [confettiActive, setConfettiActive] = useState(false);
 
     useEffect(() => {
         setBalloonHeight(findHeight());
         setBalloonWidth(findWidth());
         if(percent >= 100) {
-            setBalloonClass('dn')
-            // setBalloonClass('dn')
+            setConfettiActive(true);
+            setBalloonClass('trigger');
+            setTimeout(() => {
+                setBalloonClass('dn');
+            }, confettiConfig.duration)
         }
     }, [percent])
 
 
 
     return (
-        <div className={balloonClass} style={{ height: `${balloonHeight}px`, width: `${balloonWidth}px`}}>
-            <Confetti active={percent === 100} config={ confettiConfig } />
+        <div className={balloonClass} style={{ lineHeight: `${balloonHeight}px`, height: `${balloonHeight}px`, width: `${balloonWidth}px`}}>
+            <h5 style={{display: confettiActive ? 'none': 'inline-block', lineHeight: '1', verticalAlign: 'middle'}}>{percent}% Loading...</h5>
+            <Confetti active={confettiActive} config={ confettiConfig } />
         </div>
     )
 }
