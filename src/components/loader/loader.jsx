@@ -9,6 +9,7 @@ import { CookieService } from "../../assets/utils/cookieService"
 import { animationFrameTimeout } from '../../assets/utils';
 import { preloadImage, getImagesFromContext } from './loaderHelper';
 import Balloon from './balloon'
+import jordan from "../../assets/images/jordan/jordan-transparent.png";
 const disableIntro = true;
 const assetsImages = require.context(
   `../../assets/images`,
@@ -27,6 +28,12 @@ const assetsBackgroundImages = require.context(
   /.*\.png$|jpg$/
 );
 
+const assetsJordanImages = require.context(
+	'../../assets/images/jordan',
+	false,
+	/.*\.png$|jpg$/
+  );
+
 const Loader = (props) => {
     const [ contentLoadedPercentage, setContentLoadedPercentage ] = useState(0);
     const [ showBackground, setShowBackground ] = useState(true);
@@ -40,7 +47,7 @@ const Loader = (props) => {
     useEffect(() => {
         if(!loaderStarted){
             loaderStarted = true;
-            startLoader();
+			startLoader();
         }
     }, [])
 
@@ -50,7 +57,9 @@ const Loader = (props) => {
 			const images = Array.from(document.images);
 			const extractedImages = [
 					...getImagesFromContext(assetsImages),
-					...getImagesFromContext(assetTechnologyImages)
+					...getImagesFromContext(assetTechnologyImages),
+					...getImagesFromContext(assetsBackgroundImages),
+					...getImagesFromContext(assetsJordanImages)
 			]
 	
 			extractedImages.map(image => (
@@ -113,7 +122,7 @@ const Loader = (props) => {
 				);
 				if (itemsLoaded >= totalItems) {
 					setTimeout(() => {
-						completeLoading();
+						// completeLoading();
 					}, 1500)
 				} else {
 					valuateProgress();
@@ -195,6 +204,9 @@ const Loader = (props) => {
                                 }} className={styles.loading_text_container}>
                                   {/* <div className={styles.loading_text}> */}
 									<Balloon percent={Math.floor(springProps.x)} text={'Loading...'} />
+									<div style={{ width: '100%', height: '100%', position: 'relative'}}>
+										<img className={styles.jordanHolder} src={jordan} />
+									</div>
                                   {/* </div> */}
                                 </div>
                               </Fragment>

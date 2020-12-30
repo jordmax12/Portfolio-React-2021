@@ -19,16 +19,12 @@ const confettiConfig = {
 const Balloon = (props) => {
     const { percent } = props;
     const findWidth = () => {
-        // min width = 120
-        // max width = 290
         // const newWidth = 120 + Math.ceil(percent * 1.7);
         const newWidth = 120 + Math.ceil(percent * 3.7);
         return newWidth;
     }
     
     const findHeight = () => {
-        // min height = 145
-        // max height = 360
         // const newHeight = 145 + Math.ceil(percent * 2.15);
         const newHeight = 145 + Math.ceil(percent * 4.15);
         return newHeight;
@@ -43,10 +39,10 @@ const Balloon = (props) => {
         setBalloonHeight(findHeight());
         setBalloonWidth(findWidth());
         if(percent >= 100) {
-            setConfettiActive(true);
-            setBalloonClass('trigger');
+            // setConfettiActive(true);
+            // setBalloonClass('trigger');
             setTimeout(() => {
-                setBalloonClass('dn');
+                // setBalloonClass('dn');
             }, confettiConfig.duration)
         }
     }, [percent])

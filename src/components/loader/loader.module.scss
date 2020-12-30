@@ -5,6 +5,13 @@ $color-brown-grey: #878787;
 
 $transition-type: cubic-bezier(0.550, 0.055, 0.675, 0.190);
 
+.jordanHolder {
+  position: absolute;
+  top: 0;
+  left: 43%;
+  width: 85px;
+}
+
 .loader_top_container {
   width: 100%;
   height: calc(100% - 56px);
@@ -50,6 +57,7 @@ $transition-type: cubic-bezier(0.550, 0.055, 0.675, 0.190);
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
 
       .loading_text {
         font-size: 40px;
