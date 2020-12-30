@@ -8,6 +8,7 @@ import { CookieService } from "../../assets/utils/cookieService"
 import BackgroundAnimator from "../backgroundAnimator";
 import { animationFrameTimeout } from '../../assets/utils';
 import { preloadImage, getImagesFromContext } from './loaderHelper';
+import Balloon from './balloon'
 const disableIntro = true;
 const assetsImages = require.context(
   `../../assets/images`,
@@ -201,7 +202,7 @@ const Loader = (props) => {
                         to={{
                           height: '100vh',
                           x: contentLoadedPercentage
-                        }}
+						}}
                       >
                         {
                           springProps => {
@@ -212,8 +213,9 @@ const Loader = (props) => {
                                   opacity: transitionProps.opacity,
                                   height: '100vh',
                                 }} className={styles.loading_text_container}>
-                                  <div className={styles.loading_text}> 
-                                  {Math.floor(springProps.x)} Loading...
+                                  <div className={styles.loading_text}>
+									<Balloon percent={Math.floor(springProps.x)} />
+                                  	{/* {Math.floor(springProps.x)} Loading... */}
                                   </div>
                                 </div>
                               </Fragment>
