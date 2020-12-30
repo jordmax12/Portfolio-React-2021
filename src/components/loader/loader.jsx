@@ -122,7 +122,7 @@ const Loader = (props) => {
 				);
 				if (itemsLoaded >= totalItems) {
 					setTimeout(() => {
-						// completeLoading();
+						completeLoading();
 					}, 1500)
 				} else {
 					valuateProgress();
@@ -204,9 +204,9 @@ const Loader = (props) => {
                                 }} className={styles.loading_text_container}>
                                   {/* <div className={styles.loading_text}> */}
 									<Balloon percent={Math.floor(springProps.x)} text={'Loading...'} />
-									<div style={{ width: '100%', height: '100%', position: 'relative'}}>
+									{/* <div style={{ width: '100%', height: '100%', position: 'relative'}}>
 										<img className={styles.jordanHolder} src={jordan} />
-									</div>
+									</div> */}
                                   {/* </div> */}
                                 </div>
                               </Fragment>

@@ -49,7 +49,8 @@
   width:1px;
   margin:0 auto;
   content:"";
-  background:rgba(0,0,0,0.2); 
+  background:rgba(0,0,0,0.2);
+  // background:transparent url("./jordan-transparent.png") no-repeat -30px -50px;
 }
 
 .balloon:nth-child(2){ background:hsl(245,40%,65%); animation-duration:3.5s; }

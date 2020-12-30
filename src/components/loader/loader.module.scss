@@ -36,7 +36,7 @@ $transition-type: cubic-bezier(0.550, 0.055, 0.675, 0.190);
         height: calc(100% - 56px);
         width: 100vw;
         left: 0;
-        background: #333333;
+        background: #EFEFEF;
       }
     }
 
@@ -53,7 +53,7 @@ $transition-type: cubic-bezier(0.550, 0.055, 0.675, 0.190);
       width: 100%;
       z-index: 99;
       overflow: hidden;
-      background: #333;
+      background: #EFEFEF;
       display: flex;
       align-items: center;
       justify-content: center;
