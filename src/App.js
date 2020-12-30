@@ -11,10 +11,6 @@ const Projects = React.lazy(() => import("./views/Projects"));
 const Home = React.lazy(() => import("./views/Home"));
 const Blog = React.lazy(() => import("./views/Blog"));
 
-
-
-
-
 function App() {
   const [showHeader, setShowHeader] = useState(false);
   const [showHeaderWidth, setShowHeaderWidth] = useState(0);
@@ -41,13 +37,13 @@ function App() {
                   path="/"
                   children={(props) => (
                     <AnimationLifecycle
-                      component={Home}
+                      component={Projects}
                       whenToRender={(match) => match}
                       {...props}
                     />
                   )}
                 />
-                <Route
+                {/* <Route
                   exact
                   path="/projects"
                   children={(props) => (
@@ -68,7 +64,7 @@ function App() {
                       {...props}
                     />
                   )}
-                />
+                /> */}
               </Loader>
             </Route>
           </Switch>

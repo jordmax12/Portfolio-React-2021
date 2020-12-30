@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import styles from "./loader.module.scss";
 import { loaderPageStates } from "./loaderConstants";
 import { Transition, Spring } from "react-spring/renderprops";
@@ -30,7 +30,7 @@ const Loader = (props) => {
     const [ contentLoadedPercentage, setContentLoadedPercentage ] = useState(0);
     const [ showBackground, setShowBackground ] = useState(true);
     const [ pageState, setPageState ] = useState(loaderPageStates.IS_LOADING);
-    const { location, children } = props;
+    const { location, children, updateHeaderWidth, showHeaderAfterLoader } = props;
     let lastUpdated = 0;
     let itemsLoaded = 0;
     let totalItems = 0;
@@ -166,11 +166,14 @@ const Loader = (props) => {
 					// this.setState({
 					// 	pageState: loaderPageStates.SHOW_PAGE
 					// });
-					setPageState(loaderPageStates.SHOW_PAGE)
+					
 					animationFrameTimeout(() => {
-						// this.showHeaderAfterLoader();
+                        showHeaderAfterLoader();
 						// this.setState({ showBackground: false })
-						setShowBackground(false);
+                        // setShowBackground(false);
+                        setTimeout(() => {
+                            setPageState(loaderPageStates.SHOW_PAGE);
+                        }, 300)
 					}, 400)
 				}
 			}, 500);
@@ -180,69 +183,59 @@ const Loader = (props) => {
     // const { contentLoadedPercentage, pageState, showBackground } = this.state;
     return (
         <div className={styles.loader_top_container}>
-					{pageState === loaderPageStates.SHOW_PAGE && children}
+			{(
+            <Div align className={styles.background_loader_container}>
+              {pageState === loaderPageStates.SHOW_PAGE && children}
+              <Transition
+                items={pageState}
+                from={{ opacity: 1 }}
+                enter={{ opacity: 1 }}
+                leave={{ opacity: 0 }}
+              >
+                  
+				{pageState =>
+                  pageState === loaderPageStates.IS_LOADING &&
+                  (transitionProps => (
+                    <Fragment>
+                      <Spring
+                        to={{
+                          height: '100vh',
+                          x: contentLoadedPercentage
+                        }}
+                      >
+                        {
+                          springProps => {
+                            updateHeaderWidth(Math.floor(springProps.x));
+                            return (
+                              <Fragment>
+                                <div style={{
+                                  opacity: transitionProps.opacity,
+                                  height: '100vh',
+                                }} className={styles.loading_text_container}>
+                                  <div className={styles.loading_text}> 
+                                  {Math.floor(springProps.x)} Loading...
+                                  </div>
+                                </div>
+                              </Fragment>
+                            )
+
+                          }
+                          
+                          
+                        }
+                      </Spring>
+                    </Fragment>
+                  )
+                  
+                  )}
+              </Transition>
+            </Div>
+          )
+        }
         </div>
     //   <Div className={styles.loader_top_container}>
     //     {pageState === loaderPageStates.SHOW_PAGE && children}
-    //     {
-    //       showBackground && (
-    //         <Div align className={styles.background_loader_container}>
-    //           <Transition
-    //             items={pageState}
-    //             from={{ opacity: 1 }}
-    //             enter={{ opacity: 1 }}
-    //             leave={{ opacity: 0 }}
-    //           >
-    //             {pageState =>
-    //               pageState === loaderPageStates.IS_LOADING &&
-    //               (transitionProps => (
-    //                 <Fragment>
-    //                   <Spring
-    //                     to={{
-    //                       height: '100vh',
-    //                       x: contentLoadedPercentage
-    //                     }}
-    //                   >
-    //                     {
-    //                       springProps => {
-    //                         console.log('logging contentLoadedPercentage', Math.floor(springProps.x))
-    //                         this.updateHeaderWidth(Math.floor(springProps.x));
-    //                         return (
-    //                           <Fragment>
-    //                             <div style={{
-    //                               opacity: transitionProps.opacity,
-    //                               height: '100vh',
-    //                             }} className={styles.loading_text_container}>
-    //                               {/* <div style={{ width: '100%'}}>
-    //                                 <div style={{
-    //                                   width: `${Math.floor(springProps.x)}%`,
-    //                                   backgroundColor: 'blue',
-    //                                   height: '50px',
-    //                                   position: 'absolute',
-    //                                   top: '0',
-    //                                   left: '0'
-    //                                 }}></div>
-    //                               </div> */}
-    //                               <div className={styles.loading_text}>
-    //                               {Math.floor(springProps.x)} Loading...
-    //                               </div>
-    //                             </div>
-    //                           </Fragment>
-    //                         )
-
-    //                       }
-                          
-                          
-    //                     }
-    //                   </Spring>
-    //                 </Fragment>
-    //               )
-                  
-    //               )}
-    //           </Transition>
-    //         </Div>
-    //       )
-    //     }
+        
     //   </Div>
     )
 }

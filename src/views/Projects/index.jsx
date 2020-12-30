@@ -14,6 +14,7 @@ const Projects = () => {
   const [selectedTechId, setSelectedTechId] = useState('nodejs')
   const [matchedProjects, setMatchedProjects] = useState(projects)
   const [changeProjects, setChangeProducts] = useState(false);
+  const [show, setShow] = useState(false);
   // TODO: is the following needed? review.
   /* eslint-disable no-unused-vars */
   const [isFirstAnimation, setIsFirstAnimation] = useState(false)
@@ -45,6 +46,10 @@ const Projects = () => {
       setTimeout(() => {
         setMatchedProjects(build_projects)
       }, 100)
+
+      setTimeout(() => {
+        setShow(true)
+      }, 300)
 
     }
     /* eslint-disable react-hooks/exhaustive-deps */
@@ -78,7 +83,18 @@ const Projects = () => {
     return techItem.id === selectedTechId;
   });
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <>
+  <Transition
+    items={show}
+    from={{ opacity: 0 }}
+    enter={{ opacity: 1 }}
+    leave={{ opacity: 0 }}
+  >
+    {
+      show => show && (
+        value => {
+          return (
+            <div style={{ width: '100%', height: '100%' }}>
       <Div row fillParent align="stretch" className={styles.timeline_container}>
         {/* <img alt="tech-logo" src={bgTest} className={styles.background_static_image} /> */}
         <div className="container">
@@ -154,7 +170,13 @@ const Projects = () => {
         </div>
       </Div>
     </div>
-
+          )
+        }
+      )
+    }
+    
+  </Transition>
+  </>
   );
 }
 
