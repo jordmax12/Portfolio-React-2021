@@ -8,7 +8,6 @@ const getWidth = () => window.innerWidth
 
 const BlogPost = (props) => {
   const { showHeader, showHeaderWidth } = props;
-  console.log('logging showHeaderWidth', showHeaderWidth);
   const defaultMenuClasses = `col-3 ${styles.navigation}`
   const [hamburgerIsOpen, setHamburgerIsOpen] = useState(false);
   const [menuClasses, setMenuClasses] = useState(defaultMenuClasses);

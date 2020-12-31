@@ -10,7 +10,6 @@ const Jordan = (props) => {
     const [jordanY, setJordanY] = useState(balloonY - 94);
     const [jordanStyle, setJordanStyle] = useState({ bottom: `${jordanY}px`})
     useEffect(() => {
-        console.log('logging balloonY', balloonY)
         setJordanY(balloonY - 94);
         setJordanStyle({ bottom: `${balloonY - 94}px` });
         if(percent === 100) {
@@ -22,8 +21,8 @@ const Jordan = (props) => {
                 setJordanImage(jordanFalling);
                 setTimeout(() => {
                     setJordanImage(jordanStanding)
-                }, 1500)
-            }, 3990)
+                }, 1400)
+            }, 570)
         }
     }, [percent, balloonY])
     return (

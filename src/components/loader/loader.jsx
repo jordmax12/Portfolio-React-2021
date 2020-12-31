@@ -23,11 +23,11 @@ const assetTechnologyImages = require.context(
   /.*\.png$|jpg$/
 );
 
-const assetsBackgroundImages = require.context(
-  '../../assets/images/backgrounds',
-  false,
-  /.*\.png$|jpg$/
-);
+// const assetsBackgroundImages = require.context(
+//   '../../assets/images/backgrounds',
+//   false,
+//   /.*\.png$|jpg$/
+// );
 
 const assetsJordanImages = require.context(
 	'../../assets/images/jordan',
@@ -54,123 +54,124 @@ const Loader = (props) => {
     }, [])
 
     const startLoader = () => {
-			console.log('logging location', location);
-			console.log('logging document', document.images);
-			const images = Array.from(document.images);
-			const extractedImages = [
-					...getImagesFromContext(assetsImages),
-					...getImagesFromContext(assetTechnologyImages),
-					...getImagesFromContext(assetsBackgroundImages),
-					...getImagesFromContext(assetsJordanImages)
-			]
-	
-			extractedImages.map(image => (
-					images.push(preloadImage(image, incrementLoading))
-			));
-	
-			import("../../views/Home").then(Home => incrementLoading()); // increment manually being called.
-			import("../../views/Projects").then(Projects => incrementLoading()); // Asyncronysly complete on background. //Todo unless if its the projects page .. use routeMatch
-			import("../../views/Blog").then(Home => incrementLoading()); // increment manually being called.
-	
-			totalItems = images.length + 3;
-			let areImagesLoaded = true;
-			if (images) {
-				images.forEach(element => {
-					if (areImagesLoaded) {
-						areImagesLoaded = element.complete;
-					}
-				});
-			}
-	
-			if (areImagesLoaded) {
+		const images = Array.from(document.images);
+		const extractedImages = [
+				...getImagesFromContext(assetsImages),
+				...getImagesFromContext(assetTechnologyImages),
+				// ...getImagesFromContext(assetsBackgroundImages),
+				...getImagesFromContext(assetsJordanImages)
+		]
+
+		extractedImages.map(image => (
+				images.push(preloadImage(image, incrementLoading))
+		));
+
+		import("../../views/Home").then(Home => incrementLoading()); // increment manually being called.
+		import("../../views/Projects").then(Projects => incrementLoading()); // Asyncronysly complete on background. //Todo unless if its the projects page .. use routeMatch
+		import("../../views/Blog").then(Home => incrementLoading()); // increment manually being called.
+
+		totalItems = images.length + 3;
+		let areImagesLoaded = true;
+		if (images) {
+			images.forEach(element => {
+				if (areImagesLoaded) {
+					areImagesLoaded = element.complete;
+				}
+			});
+		}
+
+		if (areImagesLoaded) {
+			completeLoading(true); // immediatly load page.
+		} else {
+			const introAlreadyShown = CookieService.get("INTRO_COMPLETED");
+			const match = matchPath(location.pathname, {
+				path: "/project/:projectSlug?",
+				exact: true,
+				strict: false
+			});
+
+			if (match && introAlreadyShown) {
+				// Todo also check if intro animation is done or not ... if not the make this condition false
 				completeLoading(true); // immediatly load page.
 			} else {
-				const introAlreadyShown = CookieService.get("INTRO_COMPLETED");
-				const match = matchPath(location.pathname, {
-					path: "/project/:projectSlug?",
-					exact: true,
-					strict: false
-				});
+				valuateProgress();
+			}
+		} 
+	}
 	
-				if (match && introAlreadyShown) {
-					// Todo also check if intro animation is done or not ... if not the make this condition false
-					completeLoading(true); // immediatly load page.
-				} else {
-					valuateProgress();
-				}
-			} 
-		}
-		
-		const incrementLoading = () => {
-			itemsLoaded += 1;
-		};
+	const incrementLoading = () => {
+		itemsLoaded += 1;
+	};
 
-		const valuateProgress = () => {
-			const isLastPercentage = totalItems - itemsLoaded <= 1;
-			const updateStateAfter = isLastPercentage ? 600 : 400; //600 ms for the last 2 percentage
-	
-			animationFrameTimeout(() => {
-				// manually incrementing the progress for the last 2 percent to make a seemless animation.
-				if (isLastPercentage) {
-					incrementLoading();
-				}
-	
-				const contentLoadedPercentage = Math.trunc(
-					(itemsLoaded / totalItems) * 100
-				)
-	
-				setContentLoadedPercentage(
-					contentLoadedPercentage
-				);
-				if (itemsLoaded >= totalItems) {
-					setTimeout(() => {
-						// completeLoading();
-					}, 1500)
-				} else {
-					valuateProgress();
-				}
-			}, updateStateAfter)
-		};
+	const valuateProgress = () => {
+		const isLastPercentage = totalItems - itemsLoaded <= 1;
+		// const updateStateAfter = isLastPercentage ? 600 : 400; //600 ms for the last 2 percentage
+		const updateStateAfter = 0;
 
-
-		const completeLoading = showImmediately => {
-			const introAlreadyShown = CookieService.get("INTRO_COMPLETED");
-	
-			// Loading background images in the background, without a loader tracking progress
-			// TODO: revisit this
-			const images = [];
-			getImagesFromContext(assetsBackgroundImages).map(image =>
-				images.push(preloadImage(image))
+		animationFrameTimeout(() => {
+			// manually incrementing the progress for the last 2 percent to make a seemless animation.
+			if (isLastPercentage) {
+				incrementLoading();
+			}
+			console.log('logging totalItems', totalItems, 'logging itemsLoaded', itemsLoaded)
+			const contentLoadedPercentage = Math.trunc(
+				(itemsLoaded / totalItems) * 100
+			)
+			setContentLoadedPercentage(
+				Math.min(contentLoadedPercentage, 100)
 			);
-	
-	
-			if (showImmediately) {
-				setPageState(loaderPageStates.SHOW_PAGE);
-				setShowBackground(false);
+			if (itemsLoaded >= totalItems) {
+				// setTimeout(() => {
+					// completeLoading();
+				// }, 1500)
+			} else {
+				valuateProgress();
 			}
-	
-			if (contentLoadedPercentage !== 100) {
-				// if by chance its not 100 then show 100 on page
-				setContentLoadedPercentage(100);
-			}
-	
-			setPageState(loaderPageStates.COMPLETED_LOADING)
+		}, updateStateAfter)
+	};
+
+
+	const completeLoading = showImmediately => {
+		const introAlreadyShown = CookieService.get("INTRO_COMPLETED");
+
+		// Loading background images in the background, without a loader tracking progress
+		// TODO: revisit this
+		const images = [];
+		// getImagesFromContext(assetsBackgroundImages).map(image =>
+		// 	images.push(preloadImage(image))
+		// );
+
+
+		if (showImmediately) {
+			console.log('here')
+			setPageState(loaderPageStates.SHOW_PAGE);
+			setShowBackground(false);
+		}
+
+		if (contentLoadedPercentage > 98) {
+			// if by chance its not 100 then show 100 on page
+			setContentLoadedPercentage(100);
+		}
+
+		setPageState(loaderPageStates.COMPLETED_LOADING)
+		
+		// so created a timeout to not show content immediately
+		animationFrameTimeout(() => {
 			
-			// so created a timeout to not show content immediately
-			animationFrameTimeout(() => {
-				
-				if (!disableIntro && !introAlreadyShown) {
-					setPageState(loaderPageStates.SHOW_INTRO)
-				} else {					
-					animationFrameTimeout(() => {
-                        showHeaderAfterLoader();
-                        setTimeout(() => {
-                            setPageState(loaderPageStates.SHOW_PAGE);
-                        }, 300)
-					}, 400)
-				}
-			}, 500);
-		};
+			if (!disableIntro && !introAlreadyShown) {
+				setPageState(loaderPageStates.SHOW_INTRO)
+			} else {					
+				animationFrameTimeout(() => {
+					showHeaderAfterLoader();
+					console.log('hit before show page')
+					setTimeout(() => {
+						console.log("hit show page")
+						setPageState(loaderPageStates.SHOW_PAGE);
+					}, 300)
+				}, 400)
+			}
+		}, 500);
+	};
   /* --------------------------------------------------Render------------------------------------------- */
     return (
         <div className={styles.loader_top_container}>
@@ -193,10 +194,18 @@ const Loader = (props) => {
                           height: '100vh',
                           x: contentLoadedPercentage
 						}}
+						config={{
+							mass: 0.5,
+							tension: 100,
+							friction: 30
+						}}
                       >
                         {
                           springProps => {
-                            updateHeaderWidth(Math.floor(springProps.x));
+							// console.log('logging springProps.x', springProps.x)
+							const newValue = Math.ceil(springProps.x);
+							// console.log('logging newValue', newValue)
+                            updateHeaderWidth(newValue);
                             return (
                               <Fragment>
                                 <div style={{
@@ -204,8 +213,8 @@ const Loader = (props) => {
                                   height: '100vh',
                                 }} className={styles.loading_text_container}>
                                   {/* <div className={styles.loading_text}> */}
-									<Balloon percent={Math.floor(springProps.x)} text={'Loading...'} trackBalloonY={setBalloonY} />
-									<Jordan balloonY={balloonY} percent={Math.floor(springProps.x)} />
+									<Balloon percent={newValue} text={'Loading...'} trackBalloonY={setBalloonY} />
+									<Jordan balloonY={balloonY} percent={newValue} />
 									{/* <div style={{ width: '100%', height: '100%', position: 'relative'}}>
 										<img className={styles.jordanHolder} src={jordan} />
 									</div> */}
@@ -213,16 +222,11 @@ const Loader = (props) => {
                                 </div>
                               </Fragment>
                             )
-
                           }
-                          
-                          
                         }
                       </Spring>
                     </Fragment>
-                  )
-                  
-                  )}
+                  ))}
               </Transition>
             </Div>
           )

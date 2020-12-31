@@ -51,7 +51,6 @@ class Loader extends Component {
   startLoader = () => {
     const { location } = this.props;
     const images = Array.from(document.images);
-    console.log('logging document', document.images);
 
     const extractedImages = [
       ...getImagesFromContext(assetsImages),
@@ -218,7 +217,6 @@ class Loader extends Component {
                       >
                         {
                           springProps => {
-                            console.log('logging contentLoadedPercentage', Math.floor(springProps.x))
                             this.updateHeaderWidth(Math.floor(springProps.x));
                             return (
                               <Fragment>

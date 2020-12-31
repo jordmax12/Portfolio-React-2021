@@ -1,7 +1,7 @@
 import React from 'react'
 import './blog.module.scss'
 import BlogPost from '../../components/blogPost'
-import testImage from "../../assets/images/backgrounds/react-background-image.png";
+import testImage from "../../assets/images/technology/react-tech-icon.png";
 
 const Blog = (props) => {
   return (
