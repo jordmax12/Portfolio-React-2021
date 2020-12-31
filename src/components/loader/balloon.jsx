@@ -39,11 +39,15 @@ const Balloon = (props) => {
         setBalloonHeight(findHeight());
         setBalloonWidth(findWidth());
         if(percent >= 100) {
-            setConfettiActive(true);
-            setBalloonClass('trigger');
+            // 
+            setBalloonClass(`${styles.balloon} object`);
             setTimeout(() => {
-                setBalloonClass('dn');
-            }, confettiConfig.duration)
+                setConfettiActive(true);
+                setBalloonClass('trigger');
+                setTimeout(() => {
+                    setBalloonClass('dn');
+                }, confettiConfig.duration)
+            }, 4000)
         }
     }, [percent])
 

@@ -3,6 +3,7 @@ import styles from "./loader.module.scss";
 import { loaderPageStates } from "./loaderConstants";
 import { Transition, Spring } from "react-spring/renderprops";
 import Div from "../div";
+import Jordan from '../Jordan';
 import { withRouter, matchPath } from "react-router";
 import { CookieService } from "../../assets/utils/cookieService"
 // import BackgroundAnimator from "../backgroundAnimator";
@@ -122,7 +123,7 @@ const Loader = (props) => {
 				);
 				if (itemsLoaded >= totalItems) {
 					setTimeout(() => {
-						completeLoading();
+						// completeLoading();
 					}, 1500)
 				} else {
 					valuateProgress();
@@ -203,6 +204,7 @@ const Loader = (props) => {
                                 }} className={styles.loading_text_container}>
                                   {/* <div className={styles.loading_text}> */}
 									<Balloon percent={Math.floor(springProps.x)} text={'Loading...'} />
+									<Jordan percent={Math.floor(springProps.x)} />
 									{/* <div style={{ width: '100%', height: '100%', position: 'relative'}}>
 										<img className={styles.jordanHolder} src={jordan} />
 									</div> */}
