@@ -37,7 +37,8 @@ const assetsJordanImages = require.context(
 
 const Loader = (props) => {
     const [ contentLoadedPercentage, setContentLoadedPercentage ] = useState(0);
-    const [ showBackground, setShowBackground ] = useState(true);
+	const [ showBackground, setShowBackground ] = useState(true);
+	const [ balloonY, setBalloonY ] = useState('56px');
     const [ pageState, setPageState ] = useState(loaderPageStates.IS_LOADING);
     const { location, children, updateHeaderWidth, showHeaderAfterLoader } = props;
     let lastUpdated = 0;
@@ -203,8 +204,8 @@ const Loader = (props) => {
                                   height: '100vh',
                                 }} className={styles.loading_text_container}>
                                   {/* <div className={styles.loading_text}> */}
-									<Balloon percent={Math.floor(springProps.x)} text={'Loading...'} />
-									<Jordan percent={Math.floor(springProps.x)} />
+									<Balloon percent={Math.floor(springProps.x)} text={'Loading...'} trackBalloonY={setBalloonY} />
+									<Jordan balloonY={balloonY} percent={Math.floor(springProps.x)} />
 									{/* <div style={{ width: '100%', height: '100%', position: 'relative'}}>
 										<img className={styles.jordanHolder} src={jordan} />
 									</div> */}

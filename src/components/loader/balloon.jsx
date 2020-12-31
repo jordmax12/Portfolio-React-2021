@@ -17,7 +17,7 @@ const confettiConfig = {
   };
 
 const Balloon = (props) => {
-    const { percent } = props;
+    const { percent, trackBalloonY } = props;
     const findWidth = () => {
         // const newWidth = 120 + Math.ceil(percent * 1.7);
         const newWidth = 120 + Math.ceil(percent * 3.7);
@@ -30,22 +30,30 @@ const Balloon = (props) => {
         return newHeight;
     }
 
+    const findBalloonY = () => {
+        const _y = Math.ceil(percent * 4) + 150;
+        trackBalloonY(_y);
+        return _y;
+    }
+
     const [balloonWidth, setBalloonWidth] = useState(findWidth());
     const [balloonHeight, setBalloonHeight] = useState(findHeight());
+    const [balloonY, setBalloonY] = useState(findBalloonY());
     const [balloonClass, setBalloonClass] = useState(styles.balloon);
     const [confettiActive, setConfettiActive] = useState(false);
 
     useEffect(() => {
         setBalloonHeight(findHeight());
         setBalloonWidth(findWidth());
+        setBalloonY(findBalloonY());
         if(percent >= 100) {
             // 
-            setBalloonClass(`${styles.balloon} object`);
+            // setBalloonClass(`${styles.balloon} object`);
             setTimeout(() => {
                 setConfettiActive(true);
                 setBalloonClass('trigger');
                 setTimeout(() => {
-                    // setBalloonClass('dn');
+                    setBalloonClass('dn');
                 }, confettiConfig.duration)
             }, 4000)
         }
@@ -54,7 +62,7 @@ const Balloon = (props) => {
 
 
     return (
-        <div className={balloonClass} style={{ lineHeight: `${balloonHeight}px`, height: `${balloonHeight}px`, width: `${balloonWidth}px`}}>
+        <div className={balloonClass} style={{ lineHeight: `${balloonHeight}px`, height: `${balloonHeight}px`, width: `${balloonWidth}px`, bottom: `${balloonY}px`}}>
             <h5 style={{display: confettiActive ? 'none': 'inline-block', lineHeight: '1', verticalAlign: 'middle'}}>{percent}% Loading...</h5>
             <Confetti active={confettiActive} config={ confettiConfig } />
         </div>
