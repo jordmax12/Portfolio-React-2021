@@ -48,8 +48,10 @@ const Loader = (props) => {
 
     useEffect(() => {
         if(!loaderStarted){
-            loaderStarted = true;
-			startLoader();
+			setTimeout(() => {
+				loaderStarted = true;
+				startLoader();
+			}, 1000)
         }
     }, [])
 
@@ -121,9 +123,9 @@ const Loader = (props) => {
 				Math.min(contentLoadedPercentage, 100)
 			);
 			if (itemsLoaded >= totalItems) {
-				// setTimeout(() => {
-					// completeLoading();
-				// }, 1500)
+				setTimeout(() => {
+					completeLoading();
+				}, 4000)
 			} else {
 				valuateProgress();
 			}
