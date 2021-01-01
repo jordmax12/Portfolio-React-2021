@@ -37,7 +37,7 @@ function App() {
                   path="/"
                   children={(props) => (
                     <AnimationLifecycle
-                      component={Projects}
+                      component={Home}
                       whenToRender={(match) => match}
                       {...props}
                     />

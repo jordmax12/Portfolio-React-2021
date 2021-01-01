@@ -41,6 +41,7 @@ const Balloon = (props) => {
     const [balloonY, setBalloonY] = useState(findBalloonY());
     const [balloonClass, setBalloonClass] = useState(styles.balloon);
     const [confettiActive, setConfettiActive] = useState(false);
+    const [animationCompleted, setAnimationCompleted] = useState(false);
 
     useEffect(() => {
         setBalloonHeight(findHeight());

@@ -124,7 +124,7 @@ const Loader = (props) => {
 			);
 			if (itemsLoaded >= totalItems) {
 				setTimeout(() => {
-					completeLoading();
+					// completeLoading();
 				}, 4000)
 			} else {
 				valuateProgress();
@@ -188,7 +188,6 @@ const Loader = (props) => {
               >
                   
 				{pageState =>
-                  pageState === loaderPageStates.IS_LOADING &&
                   (transitionProps => (
                     <Fragment>
                       <Spring
@@ -207,7 +206,7 @@ const Loader = (props) => {
 							// console.log('logging springProps.x', springProps.x)
 							const newValue = Math.ceil(springProps.x);
 							// console.log('logging newValue', newValue)
-                            updateHeaderWidth(newValue);
+							updateHeaderWidth(newValue);
                             return (
                               <Fragment>
                                 <div style={{
