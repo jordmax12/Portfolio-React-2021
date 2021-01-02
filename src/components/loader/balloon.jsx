@@ -31,7 +31,7 @@ const Balloon = (props) => {
     }
 
     const findBalloonY = () => {
-        const _y = Math.ceil(percent * 4) + 150;
+        const _y = Math.ceil(percent * 5) + 150;
         trackBalloonY(_y);
         return _y;
     }
@@ -47,10 +47,7 @@ const Balloon = (props) => {
         setBalloonHeight(findHeight());
         setBalloonWidth(findWidth());
         setBalloonY(findBalloonY());
-        console.log('logging percent', percent);
         if(percent >= 100) {
-            // 
-            // setBalloonClass(`${styles.balloon} object`);
             setTimeout(() => {
                 setConfettiActive(true);
                 setBalloonClass('trigger');

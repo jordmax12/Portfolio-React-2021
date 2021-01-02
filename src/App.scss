@@ -25,12 +25,12 @@ html, body {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-400px);
+    transform: translateY(-500px);
   }
 }
 
 .reverse {
-  animation: MoveDownUp 2s forwards;
+  animation: MoveDownUp 1s forwards;
 /*   position: absolute; */
 /*   left: 0;
   bottom: 0; */
@@ -38,10 +38,10 @@ html, body {
 
 @keyframes MoveDownUp {
   0% {
-    transform: translateY(-400px);
+    transform: translateY(-500px);
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(-365px);
   }
 }
 

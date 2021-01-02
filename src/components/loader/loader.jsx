@@ -3,13 +3,14 @@ import styles from "./loader.module.scss";
 import { loaderPageStates } from "./loaderConstants";
 import { Transition, Spring } from "react-spring/renderprops";
 import Div from "../div";
-import Jordan from '../Jordan';
+import Jordan from '../jordan';
 import { withRouter, matchPath } from "react-router";
 import { CookieService } from "../../assets/utils/cookieService"
 // import BackgroundAnimator from "../backgroundAnimator";
 import { animationFrameTimeout } from '../../assets/utils';
 import { preloadImage, getImagesFromContext } from './loaderHelper';
-import Balloon from './balloon'
+import Balloon from './balloon';
+import MarioSquare from '../marioSquare';
 import jordan from "../../assets/images/jordan/jordan-transparent.png";
 const disableIntro = true;
 const assetsImages = require.context(
@@ -71,8 +72,8 @@ const Loader = (props) => {
 		import("../../views/Home").then(Home => incrementLoading()); // increment manually being called.
 		import("../../views/Projects").then(Projects => incrementLoading()); // Asyncronysly complete on background. //Todo unless if its the projects page .. use routeMatch
 		import("../../views/Blog").then(Home => incrementLoading()); // increment manually being called.
-
-		totalItems = images.length + 3;
+		console.log('logging images', images.length, images)
+		totalItems = images.length;
 		let areImagesLoaded = true;
 		if (images) {
 			images.forEach(element => {
@@ -216,6 +217,7 @@ const Loader = (props) => {
                                   {/* <div className={styles.loading_text}> */}
 									<Balloon percent={newValue} text={'Loading...'} trackBalloonY={setBalloonY} />
 									<Jordan balloonY={balloonY} percent={newValue} />
+									<MarioSquare />
 									{/* <div style={{ width: '100%', height: '100%', position: 'relative'}}>
 										<img className={styles.jordanHolder} src={jordan} />
 									</div> */}

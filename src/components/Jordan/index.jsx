@@ -12,7 +12,13 @@ const Jordan = (props) => {
     const [jordanStyle, setJordanStyle] = useState({ bottom: `${jordanY}px`})
     useEffect(() => {
         setJordanY(balloonY - 94);
-        setJordanStyle({ bottom: `${balloonY - 94}px` });
+
+        if(percent > 0) {
+            setJordanStyle({ bottom: `${balloonY - 114}px` });
+        } else {
+            setJordanStyle({ bottom: `${balloonY - 94}px` });
+        }
+        
         if(percent > 0 && percent < 100) {
             setJordanClasses(`${styles.JordanBox} ${styles.inair}`);
             setJordanImage(jordanInAir);
@@ -27,7 +33,7 @@ const Jordan = (props) => {
                 setJordanImage(jordanFalling);
                 setTimeout(() => {
                     setJordanImage(jordanStanding)
-                }, 1400)
+                }, 900)
             }, 570)
         }
     }, [percent, balloonY])
