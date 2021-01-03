@@ -217,7 +217,7 @@ const Loader = (props) => {
                                   {/* <div className={styles.loading_text}> */}
 									<Balloon percent={newValue} text={'Loading...'} trackBalloonY={setBalloonY} />
 									<Jordan balloonY={balloonY} percent={newValue} />
-									<MarioSquare />
+									<MarioSquare percent={newValue} />
 									{/* <div style={{ width: '100%', height: '100%', position: 'relative'}}>
 										<img className={styles.jordanHolder} src={jordan} />
 									</div> */}
