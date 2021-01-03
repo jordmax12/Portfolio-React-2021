@@ -41,7 +41,7 @@ const Loader = (props) => {
 	const [ showBackground, setShowBackground ] = useState(true);
 	const [ balloonY, setBalloonY ] = useState('56px');
     const [ pageState, setPageState ] = useState(loaderPageStates.IS_LOADING);
-    const { location, children, updateHeaderWidth, showHeaderAfterLoader } = props;
+	const { location, children, updateHeaderWidth, showHeaderAfterLoader } = props;
     let lastUpdated = 0;
     let itemsLoaded = 0;
     let totalItems = 0;
@@ -72,7 +72,6 @@ const Loader = (props) => {
 		import("../../views/Home").then(Home => incrementLoading()); // increment manually being called.
 		import("../../views/Projects").then(Projects => incrementLoading()); // Asyncronysly complete on background. //Todo unless if its the projects page .. use routeMatch
 		import("../../views/Blog").then(Home => incrementLoading()); // increment manually being called.
-		console.log('logging images', images.length, images)
 		totalItems = images.length;
 		let areImagesLoaded = true;
 		if (images) {
@@ -116,7 +115,6 @@ const Loader = (props) => {
 			if (isLastPercentage) {
 				incrementLoading();
 			}
-			console.log('logging totalItems', totalItems, 'logging itemsLoaded', itemsLoaded)
 			const contentLoadedPercentage = Math.trunc(
 				(itemsLoaded / totalItems) * 100
 			)
@@ -125,7 +123,7 @@ const Loader = (props) => {
 			);
 			if (itemsLoaded >= totalItems) {
 				setTimeout(() => {
-					// completeLoading();
+					completeLoading();
 				}, 4000)
 			} else {
 				valuateProgress();
@@ -146,7 +144,6 @@ const Loader = (props) => {
 
 
 		if (showImmediately) {
-			console.log('here')
 			setPageState(loaderPageStates.SHOW_PAGE);
 			setShowBackground(false);
 		}
@@ -166,9 +163,7 @@ const Loader = (props) => {
 			} else {					
 				animationFrameTimeout(() => {
 					showHeaderAfterLoader();
-					console.log('hit before show page')
 					setTimeout(() => {
-						console.log("hit show page")
 						setPageState(loaderPageStates.SHOW_PAGE);
 					}, 300)
 				}, 400)
@@ -181,56 +176,59 @@ const Loader = (props) => {
 			{(
             <Div align className={styles.background_loader_container}>
               {pageState === loaderPageStates.SHOW_PAGE && children}
-              <Transition
-                items={pageState}
-                from={{ opacity: 1 }}
-                enter={{ opacity: 1 }}
-                leave={{ opacity: 0 }}
-              >
-                  
+			  {pageState !== loaderPageStates.SHOW_PAGE && (
+				<Transition
+					items={pageState}
+					from={{ opacity: 1 }}
+					enter={{ opacity: 1 }}
+					leave={{ opacity: 0 }}
+				>
+					
 				{pageState =>
-                  (transitionProps => (
-                    <Fragment>
-                      <Spring
-                        to={{
-                          height: '100vh',
-                          x: contentLoadedPercentage
-						}}
-						config={{
-							mass: 0.5,
-							tension: 100,
-							friction: 30
-						}}
-                      >
-                        {
-                          springProps => {
-							// console.log('logging springProps.x', springProps.x)
-							const newValue = Math.ceil(springProps.x);
-							// console.log('logging newValue', newValue)
-							updateHeaderWidth(newValue);
-                            return (
-                              <Fragment>
-                                <div style={{
-                                  opacity: transitionProps.opacity,
-                                  height: '100vh',
-                                }} className={styles.loading_text_container}>
-                                  {/* <div className={styles.loading_text}> */}
-									<Balloon percent={newValue} text={'Loading...'} trackBalloonY={setBalloonY} />
-									<Jordan balloonY={balloonY} percent={newValue} />
-									<MarioSquare percent={newValue} />
-									{/* <div style={{ width: '100%', height: '100%', position: 'relative'}}>
-										<img className={styles.jordanHolder} src={jordan} />
-									</div> */}
-                                  {/* </div> */}
-                                </div>
-                              </Fragment>
-                            )
-                          }
-                        }
-                      </Spring>
-                    </Fragment>
-                  ))}
-              </Transition>
+					(transitionProps => (
+						<Fragment>
+						<Spring
+							to={{
+							height: '100vh',
+							x: contentLoadedPercentage
+							}}
+							config={{
+								mass: 0.5,
+								tension: 100,
+								friction: 30
+							}}
+						>
+							{
+							springProps => {
+								// console.log('logging springProps.x', springProps.x)
+								const newValue = Math.ceil(springProps.x);
+								// console.log('logging newValue', newValue)
+								updateHeaderWidth(newValue);
+								return (
+								<Fragment>
+									<div style={{
+									opacity: transitionProps.opacity,
+									height: '100vh',
+									}} className={styles.loading_text_container}>
+									{/* <div className={styles.loading_text}> */}
+										<Balloon percent={newValue} text={'Loading...'} trackBalloonY={setBalloonY} />
+										<Jordan balloonY={balloonY} percent={newValue} />
+										<MarioSquare percent={newValue} />
+										{/* <div style={{ width: '100%', height: '100%', position: 'relative'}}>
+											<img className={styles.jordanHolder} src={jordan} />
+										</div> */}
+									{/* </div> */}
+									</div>
+								</Fragment>
+								)
+							}
+							}
+						</Spring>
+						</Fragment>
+					))}
+				</Transition>
+			  )}
+              
             </Div>
           )
         }

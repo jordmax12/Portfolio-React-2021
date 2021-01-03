@@ -44,3 +44,10 @@ const cancelAnimationFrame = (animationFrameRequest) => {
 
   cancelAnimationFrame.call(window, animationFrameRequest);
 }
+
+export const landingStates = {
+  RESUME: 'RESUME',
+  PROJECTS: 'PROJECTS',
+  BLOG: 'BLOG',
+  NONE: 'NONE'
+};
