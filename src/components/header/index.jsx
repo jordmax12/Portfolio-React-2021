@@ -11,7 +11,8 @@ const BlogPost = (props) => {
   const defaultMenuClasses = `col-3 ${styles.navigation}`
   const [hamburgerIsOpen, setHamburgerIsOpen] = useState(false);
   const [menuClasses, setMenuClasses] = useState(defaultMenuClasses);
-  const [containerClasses, setContainerClases] = useState(styles.dn)
+  const [containerClasses, setContainerClases] = useState(styles.dn);
+  const [headerLoaderTextClasses, setHeaderLoaderTextClasses] = useState(`${styles.db} ${styles.headerLoaderText}`)
   /* eslint-disable no-unused-vars */
   const [width, setWidth] = useState(getWidth());
 
@@ -43,7 +44,8 @@ const BlogPost = (props) => {
 
   useEffect(() => {
     if(containerClasses === styles.dn && showHeader) {
-      setContainerClases('row')
+      setContainerClases('row');
+      setHeaderLoaderTextClasses('dn');
     } 
   }, [showHeader])
 
@@ -70,27 +72,30 @@ const BlogPost = (props) => {
   }
 
   return (
-    <div className={styles.headerContainer} style={{ width: `${showHeaderWidth}%`}}>
-      <div className={containerClasses}>
-        <div className="col-12">
-          <div className={`col-12 ${styles.hamburger}`}>
-            {/* eslint-disable jsx-a11y/anchor-is-valid */}
-            <a href="#" className="icon" onClick={handleHamburger}>
-              <i className="fa fa-bars"></i>
-            </a>
+    <div style={{ position: 'relative' }}>
+      <p className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
+      <div className={styles.headerContainer} style={{ width: `${showHeaderWidth}%`}}>
+        <div className={containerClasses}>
+          <div className="col-12">
+            <div className={`col-12 ${styles.hamburger}`}>
+              {/* eslint-disable jsx-a11y/anchor-is-valid */}
+              <a href="#" className="icon" onClick={handleHamburger}>
+                <i className="fa fa-bars"></i>
+              </a>
+            </div>
+            <div className={menuClasses} onClick={() => handleItemClick('/')}>
+              Home
+            </div>
+            <div className={menuClasses} onClick={() => handleItemClick('/resume')}>
+              Resume
+            </div>
+            <div className={menuClasses} onClick={() => handleItemClick('/projects')}>
+              Projects
+            </div>
+            <div className={menuClasses} onClick={() => handleItemClick('/blog')}>
+              Blog
+            </div>
           </div>
-          <div className={menuClasses} onClick={() => handleItemClick('/')}>
-						Home
-          </div>
-          <div className={menuClasses} onClick={() => handleItemClick('/resume')}>
-						Resume
-					</div>
-					<div className={menuClasses} onClick={() => handleItemClick('/projects')}>
-						Projects
-					</div>
-					<div className={menuClasses} onClick={() => handleItemClick('/blog')}>
-						Blog
-					</div>
         </div>
       </div>
     </div>

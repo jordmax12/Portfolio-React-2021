@@ -23,6 +23,20 @@ $breakpoint-large: 60em; // 960px
     display: none;
 }
 
+.db {
+    display: block;
+}
+
+.headerLoaderText {
+    margin: 0;
+    position: absolute;
+    right: 0;
+    color: #A9A9A9 !important;
+    font-size: 2em;
+    letter-spacing: .3em;
+    font-weight: bold;
+}
+
 @media only screen and (max-width: $breakpoint-med) {
     .hamburger {
         display: unset;

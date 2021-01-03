@@ -5,20 +5,20 @@ import styles from './marioSquare.module.scss';
 
 const MarioSquare = (props) => {
     const { percent } = props;
-    const [blockImg, setBlockImg] = useState(MarioSquareImg);
+    // const [blockImg, setBlockImg] = useState(MarioSquareImg);
     const [blockImgStyles, setBlockImgStyles] = useState(styles.marioSquare);
     useEffect(() => {
         if(percent === 100) {
             
             setTimeout(() => {
-                setBlockImg(ActiveMarioSquareImg);
+                // setBlockImg(ActiveMarioSquareImg);
                 setBlockImgStyles(styles.activeMarioSquare)
             }, 1600)
         }
     }, [percent])
     return (
         <>
-            <img src={blockImg} className={blockImgStyles} />
+            <div className={blockImgStyles} />
         </>
     )
 }
