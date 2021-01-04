@@ -51,6 +51,8 @@ const Balloon = (props) => {
             setTimeout(() => {
                 setConfettiActive(true);
                 setBalloonClass('trigger');
+                setBalloonHeight(0);
+                setBalloonWidth(0);
                 setTimeout(() => {
                     setBalloonClass('dn');
                 }, confettiConfig.duration)

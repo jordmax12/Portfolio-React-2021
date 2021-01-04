@@ -18,7 +18,9 @@ const Landing = (props) => {
                 </>
             }
             { percentLoaded === 100 && (
-                <p style={{ fontColor: 'pink', fontSize: '2em'}}>HELLO LANDING PAGE!</p>
+                <div>
+                    <p style={{ color: 'pink', fontSize: '2em'}}>HELLO LANDING PAGE!</p>
+                </div>
             )}
         </>
     )

@@ -46,7 +46,7 @@ const Home = (props) => {
   ) {
     fromAnimation = {
       opacity: 1,
-      transform: "translate(0px, 100px)"
+      transform: "translate(0px, 0px)"
     };
     enterAnimation = {
       opacity: 1,
@@ -54,12 +54,12 @@ const Home = (props) => {
     };
     leaveAnimation = {
       opacity: 0,
-      transform: "translate(0px, 100px)"
+      transform: "translate(0px, 0px)"
     };
   } else if (bodyType == landingStates.TIMELINE) {
     fromAnimation = {
       opacity: 0,
-      transform: "translate(-300px, 0px)"
+      transform: "translate(0px, 0px)"
     };
     enterAnimation = {
       opacity: 1,
@@ -67,12 +67,12 @@ const Home = (props) => {
     };
     leaveAnimation = {
       opacity: 0,
-      transform: "translate(300px, 0px)"
+      transform: "translate(0px, 0px)"
     };
   } else if (bodyType == landingStates.PROJECT) {
     fromAnimation = {
       opacity: 0,
-      transform: "translate(300px, 0px)"
+      transform: "translate(0px, 0px)"
     };
     enterAnimation = {
       opacity: 1,
@@ -80,7 +80,7 @@ const Home = (props) => {
     };
     leaveAnimation = {
       opacity: 0,
-      transform: "translate(-300px, 0px)"
+      transform: "translate(0px, 0px)"
     };
   }
   // display: flex;
