@@ -38,7 +38,7 @@ const Jordan = (props) => {
         }
     }, [percent, balloonY])
     return (
-        <img src={jordanImage} className={jordanClasses} style={jordanStyle} />
+        <img src={jordanImage} className={jordanClasses} style={jordanStyle} alt="jordan" />
     )
 }
 

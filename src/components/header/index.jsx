@@ -40,6 +40,7 @@ const BlogPost = (props) => {
       // remove resize listener
       window.removeEventListener('resize', resizeListener);
     }
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, [defaultMenuClasses])
 
   useEffect(() => {
@@ -47,6 +48,7 @@ const BlogPost = (props) => {
       setContainerClases('row');
       setHeaderLoaderTextClasses('dn');
     } 
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, [showHeader])
 
   useEffect(() => {

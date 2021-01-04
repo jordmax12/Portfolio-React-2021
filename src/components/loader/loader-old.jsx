@@ -5,7 +5,7 @@ import { Transition, Spring } from "react-spring/renderprops";
 import Div from "../div";
 import { withRouter, matchPath } from "react-router";
 import { CookieService } from "../../assets/utils/cookieService"
-import BackgroundAnimator from "../backgroundAnimator";
+// import BackgroundAnimator from "../backgroundAnimator";
 import { animationFrameTimeout } from '../../assets/utils';
 import { preloadImage, getImagesFromContext } from './loaderHelper';
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import styles from './balloon.module.scss';
 import Confetti from 'react-dom-confetti';
 
@@ -41,7 +41,7 @@ const Balloon = (props) => {
     const [balloonY, setBalloonY] = useState(findBalloonY());
     const [balloonClass, setBalloonClass] = useState(styles.balloon);
     const [confettiActive, setConfettiActive] = useState(false);
-    const [animationCompleted, setAnimationCompleted] = useState(false);
+    // const [animationCompleted, setAnimationCompleted] = useState(false);
 
     useEffect(() => {
         setBalloonHeight(findHeight());
@@ -59,6 +59,7 @@ const Balloon = (props) => {
             }, 600)
 
         }
+        /* eslint-disable react-hooks/exhaustive-deps */
     }, [percent])
 
 

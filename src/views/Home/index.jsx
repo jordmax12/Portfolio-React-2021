@@ -5,7 +5,6 @@ import styles from './home.module.scss'
 import Projects from "../Projects"
 import Blog from "../Blog";
 import Landing from "../Landing";
-import Div from '../../components/div'
 
 const Home = (props) => {
   const { percentLoaded } = props;
@@ -13,6 +12,7 @@ const Home = (props) => {
   const [bodyType, setBodyType] = useState(landingStates.NONE);
   let fromAnimation, enterAnimation, leaveAnimation;
 
+  /* eslint-disable no-unused-vars */
   const updateBodyType = bodyType => {
     setPreviousBodyType(previousBodyType);
     setBodyType(bodyType);
@@ -20,7 +20,7 @@ const Home = (props) => {
 
   const getBodyContent = (bodyType, screenSize) => {
     // const showMobile = screenSize === 'sm' || screenSize === 'md';
-    const showMobile = false;
+    // const showMobile = false;
 
     return (
       props => {
@@ -30,10 +30,10 @@ const Home = (props) => {
             className={styles.body_content_container}
           >
             {/* NEED TO SUPPLY PERCENT LOADED, look into Context see if we can utilize this instead */}
-            {bodyType == landingStates.NONE && ( <Landing percentLoaded={percentLoaded} pageState={bodyType} /> )}
-            {bodyType == landingStates.PROJECTS && ( <Projects /> )}
+            {bodyType === landingStates.NONE && ( <Landing percentLoaded={percentLoaded} pageState={bodyType} /> )}
+            {bodyType === landingStates.PROJECTS && ( <Projects /> )}
             {/* {bodyType == landingStates.RESUME && (showMobile ? <TimelineMobile updateBodyType={this.updateBodyType} /> :  <Timeline />)} */}
-            {bodyType == landingStates.BLOG && ( <Blog />)}
+            {bodyType === landingStates.BLOG && ( <Blog />)}
           </div>
         )
       } 
@@ -41,8 +41,8 @@ const Home = (props) => {
   }
 
   if (
-    previousBodyType == landingStates.NONE ||
-    bodyType == landingStates.NONE
+    previousBodyType === landingStates.NONE ||
+    bodyType === landingStates.NONE
   ) {
     fromAnimation = {
       opacity: 1,
@@ -56,7 +56,7 @@ const Home = (props) => {
       opacity: 0,
       transform: "translate(0px, 0px)"
     };
-  } else if (bodyType == landingStates.TIMELINE) {
+  } else if (bodyType === landingStates.TIMELINE) {
     fromAnimation = {
       opacity: 0,
       transform: "translate(0px, 0px)"
@@ -69,7 +69,7 @@ const Home = (props) => {
       opacity: 0,
       transform: "translate(0px, 0px)"
     };
-  } else if (bodyType == landingStates.PROJECT) {
+  } else if (bodyType === landingStates.PROJECT) {
     fromAnimation = {
       opacity: 0,
       transform: "translate(0px, 0px)"
@@ -96,7 +96,7 @@ const Home = (props) => {
         enter={enterAnimation}
         leave={leaveAnimation}
         config={{
-          delay: previousBodyType == landingStates.NONE ? 500 : 0
+          delay: previousBodyType === landingStates.NONE ? 500 : 0
         }}
       >
         {bodyType => getBodyContent(bodyType, 0)}

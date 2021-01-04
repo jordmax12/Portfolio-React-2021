@@ -3,15 +3,10 @@ import styles from "./loader.module.scss";
 import { loaderPageStates } from "./loaderConstants";
 import { Transition, Spring } from "react-spring/renderprops";
 import Div from "../div";
-import Jordan from '../jordan';
 import { withRouter, matchPath } from "react-router";
 import { CookieService } from "../../assets/utils/cookieService"
-// import BackgroundAnimator from "../backgroundAnimator";
 import { animationFrameTimeout } from '../../assets/utils';
 import { preloadImage, getImagesFromContext } from './loaderHelper';
-import Balloon from './balloon';
-import MarioSquare from '../marioSquare';
-import jordan from "../../assets/images/jordan/jordan-transparent.png";
 const disableIntro = true;
 const assetsImages = require.context(
   `../../assets/images`,
@@ -38,11 +33,12 @@ const assetsJordanImages = require.context(
 
 const Loader = (props) => {
     const [ contentLoadedPercentage, setContentLoadedPercentage ] = useState(0);
-	const [ showBackground, setShowBackground ] = useState(true);
-	const [ balloonY, setBalloonY ] = useState('56px');
+	// const [ showBackground, setShowBackground ] = useState(true);
+	// const [ balloonY, setBalloonY ] = useState('56px');
+	/* eslint-disable no-unused-vars */
     const [ pageState, setPageState ] = useState(loaderPageStates.IS_LOADING);
 	const { location, children, updateCurrentPercentLoaded, showHeaderAfterLoader } = props;
-    let lastUpdated = 0;
+    // let lastUpdated = 0;
     let itemsLoaded = 0;
     let totalItems = 0;
 	let loaderStarted = false;
@@ -50,6 +46,7 @@ const Loader = (props) => {
     useEffect(() => {
         if(!loaderStarted){
 			setTimeout(() => {
+				/* eslint-disable react-hooks/exhaustive-deps */
 				loaderStarted = true;
 				startLoader();
 			}, 1000)
@@ -144,10 +141,10 @@ const Loader = (props) => {
 		// );
 
 
-		if (showImmediately) {
-			// setPageState(loaderPageStates.SHOW_PAGE);
-			setShowBackground(false);
-		}
+		// if (showImmediately) {
+		// 	// setPageState(loaderPageStates.SHOW_PAGE);
+		// 	setShowBackground(false);
+		// }
 
 		if (contentLoadedPercentage > 98) {
 			// if by chance its not 100 then show 100 on page
