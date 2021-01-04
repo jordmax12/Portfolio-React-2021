@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { landingStates } from '../../assets/utils'
 import { Transition } from "react-spring/renderprops";
-import styles from './landing.module.scss'
+import styles from './home.module.scss'
 import Projects from "../Projects"
 import Blog from "../Blog";
+import Landing from "../Landing";
 import Div from '../../components/div'
 
 const Home = (props) => {
+  const { percentLoaded } = props;
   const [previousBodyType, setPreviousBodyType] = useState(landingStates.NONE);
   const [bodyType, setBodyType] = useState(landingStates.NONE);
   let fromAnimation, enterAnimation, leaveAnimation;
@@ -21,17 +23,20 @@ const Home = (props) => {
     const showMobile = false;
 
     return (
-      props => (
-        <Div
-          fillParent
-          style={props}
-          className={styles.body_content_container}
-        >
-          {bodyType == landingStates.PROJECTS && ( <Projects /> )}
-          {/* {bodyType == landingStates.RESUME && (showMobile ? <TimelineMobile updateBodyType={this.updateBodyType} /> :  <Timeline />)} */}
-          {bodyType == landingStates.BLOG && ( <Blog />)}
-        </Div>
-      )
+      props => {
+        return (
+          <div
+            // style={props}
+            className={styles.body_content_container}
+          >
+            {/* NEED TO SUPPLY PERCENT LOADED, look into Context see if we can utilize this instead */}
+            {bodyType == landingStates.NONE && ( <Landing percentLoaded={percentLoaded} pageState={bodyType} /> )}
+            {bodyType == landingStates.PROJECTS && ( <Projects /> )}
+            {/* {bodyType == landingStates.RESUME && (showMobile ? <TimelineMobile updateBodyType={this.updateBodyType} /> :  <Timeline />)} */}
+            {bodyType == landingStates.BLOG && ( <Blog />)}
+          </div>
+        )
+      } 
     )
   }
 
@@ -78,9 +83,12 @@ const Home = (props) => {
       transform: "translate(-300px, 0px)"
     };
   }
-
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // flex-wrap: wrap;
   return (
-    <Div fillParent className={styles.body_container}>
+    <div style={{ width: "100%", height: "100%" }}>
       <Transition
         items={bodyType}
         key={bodyType => bodyType}
@@ -94,7 +102,7 @@ const Home = (props) => {
         {bodyType => getBodyContent(bodyType, 0)}
         {/* <p style={{ fontColor: 'pink', fontSize: '19px'}}> HELLO WORLD </p> */}
       </Transition>
-  </Div>
+  </div>
   )
 }
 

@@ -9,7 +9,7 @@ const Jordan = (props) => {
     const [jordanClasses, setJordanClasses] = useState(`${styles.JordanBox} ${styles.start}`);
     const [jordanImage, setJordanImage] = useState(jordanWithRope);
     const [jordanY, setJordanY] = useState(balloonY - 94);
-    const [jordanStyle, setJordanStyle] = useState({ bottom: `${jordanY}px`})
+    const [jordanStyle, setJordanStyle] = useState({ bottom: `${jordanY}px`});
     useEffect(() => {
         setJordanY(balloonY - 94);
 

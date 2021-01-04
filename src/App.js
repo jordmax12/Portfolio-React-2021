@@ -13,16 +13,13 @@ const Blog = React.lazy(() => import("./views/Blog"));
 
 function App() {
   const [showHeader, setShowHeader] = useState(false);
-  const [showHeaderWidth, setShowHeaderWidth] = useState(0);
-
-  const updateHeaderWidth = (width) => {
-    setShowHeaderWidth(width)
-  }
+  const [currentPercentLoaded, setCurrentPercentLoaded] = useState(0);
 
   const showHeaderAfterLoader = () => {
-    console.log('here?')
     setShowHeader(true);
   }
+
+  const updateCurrentPercentLoaded = (percent) => setCurrentPercentLoaded(percent);
 
   return (
     <div className="App">
@@ -30,9 +27,9 @@ function App() {
         <Suspense fallback={null}>
           <Switch>
             <Route path="/">
-              <Header showHeader={showHeader} showHeaderWidth={showHeaderWidth} />
-              <Loader updateHeaderWidth={updateHeaderWidth} showHeaderAfterLoader={showHeaderAfterLoader}>
-                <Home />
+              <Header showHeader={showHeader} showHeaderWidth={currentPercentLoaded} />
+              <Loader showHeaderAfterLoader={showHeaderAfterLoader} updateCurrentPercentLoaded={updateCurrentPercentLoaded}>
+                <Home percentLoaded={currentPercentLoaded} />
               </Loader>
               {/* WORKING */}
               {/* <Header showHeader={showHeader} showHeaderWidth={showHeaderWidth} />

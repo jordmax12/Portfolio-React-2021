@@ -41,11 +41,11 @@ const Loader = (props) => {
 	const [ showBackground, setShowBackground ] = useState(true);
 	const [ balloonY, setBalloonY ] = useState('56px');
     const [ pageState, setPageState ] = useState(loaderPageStates.IS_LOADING);
-	const { location, children, updateHeaderWidth, showHeaderAfterLoader } = props;
+	const { location, children, updateCurrentPercentLoaded, showHeaderAfterLoader } = props;
     let lastUpdated = 0;
     let itemsLoaded = 0;
     let totalItems = 0;
-    let loaderStarted = false;
+	let loaderStarted = false;
 
     useEffect(() => {
         if(!loaderStarted){
@@ -133,6 +133,7 @@ const Loader = (props) => {
 
 
 	const completeLoading = showImmediately => {
+		console.log('inside complete loading!')
 		const introAlreadyShown = CookieService.get("INTRO_COMPLETED");
 
 		// Loading background images in the background, without a loader tracking progress
@@ -175,8 +176,8 @@ const Loader = (props) => {
         <div className={styles.loader_top_container}>
 			{(
             <Div align className={styles.background_loader_container}>
-              {pageState === loaderPageStates.SHOW_PAGE && children}
-			  {pageState !== loaderPageStates.SHOW_PAGE && (
+              {/* {pageState === loaderPageStates.SHOW_PAGE && children}
+			  {pageState !== loaderPageStates.SHOW_PAGE && ( */}
 				<Transition
 					items={pageState}
 					from={{ opacity: 1 }}
@@ -189,8 +190,8 @@ const Loader = (props) => {
 						<Fragment>
 						<Spring
 							to={{
-							height: '100vh',
-							x: contentLoadedPercentage
+								height: '100vh',
+								x: contentLoadedPercentage
 							}}
 							config={{
 								mass: 0.5,
@@ -200,26 +201,17 @@ const Loader = (props) => {
 						>
 							{
 							springProps => {
-								// console.log('logging springProps.x', springProps.x)
-								const newValue = Math.ceil(springProps.x);
-								// console.log('logging newValue', newValue)
-								updateHeaderWidth(newValue);
+								const newPercentLoaded = Math.ceil(springProps.x);
+								updateCurrentPercentLoaded(newPercentLoaded);
 								return (
-								<Fragment>
-									<div style={{
-									opacity: transitionProps.opacity,
-									height: '100vh',
-									}} className={styles.loading_text_container}>
-									{/* <div className={styles.loading_text}> */}
-										<Balloon percent={newValue} text={'Loading...'} trackBalloonY={setBalloonY} />
-										<Jordan balloonY={balloonY} percent={newValue} />
-										<MarioSquare percent={newValue} />
-										{/* <div style={{ width: '100%', height: '100%', position: 'relative'}}>
-											<img className={styles.jordanHolder} src={jordan} />
-										</div> */}
-									{/* </div> */}
-									</div>
-								</Fragment>
+									<Fragment>
+										<div style={{
+										opacity: transitionProps.opacity,
+										height: '100vh',
+										}} className={styles.loading_text_container}>
+											{children}
+										</div>
+									</Fragment>
 								)
 							}
 							}
@@ -227,7 +219,7 @@ const Loader = (props) => {
 						</Fragment>
 					))}
 				</Transition>
-			  )}
+			  {/* )} */}
               
             </Div>
           )
