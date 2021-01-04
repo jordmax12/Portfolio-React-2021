@@ -17,9 +17,9 @@ const Landing = (props) => {
                     <MarioSquare percent={percentLoaded} />
                 </>
             }
-            {/* { percentLoaded === 100 && (
-                <span style={{ fontColor: 'pink', fontSize: '2em'}}>HELLO LANDING PAGE!</span>
-            )} */}
+            { percentLoaded === 100 && (
+                <p style={{ fontColor: 'pink', fontSize: '2em'}}>HELLO LANDING PAGE!</p>
+            )}
         </>
     )
 }

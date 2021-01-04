@@ -145,7 +145,7 @@ const Loader = (props) => {
 
 
 		if (showImmediately) {
-			setPageState(loaderPageStates.SHOW_PAGE);
+			// setPageState(loaderPageStates.SHOW_PAGE);
 			setShowBackground(false);
 		}
 
@@ -154,19 +154,19 @@ const Loader = (props) => {
 			setContentLoadedPercentage(100);
 		}
 
-		setPageState(loaderPageStates.COMPLETED_LOADING)
+		// setPageState(loaderPageStates.COMPLETED_LOADING)
 		
 		// so created a timeout to not show content immediately
 		animationFrameTimeout(() => {
 			
 			if (!disableIntro && !introAlreadyShown) {
-				setPageState(loaderPageStates.SHOW_INTRO)
+				// setPageState(loaderPageStates.SHOW_INTRO)
 			} else {					
 				animationFrameTimeout(() => {
 					showHeaderAfterLoader();
-					setTimeout(() => {
-						setPageState(loaderPageStates.SHOW_PAGE);
-					}, 300)
+					// setTimeout(() => {
+					// 	setPageState(loaderPageStates.SHOW_PAGE);
+					// }, 300)
 				}, 400)
 			}
 		}, 500);
