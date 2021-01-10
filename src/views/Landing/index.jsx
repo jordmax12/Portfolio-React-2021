@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import styles from './landing.module.scss';
+import styles from './landing.module.scss';
 // import { landingStates } from '../../assets/utils'
 import Balloon from '../../components/loader/balloon';
 import MarioSquare from '../../components/marioSquare';
@@ -62,7 +62,7 @@ const Landing = (props) => {
         <>
             {
                 <div style={{ width: '100%', textAlign: 'right', marginBottom: "100px"}}>
-                    <h1 style={{color: 'black', fontSize: normalizedFontSize, margin: '0', marginRight: percentLoaded === 100 ? "unset" : "50%"}}>19{normalizedPercentLoaded > 9 ? '' : 0}{normalizedPercentLoaded}</h1>
+                    <h1 className={styles.GineosMedium} style={{color: 'black', fontSize: normalizedFontSize, margin: '0', marginRight: percentLoaded === 100 ? "unset" : "50%"}}><span style={{ verticalAlign: 'middle', color: 'grey', fontSize: '18px'}}>since</span> '{normalizedPercentLoaded}</h1>
                 </div>
             }
             {
@@ -75,11 +75,11 @@ const Landing = (props) => {
                 </>
             }
             { percentLoaded === 100 && (
-                <div style={{ width: '100%', textAlign: 'left', marginBottom: '45px'}}>
+                <div style={{ width: '100%', textAlign: 'left', marginBottom: '130px'}}>
                     <p style={{ color: 'grey', fontSize: '2em', paddingLeft: '15px'}}>Jordan Max</p>
-                    <p style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Projects</p>
-                    <p style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Resume</p>
-                    <p style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Blog</p>
+                    <span style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Projects</span>
+                    <span style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Resume</span>
+                    <span style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Blog</span>
                 </div>
             )}
         </>
