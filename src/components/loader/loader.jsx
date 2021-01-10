@@ -130,7 +130,6 @@ const Loader = (props) => {
 
 
 	const completeLoading = showImmediately => {
-		console.log('inside complete loading!')
 		const introAlreadyShown = CookieService.get("INTRO_COMPLETED");
 
 		// Loading background images in the background, without a loader tracking progress

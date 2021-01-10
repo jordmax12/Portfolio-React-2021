@@ -18,7 +18,6 @@ const BlogPost = (props) => {
 
   useEffect(() => {
     const resizeListener = () => {
-      console.log(containerClasses, styles.dn)
       if(containerClasses === styles.dn && showHeader) {
         setContainerClases('row')
       }
@@ -85,17 +84,8 @@ const BlogPost = (props) => {
                 <i className="fa fa-bars"></i>
               </a>
             </div>
-            <div className={menuClasses} onClick={() => handleItemClick('/')}>
-              Home
-            </div>
-            <div className={menuClasses} onClick={() => handleItemClick('/resume')}>
-              Resume
-            </div>
-            <div className={menuClasses} onClick={() => handleItemClick('/projects')}>
-              Projects
-            </div>
-            <div className={menuClasses} onClick={() => handleItemClick('/blog')}>
-              Blog
+            <div className={menuClasses} onClick={() => handleItemClick('/')} style={{ float: 'right' }}>
+              Github
             </div>
           </div>
         </div>

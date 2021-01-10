@@ -13,9 +13,9 @@ const Jordan = (props) => {
     const [jordanY, setJordanY] = useState(balloonY - 94);
     const [jordanStyle, setJordanStyle] = useState({ bottom: `${jordanY}px`});
     useEffect(() => {
-        if(percent != 100) setJordanY(balloonY - 94);
+        setJordanY(balloonY - 94);
 
-        if(percent > 0 && percent != 100) {
+        if(percent > 0) {
             setJordanStyle({ bottom: `${balloonY - 114}px` });
         } else {
             setJordanStyle({ bottom: `${balloonY - 94}px` });
@@ -27,15 +27,12 @@ const Jordan = (props) => {
         }
 
         if(percent === 100) {
-            console.log("PERCENT 100 IN JORDAN")
             // setJordanClasses(`${styles.JordanBox} object`);
             animationFrameTimeout(() => {
-                console.log("DROP NOW")
                 setJordanStyle({})
                 setJordanClasses(`${styles.JordanBox} reverse`);
                 setJordanImage(jordanFalling);
                 animationFrameTimeout(() => {
-                    console.log("CHANGE STATE NOW")
                     setJordanImage(jordanStanding)
                 }, 1900)
             }, 570)

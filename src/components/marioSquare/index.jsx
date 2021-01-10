@@ -8,9 +8,7 @@ const MarioSquare = (props) => {
     const [blockImgStyles, setBlockImgStyles] = useState(styles.marioSquare);
     useEffect(() => {
         if(percent === 100) {
-            console.log("PERCENT 100 IN MARIO SQUARE")
             animationFrameTimeout(() => {
-                console.log("CHANGE STATE NOW 2")
                 setBlockImgStyles(styles.activeMarioSquare)
             }, 2200)
         }
