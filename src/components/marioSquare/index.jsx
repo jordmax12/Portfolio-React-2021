@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import styles from './marioSquare.module.scss';
+import { animationFrameTimeout } from '../../assets/utils';
+
 
 const MarioSquare = (props) => {
     const { percent } = props;
     const [blockImgStyles, setBlockImgStyles] = useState(styles.marioSquare);
     useEffect(() => {
         if(percent === 100) {
-            
-            setTimeout(() => {
+            console.log("PERCENT 100 IN MARIO SQUARE")
+            animationFrameTimeout(() => {
+                console.log("CHANGE STATE NOW 2")
                 setBlockImgStyles(styles.activeMarioSquare)
-            }, 1600)
+            }, 2200)
         }
     }, [percent])
     return (

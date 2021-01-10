@@ -30,7 +30,7 @@ html, body {
 }
 
 .reverse {
-  animation: MoveDownUp 1s forwards;
+  animation: MoveDownUp 2s forwards;
 /*   position: absolute; */
 /*   left: 0;
   bottom: 0; */
@@ -41,7 +41,7 @@ html, body {
     transform: translateY(-500px);
   }
   100% {
-    transform: translateY(-365px);
+    transform: translateY(-90px);
   }
 }
 

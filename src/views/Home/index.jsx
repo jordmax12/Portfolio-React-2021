@@ -88,7 +88,7 @@ const Home = (props) => {
   // justify-content: center;
   // flex-wrap: wrap;
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ width: "100%", height: "100%", overflowY: 'scroll' }}>
       <Transition
         items={bodyType}
         key={bodyType => bodyType}

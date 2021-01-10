@@ -12,7 +12,9 @@ const Landing = (props) => {
     return (
         <>
             {
-                <>
+                window.navigator.connection.effectiveType != "4g"
+                ? null
+                : <>
                     <Balloon percent={percentLoaded} text={'Loading...'} trackBalloonY={setBalloonY} />
                     <Jordan balloonY={balloonY} percent={percentLoaded} />
                     <MarioSquare percent={percentLoaded} />
