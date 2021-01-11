@@ -8,7 +8,7 @@ const getWidth = () => window.innerWidth
 
 const BlogPost = (props) => {
   const { showHeader, showHeaderWidth } = props;
-  const defaultMenuClasses = `col-3 ${styles.navigation}`
+  const defaultMenuClasses = `col-12 ${styles.navigation}`
   const [hamburgerIsOpen, setHamburgerIsOpen] = useState(false);
   const [menuClasses, setMenuClasses] = useState(defaultMenuClasses);
   const [containerClasses, setContainerClases] = useState(styles.dn);
@@ -73,23 +73,26 @@ const BlogPost = (props) => {
   }
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative', width: '96%', marginRight: 'auto', marginLeft: 'auto', height: '56px' }}>
+      
+      <div style={{ backgroundColor: '#ececec', width: `${showHeaderWidth}%`, height: '20px', position: 'absolute', bottom: '0'}} onClick={() => handleItemClick('/')}>
+          
+          {/* <p>Github</p> */}
+      </div>
       <p className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
-      <div className={styles.headerContainer} style={{ width: `${showHeaderWidth}%`}}>
+      {/* <div className={styles.headerContainer} >
         <div className={containerClasses}>
           <div className="col-12">
-            <div className={`col-12 ${styles.hamburger}`}>
+            <div className={`col-12 ${styles.hamburger}`}> */}
               {/* eslint-disable jsx-a11y/anchor-is-valid */}
-              <a href="#" className="icon" onClick={handleHamburger}>
-                <i className="fa fa-bars"></i>
-              </a>
+              {/* <a href="#" className="icon" onClick={handleHamburger}>
+                <i className="fa fa-bars"></i> */}
+              {/* </a>
             </div>
-            <div className={menuClasses} onClick={() => handleItemClick('/')} style={{ float: 'right' }}>
-              Github
-            </div>
+
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

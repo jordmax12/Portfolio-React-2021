@@ -67,7 +67,7 @@ const Landing = (props) => {
                 'animal lover',
                 'aws developer',
                 'blackhawks fan',
-                'computer enthusiast',
+                'computer builder',
                 'react developer',
                 'breaker of chains'
             ]}

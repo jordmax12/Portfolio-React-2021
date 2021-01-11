@@ -14,7 +14,7 @@ $breakpoint-large: 60em; // 960px
 
 .headerContainer {
     // background-color: lightsalmon;
-    background-color: #ececec;
+    // background-color: #ececec;
     width: 100%;
     height: 56px;
 }
@@ -32,9 +32,12 @@ $breakpoint-large: 60em; // 960px
     position: absolute;
     right: 0;
     color: #ececec !important;
-    font-size: 2em;
+    // font-size: 2em;
     letter-spacing: .3em;
     font-weight: bold;
+    position: absolute;
+    right: 0;
+    bottom: -6px;
 }
 
 @media only screen and (max-width: $breakpoint-med) {

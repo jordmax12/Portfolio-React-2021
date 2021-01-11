@@ -18,7 +18,7 @@ $breakpoint-large: 60em;
     vertical-align: middle;
     margin-right: 5px;
     
-    @media only screen and (max-width: $breakpoint-small) {
+    @media only screen and (max-width: $breakpoint-med) {
         width: 100%;
         float: left;
         vertical-align: bottom;
@@ -32,7 +32,10 @@ $breakpoint-large: 60em;
     width: 100%;
     text-align: right;
     margin-bottom: 100px;
-    @media only screen and (max-width: $breakpoint-small) {
+    @media only screen and (min-width: $breakpoint-med) and (max-width: $breakpoint-large) { 
+        width: 130%;
+    }
+    @media only screen and (max-width: $breakpoint-med) {
         text-align: center;
         margin-bottom: unset;
     }
@@ -42,8 +45,12 @@ $breakpoint-large: 60em;
     width: 100%;
     text-align: left;
     margin-bottom: 80px;
-    @media only screen and (max-width: $breakpoint-small) {
+    @media only screen and (max-width: $breakpoint-med) {
         text-align: center !important;
         margin-bottom: unset !important;
+    }
+
+    @media only screen and (min-width: $breakpoint-med) and (max-width: $breakpoint-large) { 
+        width: 80%;
     }
 }
