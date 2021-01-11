@@ -67,8 +67,9 @@ const Landing = (props) => {
                 'animal lover',
                 'aws developer',
                 'blackhawks fan',
-                'computer builder',
-                'react developer'
+                'computer enthusiast',
+                'react developer',
+                'breaker of chains'
             ]}
             typeSpeed={40}
             backSpeed={50}
