@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './landing.module.scss';
+import Typed from 'react-typed';
 // import { landingStates } from '../../assets/utils'
 import Balloon from '../../components/loader/balloon';
 import MarioSquare from '../../components/marioSquare';
@@ -57,12 +58,40 @@ const Landing = (props) => {
         /* eslint-disable react-hooks/exhaustive-deps */
       }, [])
 
+    const typedRef = useRef(null);
+    const renderTyped = () => {
+        if(percentLoaded === 100) {
+            return <Typed
+            strings={[
+                'software engineer',
+                'animal lover',
+                'aws developer',
+                'blackhawks fan',
+                'computer builder',
+                'react developer'
+            ]}
+            typeSpeed={40}
+            backSpeed={50}
+            ref={typedRef}
+            className={`${styles.typedTarget} ${styles.GineosMedium}`}
+            loop >
+            <span ref={typedRef} id="typedTarget"></span>
+        </Typed>
+        }
+    }
+
     const [ balloonY, setBalloonY ] = useState('56px');
     return (
         <>
             {
-                <div style={{ width: '100%', textAlign: 'right', marginBottom: "100px"}}>
-                    <h1 className={styles.GineosMedium} style={{color: 'black', fontSize: normalizedFontSize, margin: '0', marginRight: percentLoaded === 100 ? "unset" : "50%"}}><span style={{ verticalAlign: 'middle', color: 'grey', fontSize: '18px'}}>since</span> '{normalizedPercentLoaded}</h1>
+                <div className={styles.typedContainer}>
+                    <h1 className={styles.GineosMedium} style={{color: 'black', fontSize: normalizedFontSize, margin: '0', marginRight: percentLoaded === 100 ? "unset" : "50%"}}>
+                        {renderTyped()}
+                        <span style={{ verticalAlign: 'middle', color: 'grey', fontSize: '18px'}}>
+                        since
+                        </span> 
+                        '{normalizedPercentLoaded}
+                    </h1>
                 </div>
             }
             {
@@ -75,11 +104,11 @@ const Landing = (props) => {
                 </>
             }
             { percentLoaded === 100 && (
-                <div style={{ width: '100%', textAlign: 'left', marginBottom: '130px'}}>
-                    <p style={{ color: 'grey', fontSize: '2em', paddingLeft: '15px'}}>Jordan Max</p>
-                    <span style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Projects</span>
-                    <span style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Resume</span>
-                    <span style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Blog</span>
+                <div className={styles.navContainer}>
+                    {/* <p style={{ color: 'grey', fontSize: '2em', paddingLeft: '15px'}}>Jordan Max</p> */}
+                    <p style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Projects</p>
+                    <p style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Resume</p>
+                    <p style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Blog</p>
                 </div>
             )}
         </>
