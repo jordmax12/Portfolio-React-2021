@@ -13,6 +13,7 @@ const BlogPost = (props) => {
   const [menuClasses, setMenuClasses] = useState(defaultMenuClasses);
   const [containerClasses, setContainerClases] = useState(styles.dn);
   const [headerLoaderTextClasses, setHeaderLoaderTextClasses] = useState(`${styles.db} ${styles.headerLoaderText}`)
+  const [headerNavTextClasses, setHeaderNavTextClasses] = useState(styles.dn)
   /* eslint-disable no-unused-vars */
   const [width, setWidth] = useState(getWidth());
 
@@ -46,6 +47,7 @@ const BlogPost = (props) => {
     if(showHeader) {
       setContainerClases('row');
       setHeaderLoaderTextClasses('dn');
+      setHeaderNavTextClasses(styles.headerNavLink);
     } 
     /* eslint-disable react-hooks/exhaustive-deps */
   }, [showHeader])
@@ -73,26 +75,22 @@ const BlogPost = (props) => {
   }
 
   return (
-    <div style={{ position: 'relative', width: '96%', marginRight: 'auto', marginLeft: 'auto', height: '56px' }}>
-      
-      <div style={{ backgroundColor: '#ececec', width: `${showHeaderWidth}%`, height: '20px', position: 'absolute', bottom: '0'}} onClick={() => handleItemClick('/')}>
-          
+    <div className={styles.mainHeaderContainer}>
+      <div className={styles.topHeaderContainer}>
+        <span className={styles.topHeaderTitle}>Jordan Max - Full Stack Engineer</span>
+        <div className={styles.topHeaderExternals}>
+            <span className={styles.topHeaderExternalLink}>LinkedIn</span>
+            <span className={styles.topHeaderExternalLink}>Github</span>
+            <span className={styles.topHeaderExternalLink}>Medium</span>
+        </div>
+      </div>
+      <div style={{ width: `${showHeaderWidth}%;`}} className={styles.headerContainer} onClick={() => handleItemClick('/')}>
+          <span className={headerNavTextClasses}>LinkedIn</span>
+          <span className={headerNavTextClasses}>Github</span>
+          <span className={headerNavTextClasses}>Medium</span>
           {/* <p>Github</p> */}
       </div>
       <p className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
-      {/* <div className={styles.headerContainer} >
-        <div className={containerClasses}>
-          <div className="col-12">
-            <div className={`col-12 ${styles.hamburger}`}> */}
-              {/* eslint-disable jsx-a11y/anchor-is-valid */}
-              {/* <a href="#" className="icon" onClick={handleHamburger}>
-                <i className="fa fa-bars"></i> */}
-              {/* </a>
-            </div>
-
-          </div>
-        </div>
-      </div> */}
     </div>
   )
 }
