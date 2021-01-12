@@ -120,7 +120,7 @@ const Loader = (props) => {
 			);
 			if (itemsLoaded >= totalItems) {
 				setTimeout(() => {
-					// completeLoading();
+					completeLoading();
 				}, 4000)
 			} else {
 				valuateProgress();

@@ -107,9 +107,9 @@ const Landing = (props) => {
             { percentLoaded === 100 && (
                 <div className={styles.navContainer}>
                     {/* <p style={{ color: 'grey', fontSize: '2em', paddingLeft: '15px'}}>Jordan Max</p> */}
-                    <p style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Projects</p>
-                    <p style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Resume</p>
-                    <p style={{ color: 'grey', fontSize: '1em', paddingLeft: '15px', cursor: 'pointer'}}>Blog</p>
+                    <p className={styles.landingNavLink}>Projects</p>
+                    <p className={styles.landingNavLink}>Resume</p>
+                    <p className={styles.landingNavLink}>Blog</p>
                 </div>
             )}
         </>

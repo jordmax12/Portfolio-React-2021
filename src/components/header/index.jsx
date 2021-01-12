@@ -43,7 +43,7 @@ const BlogPost = (props) => {
   }, [defaultMenuClasses])
 
   useEffect(() => {
-    if(containerClasses === styles.dn && showHeader) {
+    if(showHeader) {
       setContainerClases('row');
       setHeaderLoaderTextClasses('dn');
     } 

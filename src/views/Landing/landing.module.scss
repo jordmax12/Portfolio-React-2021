@@ -27,6 +27,16 @@ $breakpoint-large: 60em;
     }
 }
 
+.landingNavLink {
+    color: grey;
+    font-size: 1em;
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+.landingNavLink:hover {
+    color: white;
+}
 
 .typedContainer {
     width: 100%;
