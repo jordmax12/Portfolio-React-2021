@@ -77,14 +77,20 @@ const BlogPost = (props) => {
   return (
     <div className={styles.mainHeaderContainer}>
       <div className={styles.topHeaderContainer}>
-        <span className={styles.topHeaderTitle}>Jordan Max - Full Stack Engineer</span>
-        <div className={styles.topHeaderExternals}>
-            <span className={styles.topHeaderExternalLink}>LinkedIn</span>
-            <span className={styles.topHeaderExternalLink}>Github</span>
-            <span className={styles.topHeaderExternalLink}>Medium</span>
-        </div>
+        {
+          showHeader && (
+            <>
+              <span className={styles.topHeaderTitle}>Jordan Max - Full Stack Engineer</span>
+              <div className={styles.topHeaderExternals}>
+                  <span className={styles.topHeaderExternalLink}>LinkedIn</span>
+                  <span className={styles.topHeaderExternalLink}>Github</span>
+                  <span className={styles.topHeaderExternalLink}>Medium</span>
+              </div>
+            </>
+          )
+        }
       </div>
-      <div style={{ width: `${showHeaderWidth}%;`}} className={styles.headerContainer} onClick={() => handleItemClick('/')}>
+      <div style={{ width: `${showHeaderWidth}%`}} className={styles.headerContainer} onClick={() => handleItemClick('/')}>
           <span className={headerNavTextClasses}>LinkedIn</span>
           <span className={headerNavTextClasses}>Github</span>
           <span className={headerNavTextClasses}>Medium</span>
