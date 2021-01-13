@@ -20,14 +20,14 @@ $transition-type: cubic-bezier(0.550, 0.055, 0.675, 0.190);
 
   .background_loader_container {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     position: absolute;
     color: white;
     left: 0;
     top: 0;
 
     .background_container {
-      height: 100vh;
+      height: 100%;
       flex: 1;   
 
       .background {

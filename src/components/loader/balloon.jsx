@@ -31,7 +31,7 @@ const Balloon = (props) => {
     }
 
     const findBalloonY = () => {
-        const _y = Math.ceil(percent * 5) + 150;
+        const _y = Math.ceil(percent * 5) + 110;
         trackBalloonY(_y);
         return _y;
     }

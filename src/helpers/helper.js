@@ -57,9 +57,9 @@ export const getBackgroundTransition = (techType, imageAlignment, isFirstAnimati
 
   if (!transition.from) {
     transition = {
-      from: { transform: "translate(0vw, -100vh)" },
+      from: { transform: "translate(0vw, -100%)" },
       enter: { transform: "translate(0vw, 0vh)" },
-      leave: { transform: "translate(0vw, -100vh)" }
+      leave: { transform: "translate(0vw, -100%)" }
     };
   }
 

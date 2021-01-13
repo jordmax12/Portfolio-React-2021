@@ -211,7 +211,7 @@ class Loader extends Component {
                     <Fragment>
                       <Spring
                         to={{
-                          height: '100vh',
+                          height: '100%',
                           x: contentLoadedPercentage
                         }}
                       >
@@ -222,7 +222,7 @@ class Loader extends Component {
                               <Fragment>
                                 <div style={{
                                   opacity: transitionProps.opacity,
-                                  height: '100vh',
+                                  height: '100%',
                                 }} className={styles.loading_text_container}>
                                   {/* <div style={{ width: '100%'}}>
                                     <div style={{

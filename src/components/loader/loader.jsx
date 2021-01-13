@@ -186,7 +186,7 @@ const Loader = (props) => {
 						<Fragment>
 						<Spring
 							to={{
-								height: '100vh',
+								height: '100%',
 								x: contentLoadedPercentage
 							}}
 							config={{
@@ -203,7 +203,7 @@ const Loader = (props) => {
 									<Fragment>
 										<div style={{
 										opacity: transitionProps.opacity,
-										height: '100vh',
+										height: '100%',
 										}} className={styles.loading_text_container}>
 											{children}
 										</div>
