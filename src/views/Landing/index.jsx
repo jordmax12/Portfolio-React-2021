@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './landing.module.scss';
 import Typed from 'react-typed';
-// import { landingStates } from '../../assets/utils'
-import Balloon from '../../components/loader/balloon';
+import Balloon from '../../components/balloon';
 import MarioSquare from '../../components/marioSquare';
 import Jordan from '../../components/jordan';
 
@@ -11,25 +10,22 @@ const generateNormalizedPercentLoaded = (percentLoaded) => {
 }
 
 const getCurrentHeight = () => window.innerHeight
+const getCurrentWidth = () => window.innerWidth
 
 const mapNormalizedFontSize = () => {
     const height = getCurrentHeight();
+    const width = getCurrentWidth();
     let fontSize = '15.5vh'
-    if(height < 900 && height >= 721) {
+    if(width < 500) {
+        fontSize = '8.5vh'
+    } else if (width > 500 && width < 700) {
+        fontSize = '15.5vh'
+    }
+    else if(height < 900 && height >= 721) {
         fontSize = "25.5vh"
     } else if(height < 721) {
-        console.log('here??')
         fontSize = "160px"
     }
-    // if(width > 1440 && width < 1700) {
-    //     fontSize = '12.5vw';
-    // } else if (width > 1700) {
-    //     fontSize = '9.5vw';
-    // } else if (width < 720){
-    //     fontSize = '25.5vw';
-    // } else if (width < 600){
-    //     fontSize = '30.5vw';
-    // } 
 
     return fontSize;
 }
@@ -38,10 +34,20 @@ const Landing = (props) => {
     const { pageState, percentLoaded } = props;
     const [normalizedPercentLoaded, setNormalizedPercentLoaded] = useState(generateNormalizedPercentLoaded(percentLoaded))
     const [normalizedFontSize, setNormalizedFontSize] = useState(mapNormalizedFontSize())
+    const [showAnimation, setShowAnimation] = useState(true)
+    const [showAnimationElements, setShowAnimationElements] = useState(true);
+    const [animationTimeoutTriggered, setAnimationTimeoutTriggered] = useState(true);
 
     useEffect(() => {
         setNormalizedPercentLoaded(generateNormalizedPercentLoaded(percentLoaded))
-    }, [percentLoaded])
+        if(percentLoaded && animationTimeoutTriggered) {
+            setAnimationTimeoutTriggered(false);
+            setTimeout(() => {
+                console.log('here')
+                setShowAnimation(false)
+            }, 500)
+        }
+    }, [percentLoaded, animationTimeoutTriggered])
 
     useEffect(() => {
         const resizeListener = () => {
@@ -99,14 +105,13 @@ const Landing = (props) => {
                 window.navigator.connection.effectiveType != "4g"
                 ? null
                 : <>
-                    <Balloon percent={percentLoaded} text={'Loading...'} trackBalloonY={setBalloonY} />
-                    <Jordan balloonY={balloonY} percent={percentLoaded} />
-                    <MarioSquare percent={percentLoaded} />
+                    <Balloon percent={percentLoaded} trackBalloonY={setBalloonY} />
+                    <Jordan animationCompleted={!showAnimationElements} balloonY={balloonY} percent={percentLoaded} completeCallback={() => setShowAnimationElements(false)} />
+                    <MarioSquare animationCompleted={!showAnimationElements} percent={percentLoaded} />
                 </>
             }
             { percentLoaded === 100 && (
                 <div className={styles.navContainer}>
-                    {/* <p style={{ color: 'grey', fontSize: '2em', paddingLeft: '15px'}}>Jordan Max</p> */}
                     <p className={styles.landingNavLink}>Projects</p>
                     <p className={styles.landingNavLink}>Resume</p>
                     <p className={styles.landingNavLink}>Blog</p>
