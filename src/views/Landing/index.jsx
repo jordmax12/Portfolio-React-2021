@@ -26,7 +26,7 @@ const confettiConfig = {
     height: "10px",
     perspective: "500px",
     colors: ["#f00", "#0f0", "#00f"]
-  };
+};
 
 const mapNormalizedFontSize = () => {
     const height = getCurrentHeight();

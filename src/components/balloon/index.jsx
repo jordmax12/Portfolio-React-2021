@@ -1,6 +1,21 @@
 import React, { useState, useEffect } from "react";
 import styles from './balloon.module.scss';
 import { Spring } from "react-spring/renderprops";
+import Confetti from 'react-dom-confetti';
+
+const confettiConfig = {
+    angle: 90,
+    spread: 360,
+    startVelocity: 40,
+    elementCount: 160,
+    dragFriction: 0.12,
+    duration: 3000,
+    stagger: 3,
+    width: "10px",
+    height: "10px",
+    perspective: "500px",
+    colors: ["#f00", "#0f0", "#00f"]
+};
 
 const Balloon = (props) => {
     const { percent, trackBalloonY, triggerConfetti } = props;
@@ -38,7 +53,7 @@ const Balloon = (props) => {
             setTimeout(() => {
                 setConfettiActive(true);
                 setTrigger(true);
-                // setBalloonClass('trigger');
+                setBalloonClass(styles.trigger);
                 // setBalloonHeight(0);
                 // setBalloonWidth(0);
                 triggerConfetti();
@@ -57,8 +72,9 @@ const Balloon = (props) => {
     return (
         <Spring delay={0} to={{ opacity: !trigger ? 1 : 0 }}>
             {({opacity}) =>
-                <div className={balloonClass} style={{ opacity, lineHeight: `${balloonHeight}px`, height: `${balloonHeight}px`, width: `${balloonWidth}px`, bottom: `${balloonY}px`}}>
+                <div className={balloonClass} style={{ lineHeight: `${balloonHeight}px`, height: `${balloonHeight}px`, width: `${balloonWidth}px`, bottom: `${balloonY}px`}}>
                     {/* <h5 style={{ color: 'white', display: confettiActive ? 'none': 'inline-block', lineHeight: '1', verticalAlign: 'middle'}}>{percent}% Loading...</h5> */}
+                    <Confetti active={confettiActive} config={ confettiConfig } />
                 </div>
             }
         </Spring>
