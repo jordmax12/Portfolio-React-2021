@@ -104,11 +104,11 @@ const BlogPost = (props) => {
           <span className={headerNavTextClasses}>Medium</span>
           {/* <p>Github</p> */}
       </div>
-      {/* <Spring delay={100} to={{ opacity: !showHeader ? 1 : 0 }}>
+      <Spring delay={100} to={{ opacity: !showHeader ? 1 : 0 }}>
         {({opacity}) =>
           <p style={{opacity}} className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
         }
-      </Spring> */}
+      </Spring>
     </div>
   )
 }
