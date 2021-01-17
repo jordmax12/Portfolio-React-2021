@@ -7,7 +7,7 @@ const confettiConfig = {
     angle: 90,
     spread: 360,
     startVelocity: 40,
-    elementCount: 160,
+    elementCount: 70,
     dragFriction: 0.12,
     duration: 3000,
     stagger: 3,
@@ -54,13 +54,14 @@ const Balloon = (props) => {
                 setConfettiActive(true);
                 setTrigger(true);
                 setBalloonClass(styles.trigger);
-                // setBalloonHeight(0);
-                // setBalloonWidth(0);
+
                 triggerConfetti();
                 setTimeout(() => {
                     // setBalloonClass('dn');
+                    // setBalloonHeight(0);
+                    // setBalloonWidth(0);
                     
-                }, 3000)
+                }, confettiConfig.duration)
             }, 600)
 
         }
@@ -72,10 +73,14 @@ const Balloon = (props) => {
     return (
         <Spring delay={0} to={{ opacity: !trigger ? 1 : 0 }}>
             {({opacity}) =>
-                <div className={balloonClass} style={{ lineHeight: `${balloonHeight}px`, height: `${balloonHeight}px`, width: `${balloonWidth}px`, bottom: `${balloonY}px`}}>
-                    {/* <h5 style={{ color: 'white', display: confettiActive ? 'none': 'inline-block', lineHeight: '1', verticalAlign: 'middle'}}>{percent}% Loading...</h5> */}
-                    <Confetti active={confettiActive} config={ confettiConfig } />
-                </div>
+                <>
+                    <div className={balloonClass} style={{ opacity, lineHeight: `${balloonHeight}px`, height: `${balloonHeight}px`, width: `${balloonWidth}px`, bottom: `${balloonY}px`}}>
+                        {/* <h5 style={{ color: 'white', display: confettiActive ? 'none': 'inline-block', lineHeight: '1', verticalAlign: 'middle'}}>{percent}% Loading...</h5> */}
+                        {/* <Confetti active={confettiActive} config={ confettiConfig } /> */}
+                    </div>
+
+                    {/*  */}
+                </>
             }
         </Spring>
     )

@@ -83,8 +83,7 @@ const Landing = (props) => {
 
     const typedRef = useRef(null);
     const renderTyped = () => {
-        if(percentLoaded === 100) {
-            return <Typed
+        return <Typed
             strings={[
                 'software engineer',
                 'animal lover',
@@ -101,7 +100,6 @@ const Landing = (props) => {
             loop >
             <span ref={typedRef} id="typedTarget"></span>
         </Typed>
-        }
     }
 
     const triggerLoadingCompleted = () => {
