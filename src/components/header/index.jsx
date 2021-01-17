@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Spring } from "react-spring/renderprops";
 import styles from './header.module.scss'
 // import Div from '../div'
 
@@ -46,7 +47,7 @@ const BlogPost = (props) => {
   useEffect(() => {
     if(showHeader) {
       setContainerClases('row');
-      setHeaderLoaderTextClasses('dn');
+      // setHeaderLoaderTextClasses('dn');
       setHeaderNavTextClasses(styles.headerNavLink);
     } 
     /* eslint-disable react-hooks/exhaustive-deps */
@@ -75,28 +76,39 @@ const BlogPost = (props) => {
   }
 
   return (
+
     <div className={styles.mainHeaderContainer}>
-      <div className={styles.topHeaderContainer}>
-        {
-          showHeader && (
-            <>
-              <span className={styles.topHeaderTitle}>Jordan Max - Full Stack Engineer</span>
-              <div className={styles.topHeaderExternals}>
-                  <span className={styles.topHeaderExternalLink}>LinkedIn</span>
-                  <span className={styles.topHeaderExternalLink}>Github</span>
-                  <span className={styles.topHeaderExternalLink}>Medium</span>
-              </div>
-            </>
-          )
+      <Spring delay={100} to={{ opacity: showHeader ? 1 : 0 }}>
+          {({opacity}) =>
+          <>
+            <div className={styles.topHeaderContainer} style={{opacity}}>
+              {
+                (
+                  <>
+                    <span className={styles.topHeaderTitle}>Jordan Max - Full Stack Engineer</span>
+                    <div className={styles.topHeaderExternals}>
+                        <span className={styles.topHeaderExternalLink}>LinkedIn</span>
+                        <span className={styles.topHeaderExternalLink}>Github</span>
+                        <span className={styles.topHeaderExternalLink}>Medium</span>
+                    </div>
+                  </>
+                )
+              }
+            </div>
+          </>
         }
-      </div>
-      <div style={{ width: `${showHeaderWidth}%`}} className={styles.headerContainer} onClick={() => handleItemClick('/')}>
+      </Spring>
+      <div style={{ width: `${showHeaderWidth}%` }} className={styles.headerContainer} onClick={() => handleItemClick('/')}>
           <span className={headerNavTextClasses}>LinkedIn</span>
           <span className={headerNavTextClasses}>Github</span>
           <span className={headerNavTextClasses}>Medium</span>
           {/* <p>Github</p> */}
       </div>
-      <p className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
+      <Spring delay={100} to={{ opacity: !showHeader ? 1 : 0 }}>
+        {({opacity}) =>
+          <p style={{opacity}} className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
+        }
+      </Spring>
     </div>
   )
 }

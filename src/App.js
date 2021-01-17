@@ -15,7 +15,7 @@ function App() {
   const [showHeader, setShowHeader] = useState(false);
   const [currentPercentLoaded, setCurrentPercentLoaded] = useState(0);
 
-  const showHeaderAfterLoader = () => {
+  const loadingCompleted = () => {
     setShowHeader(true);
   }
 
@@ -28,8 +28,8 @@ function App() {
           <Switch>
             <Route path="/">
               <Header showHeader={showHeader} showHeaderWidth={currentPercentLoaded} />
-              <Loader showHeaderAfterLoader={showHeaderAfterLoader} updateCurrentPercentLoaded={updateCurrentPercentLoaded}>
-                <Home percentLoaded={currentPercentLoaded} />
+              <Loader updateCurrentPercentLoaded={updateCurrentPercentLoaded}>
+                <Home percentLoaded={currentPercentLoaded} loadingCompleted={loadingCompleted} />
               </Loader>
               {/* WORKING */}
               {/* <Header showHeader={showHeader} showHeaderWidth={showHeaderWidth} />
@@ -45,8 +45,8 @@ function App() {
                     />
                   )}
                 /> */}
-                {/* END WORKING */}
-                {/* <Route
+              {/* END WORKING */}
+              {/* <Route
                   exact
                   path="/projects"
                   children={(props) => (

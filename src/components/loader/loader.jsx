@@ -7,6 +7,8 @@ import { withRouter, matchPath } from "react-router";
 import { CookieService } from "../../assets/utils/cookieService"
 import { animationFrameTimeout } from '../../assets/utils';
 import { preloadImage, getImagesFromContext } from './loaderHelper';
+import LoaderContext from './loader-context';
+
 const disableIntro = true;
 const assetsImages = require.context(
   `../../assets/images`,
@@ -80,7 +82,7 @@ const Loader = (props) => {
 		}
 
 		if (areImagesLoaded) {
-			completeLoading(true); // immediatly load page.
+			completeAnimation(true); // immediatly load page.
 		} else {
 			const introAlreadyShown = CookieService.get("INTRO_COMPLETED");
 			const match = matchPath(location.pathname, {
@@ -91,7 +93,7 @@ const Loader = (props) => {
 
 			if (match && introAlreadyShown) {
 				// Todo also check if intro animation is done or not ... if not the make this condition false
-				completeLoading(true); // immediatly load page.
+				// completeAnimation(true); // immediatly load page.
 			} else {
 				valuateProgress();
 			}
@@ -120,7 +122,7 @@ const Loader = (props) => {
 			);
 			if (itemsLoaded >= totalItems) {
 				setTimeout(() => {
-					completeLoading();
+					// completeAnimation();
 				}, 4000)
 			} else {
 				valuateProgress();
@@ -128,8 +130,11 @@ const Loader = (props) => {
 		}, updateStateAfter)
 	};
 
+	const completeLoading = () => {
+		showHeaderAfterLoader();
+	}
 
-	const completeLoading = showImmediately => {
+	const completeAnimation = showImmediately => {
 		const introAlreadyShown = CookieService.get("INTRO_COMPLETED");
 
 		// Loading background images in the background, without a loader tracking progress
@@ -158,69 +163,73 @@ const Loader = (props) => {
 			if (!disableIntro && !introAlreadyShown) {
 				// setPageState(loaderPageStates.SHOW_INTRO)
 			} else {					
-				animationFrameTimeout(() => {
-					showHeaderAfterLoader();
-					// setTimeout(() => {
-					// 	setPageState(loaderPageStates.SHOW_PAGE);
-					// }, 300)
-				}, 400)
+				// animationFrameTimeout(() => {
+				// 	showHeaderAfterLoader();
+				// 	// setTimeout(() => {
+				// 	// 	setPageState(loaderPageStates.SHOW_PAGE);
+				// 	// }, 300)
+				// }, 400)
 			}
 		}, 500);
 	};
   /* --------------------------------------------------Render------------------------------------------- */
     return (
-        <div className={styles.loader_top_container}>
-			{(
-            <Div align className={styles.background_loader_container}>
-              {/* {pageState === loaderPageStates.SHOW_PAGE && children}
-			  {pageState !== loaderPageStates.SHOW_PAGE && ( */}
-				<Transition
-					items={pageState}
-					from={{ opacity: 1 }}
-					enter={{ opacity: 1 }}
-					leave={{ opacity: 0 }}
-				>
-					
-				{pageState =>
-					(transitionProps => (
-						<Fragment>
-						<Spring
-							to={{
-								height: '100%',
-								x: contentLoadedPercentage
-							}}
-							config={{
-								mass: 0.5,
-								tension: 100,
-								friction: 30
-							}}
-						>
-							{
-							springProps => {
-								const newPercentLoaded = Math.ceil(springProps.x);
-								updateCurrentPercentLoaded(newPercentLoaded);
-								return (
-									<Fragment>
-										<div style={{
-										opacity: transitionProps.opacity,
-										height: '100%',
-										}} className={styles.loading_text_container}>
-											{children}
-										</div>
-									</Fragment>
-								)
-							}
-							}
-						</Spring>
-						</Fragment>
-					))}
-				</Transition>
-			  {/* )} */}
-              
-            </Div>
-          )
-        }
-        </div>
+		<LoaderContext.Provider value={{
+			completeLoading
+		}}>
+			<div className={styles.loader_top_container}>
+				{(
+				<Div align className={styles.background_loader_container}>
+				{/* {pageState === loaderPageStates.SHOW_PAGE && children}
+				{pageState !== loaderPageStates.SHOW_PAGE && ( */}
+					<Transition
+						items={pageState}
+						from={{ opacity: 1 }}
+						enter={{ opacity: 1 }}
+						leave={{ opacity: 0 }}
+					>
+						
+					{pageState =>
+						(transitionProps => (
+							<Fragment>
+							<Spring
+								to={{
+									height: '100%',
+									x: contentLoadedPercentage
+								}}
+								config={{
+									mass: 0.5,
+									tension: 100,
+									friction: 30
+								}}
+							>
+								{
+								springProps => {
+									const newPercentLoaded = Math.ceil(springProps.x);
+									updateCurrentPercentLoaded(newPercentLoaded);
+									return (
+										<Fragment>
+											<div style={{
+											opacity: transitionProps.opacity,
+											height: '100%',
+											}} className={styles.loading_text_container}>
+												{children}
+											</div>
+										</Fragment>
+									)
+								}
+								}
+							</Spring>
+							</Fragment>
+						))}
+					</Transition>
+				{/* )} */}
+				
+				</Div>
+			)
+			}
+			</div>
+		</LoaderContext.Provider>
     )
 }
 
