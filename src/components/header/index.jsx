@@ -23,9 +23,7 @@ const BlogPost = (props) => {
       if(containerClasses === styles.dn && showHeader) {
         setContainerClases('row')
       }
-      // change width from the state object
-      // TODO: this isnt working for some reason?
-      // const lastWidth = width;
+
       const newWidth = getWidth();
       setWidth(newWidth)
       if(newWidth >= 720) { 
@@ -98,12 +96,16 @@ const BlogPost = (props) => {
           </>
         }
       </Spring>
-      <div style={{ width: `${showHeaderWidth}%` }} className={styles.headerContainer} onClick={() => handleItemClick('/')}>
-          <span className={headerNavTextClasses}>LinkedIn</span>
-          <span className={headerNavTextClasses}>Github</span>
-          <span className={headerNavTextClasses}>Medium</span>
-          {/* <p>Github</p> */}
-      </div>
+      <Spring delay={100} to={{ opacity: showHeader ? 1 : 0 }}>
+        {({opacity}) =>
+          <div style={{ width: `${showHeaderWidth}%` }} className={styles.headerContainer} onClick={() => handleItemClick('/')}>
+              <span style={{opacity}} className={headerNavTextClasses}>LinkedIn</span>
+              <span style={{opacity}} className={headerNavTextClasses}>Github</span>
+              <span style={{opacity}} className={headerNavTextClasses}>Medium</span>
+          </div>
+        }
+      </Spring>
+
       <Spring delay={100} to={{ opacity: !showHeader ? 1 : 0 }}>
         {({opacity}) =>
           <p style={{opacity}} className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
