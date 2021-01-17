@@ -7,7 +7,6 @@ import { withRouter, matchPath } from "react-router";
 import { CookieService } from "../../assets/utils/cookieService"
 import { animationFrameTimeout } from '../../assets/utils';
 import { preloadImage, getImagesFromContext } from './loaderHelper';
-import LoaderContext from './loader-context';
 
 const disableIntro = true;
 const assetsImages = require.context(
@@ -82,7 +81,7 @@ const Loader = (props) => {
 		}
 
 		if (areImagesLoaded) {
-			completeAnimation(true); // immediatly load page.
+			completeAnimation(); // immediatly load page.
 		} else {
 			const introAlreadyShown = CookieService.get("INTRO_COMPLETED");
 			const match = matchPath(location.pathname, {
@@ -93,7 +92,7 @@ const Loader = (props) => {
 
 			if (match && introAlreadyShown) {
 				// Todo also check if intro animation is done or not ... if not the make this condition false
-				// completeAnimation(true); // immediatly load page.
+				completeAnimation(); // immediatly load page.
 			} else {
 				valuateProgress();
 			}
@@ -122,7 +121,7 @@ const Loader = (props) => {
 			);
 			if (itemsLoaded >= totalItems) {
 				setTimeout(() => {
-					// completeAnimation();
+					completeAnimation();
 				}, 4000)
 			} else {
 				valuateProgress();
@@ -134,54 +133,17 @@ const Loader = (props) => {
 		showHeaderAfterLoader();
 	}
 
-	const completeAnimation = showImmediately => {
-		const introAlreadyShown = CookieService.get("INTRO_COMPLETED");
-
-		// Loading background images in the background, without a loader tracking progress
-		// TODO: revisit this
-		const images = [];
-		// getImagesFromContext(assetsBackgroundImages).map(image =>
-		// 	images.push(preloadImage(image))
-		// );
-
-
-		// if (showImmediately) {
-		// 	// setPageState(loaderPageStates.SHOW_PAGE);
-		// 	setShowBackground(false);
-		// }
-
+	const completeAnimation = () => {
 		if (contentLoadedPercentage > 98) {
 			// if by chance its not 100 then show 100 on page
 			setContentLoadedPercentage(100);
 		}
-
-		// setPageState(loaderPageStates.COMPLETED_LOADING)
-		
-		// so created a timeout to not show content immediately
-		animationFrameTimeout(() => {
-			
-			if (!disableIntro && !introAlreadyShown) {
-				// setPageState(loaderPageStates.SHOW_INTRO)
-			} else {					
-				// animationFrameTimeout(() => {
-				// 	showHeaderAfterLoader();
-				// 	// setTimeout(() => {
-				// 	// 	setPageState(loaderPageStates.SHOW_PAGE);
-				// 	// }, 300)
-				// }, 400)
-			}
-		}, 500);
 	};
   /* --------------------------------------------------Render------------------------------------------- */
     return (
-		<LoaderContext.Provider value={{
-			completeLoading
-		}}>
 			<div className={styles.loader_top_container}>
 				{(
 				<Div align className={styles.background_loader_container}>
-				{/* {pageState === loaderPageStates.SHOW_PAGE && children}
-				{pageState !== loaderPageStates.SHOW_PAGE && ( */}
 					<Transition
 						items={pageState}
 						from={{ opacity: 1 }}
@@ -223,13 +185,9 @@ const Loader = (props) => {
 							</Fragment>
 						))}
 					</Transition>
-				{/* )} */}
-				
 				</Div>
-			)
-			}
+			)}
 			</div>
-		</LoaderContext.Provider>
     )
 }
 

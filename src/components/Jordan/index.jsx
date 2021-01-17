@@ -5,8 +5,6 @@ import jordanFalling from '../../assets/images/jordan/jordan-falling.png'
 import jordanStanding from '../../assets/images/jordan/jordan-standing.png'
 import jordanInAir from '../../assets/images/jordan/jordan-in-air.png'
 import { animationFrameTimeout } from '../../assets/utils';
-import { Spring } from "react-spring/renderprops";
-import LoaderContext from '../loader/loader-context';
 
 const Jordan = (props) => {
     const { percent, balloonY, completeCallback, animationCompleted } = props;
@@ -53,17 +51,7 @@ const Jordan = (props) => {
         }
     }, [percent, balloonY])
     return (
-        <LoaderContext.Consumer>
-            {
-                context => (
-                    <>
-                        <img src={jordanImage} className={jordanClasses} style={{...jordanStyle}} alt="jordan" />
-                    </>
-                )
-            }
-
-        </LoaderContext.Consumer>
-       
+        <img src={jordanImage} className={jordanClasses} style={{...jordanStyle}} alt="jordan" />
     )
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './landing.module.scss';
 import Typed from 'react-typed';
+import { Spring } from "react-spring/renderprops";
 import Balloon from '../../components/balloon';
 import MarioSquare from '../../components/marioSquare';
 import Jordan from '../../components/jordan';
@@ -112,15 +113,21 @@ const Landing = (props) => {
     return (
         <>
             {
-                <div className={styles.typedContainer}>
-                    <h1 className={styles.GineosMedium} style={{color: 'black', fontSize: normalizedFontSize, margin: '0'}}>
-                        {renderTyped()}
-                        <span style={{ verticalAlign: 'middle', color: 'grey', fontSize: '18px'}}>
-                        since
-                        </span> 
-                        '{normalizedPercentLoaded}
-                    </h1>
-                </div>
+                <Spring delay={0} to={{ opacity: !showAnimationElements ? 1 : 0 }}>
+                    {({opacity}) =>
+                        <div className={styles.typedContainer}>
+                            <h1 className={styles.GineosMedium} style={{color: 'black', fontSize: normalizedFontSize, margin: '0'}}>
+                                <span  style={{opacity}}>
+                                    {renderTyped()}
+                                    <span style={{ verticalAlign: 'middle', color: 'grey', fontSize: '18px'}}>
+                                    since
+                                </span>
+                                </span> 
+                                '{normalizedPercentLoaded}
+                            </h1>
+                        </div>
+                    }
+                </Spring>
             }
             {
                 window.navigator.connection.effectiveType != "4g"
@@ -136,11 +143,15 @@ const Landing = (props) => {
                 </>
             }
             {/* { !showAnimationElements && ( */}
-                <div className={styles.navContainer}>
-                    <p className={styles.landingNavLink}>Projects</p>
-                    <p className={styles.landingNavLink}>Resume</p>
-                    <p className={styles.landingNavLink}>Blog</p>
-                </div>
+                <Spring delay={0} to={{ opacity: !showAnimationElements ? 1 : 0 }}>
+                    {({opacity}) =>
+                        <div style={{opacity}} className={styles.navContainer}>
+                            <p className={styles.landingNavLink}>Projects</p>
+                            <p className={styles.landingNavLink}>Resume</p>
+                            <p className={styles.landingNavLink}>Blog</p>
+                        </div>
+                    }
+                </Spring>
             {/* )} */}
 
         </>
