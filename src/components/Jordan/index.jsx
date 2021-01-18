@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './jordan.module.scss';
 import jordanWithRope from '../../assets/images/jordan/jordan-with-rope.png'
 import jordanFalling from '../../assets/images/jordan/jordan-falling.png'
@@ -8,7 +8,7 @@ import { animationFrameTimeout } from '../../assets/utils';
 
 const Jordan = (props) => {
     const { percent, balloonY, completeCallback, animationCompleted } = props;
-    const [jordanClasses, setJordanClasses] = useState(`${styles.JordanBox} ${styles.start}`);
+    const [jordanClasses, setJordanClasses] = useState(`${styles.jordan_box} ${styles.start}`);
     const [jordanImage, setJordanImage] = useState(jordanWithRope);
     const [jordanY, setJordanY] = useState(balloonY - 94);
     const [jordanStyle, setJordanStyle] = useState({ bottom: `${jordanY}px`});
@@ -31,15 +31,14 @@ const Jordan = (props) => {
         }
         
         if(percent > 0 && percent < 100) {
-            setJordanClasses(`${styles.JordanBox} ${styles.inair}`);
+            setJordanClasses(`${styles.jordan_box} ${styles.inair}`);
             setJordanImage(jordanInAir);
         }
 
         if(percent === 100) {
-            // setJordanClasses(`${styles.JordanBox} object`);
             animationFrameTimeout(() => {
                 setJordanStyle({})
-                setJordanClasses(`${styles.JordanBox} reverse`);
+                setJordanClasses(`${styles.jordan_box} ${styles.reverse}`);
                 setJordanImage(jordanFalling);
                 animationFrameTimeout(() => {
                     setJordanImage(jordanStanding);

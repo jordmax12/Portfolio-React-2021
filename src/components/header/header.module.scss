@@ -4,15 +4,7 @@ $breakpoint-small: 33.75em; // 540px
 $breakpoint-med: 45em; // 720px
 $breakpoint-large: 60em; // 960px
 
-.hamburger {
-    display: none;
-}
-
-.navigation {
-    display: unset;
-}
-
-.headerContainer {
+.header_container {
     // background-color: lightsalmon;
     // background-color: #ececec;
     // width: 100%;
@@ -27,26 +19,26 @@ $breakpoint-large: 60em; // 960px
     display: block;
 }
 
-.topHeaderContainer {
+.top_header_container {
     width: 100%;
     margin-top: 18px;
 }
 
-.topHeaderTitle {
+.top_header_title {
     font-size: 1.125rem;
     font-weight: 200;
     line-height: 1.8;
     float: left;
 }
 
-.topHeaderExternals {
+.top_header_externals {
     width: 50%;
     margin-top: 5px;
     float: right;
     text-align: right;
 }
 
-.topHeaderExternalLink {
+.top_header_external_link {
     font-size: .9rem;
     font-weight: 200;
     line-height: 1.8;
@@ -62,7 +54,7 @@ $breakpoint-large: 60em; // 960px
     }
 }
 
-.mainHeaderContainer {
+.main_header_container {
     position: relative;
     width: 96%;
     margin-right: auto;
@@ -70,7 +62,28 @@ $breakpoint-large: 60em; // 960px
     height: 56px;
 }
 
-.headerNavLink {
+.header_container {
+    background-color: #ececec;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    text-align: left;
+}
+
+.header_loader_text {
+    margin: 0;
+    position: absolute;
+    right: 0;
+    color: #ececec !important;
+    font-size: 1rem;
+    letter-spacing: .3em;
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    bottom: -6px;
+}
+
+.header_nav_link {
     margin-left: 15px;
     margin-right: 15px;
     color: black;
@@ -85,34 +98,3 @@ $breakpoint-large: 60em; // 960px
         display: unset;
     }
 }
-
-.headerContainer {
-    background-color: #ececec;
-    height: 20px;
-    position: absolute;
-    bottom: 0;
-    text-align: left;
-}
-
-.headerLoaderText {
-    margin: 0;
-    position: absolute;
-    right: 0;
-    color: #ececec !important;
-    font-size: 1rem;
-    letter-spacing: .3em;
-    font-weight: bold;
-    position: absolute;
-    right: 0;
-    bottom: -6px;
-}
-
-@media only screen and (max-width: $breakpoint-med) {
-    .hamburger {
-        display: unset;
-    }
-
-    .navigation {
-        display: none;
-    }
-  }

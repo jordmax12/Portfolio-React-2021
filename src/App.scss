@@ -10,39 +10,6 @@ html, body {
   height: 100%;
   width: 100%;
   background-color: #222831;
-  // background-image: url("./assets/images/backgrounds/background-test.png");
-}
-
-.object {
-  animation: MoveUpDown 3s forwards;
-/*   position: absolute; */
-/*   left: 0;
-  bottom: 0; */
-}
-
-@keyframes MoveUpDown {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-500px);
-  }
-}
-
-.reverse {
-  animation: MoveDownUp 2s forwards;
-/*   position: absolute; */
-/*   left: 0;
-  bottom: 0; */
-}
-
-@keyframes MoveDownUp {
-  0% {
-    transform: translateY(-500px);
-  }
-  100% {
-    transform: translateY(0);
-  }
 }
 
 .tal {

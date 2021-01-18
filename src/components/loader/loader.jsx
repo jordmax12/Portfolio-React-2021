@@ -8,7 +8,6 @@ import { CookieService } from "../../assets/utils/cookieService"
 import { animationFrameTimeout } from '../../assets/utils';
 import { preloadImage, getImagesFromContext } from './loaderHelper';
 
-const disableIntro = true;
 const assetsImages = require.context(
   `../../assets/images`,
   false,
@@ -20,12 +19,6 @@ const assetTechnologyImages = require.context(
   /.*\.png$|jpg$/
 );
 
-// const assetsBackgroundImages = require.context(
-//   '../../assets/images/backgrounds',
-//   false,
-//   /.*\.png$|jpg$/
-// );
-
 const assetsJordanImages = require.context(
 	'../../assets/images/jordan',
 	false,
@@ -34,12 +27,9 @@ const assetsJordanImages = require.context(
 
 const Loader = (props) => {
     const [ contentLoadedPercentage, setContentLoadedPercentage ] = useState(0);
-	// const [ showBackground, setShowBackground ] = useState(true);
-	// const [ balloonY, setBalloonY ] = useState('56px');
 	/* eslint-disable no-unused-vars */
-    const [ pageState, setPageState ] = useState(loaderPageStates.IS_LOADING);
+    const [ pageState ] = useState(loaderPageStates.IS_LOADING);
 	const { location, children, updateCurrentPercentLoaded, showHeaderAfterLoader } = props;
-    // let lastUpdated = 0;
     let itemsLoaded = 0;
     let totalItems = 0;
 	let loaderStarted = false;
@@ -105,7 +95,6 @@ const Loader = (props) => {
 
 	const valuateProgress = () => {
 		const isLastPercentage = totalItems - itemsLoaded <= 1;
-		// const updateStateAfter = isLastPercentage ? 600 : 400; //600 ms for the last 2 percentage
 		const updateStateAfter = 0;
 
 		animationFrameTimeout(() => {
@@ -129,10 +118,6 @@ const Loader = (props) => {
 		}, updateStateAfter)
 	};
 
-	const completeLoading = () => {
-		showHeaderAfterLoader();
-	}
-
 	const completeAnimation = () => {
 		if (contentLoadedPercentage > 98) {
 			// if by chance its not 100 then show 100 on page
@@ -151,7 +136,7 @@ const Loader = (props) => {
 						leave={{ opacity: 0 }}
 					>
 						
-					{pageState =>
+					{() =>
 						(transitionProps => (
 							<Fragment>
 							<Spring
@@ -179,8 +164,7 @@ const Loader = (props) => {
 											</div>
 										</Fragment>
 									)
-								}
-								}
+								}}
 							</Spring>
 							</Fragment>
 						))}

@@ -18,10 +18,7 @@ const Home = (props) => {
     setBodyType(bodyType);
   };
 
-  const getBodyContent = (bodyType, screenSize) => {
-    // const showMobile = screenSize === 'sm' || screenSize === 'md';
-    // const showMobile = false;
-
+  const getBodyContent = bodyType => {
     return (
       props => {
         return (
@@ -83,12 +80,9 @@ const Home = (props) => {
       transform: "translate(0px, 0px)"
     };
   }
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // flex-wrap: wrap;
+
   return (
-    <div style={{ width: "100%", height: "100%", overflowY: 'hidden', paddingBottom: '0px' }}>
+    <div className={styles.home_container}>
       <Transition
         items={bodyType}
         key={bodyType => bodyType}
@@ -99,8 +93,7 @@ const Home = (props) => {
           delay: previousBodyType === landingStates.NONE ? 500 : 0
         }}
       >
-        {bodyType => getBodyContent(bodyType, 0)}
-        {/* <p style={{ fontColor: 'pink', fontSize: '19px'}}> HELLO WORLD </p> */}
+        {bodyType => getBodyContent(bodyType)}
       </Transition>
   </div>
   )

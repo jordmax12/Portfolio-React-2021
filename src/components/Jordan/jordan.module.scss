@@ -1,4 +1,4 @@
-.JordanBox {
+.jordan_box {
     width: 100px;
     height: 100px;
     position: absolute;
@@ -14,9 +14,16 @@
 .inair {
     margin-left: -34px;
 }
-
-.jordanContainer {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
+  
+  .reverse {
+    animation: MoveDownUp 2s forwards;
+  }
+  
+  @keyframes MoveDownUp {
+    0% {
+      transform: translateY(-500px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
