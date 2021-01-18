@@ -31,9 +31,10 @@ const Balloon = (props) => {
         setBalloonWidth(findWidth());
         setBalloonY(findBalloonY());
         if(percent >= 100) {
+            setBalloonClass(`${styles.balloon} ${styles.trigger}`);
             setTimeout(() => {
                 setTrigger(true);
-                setBalloonClass(styles.trigger);
+                setBalloonClass(`${styles.balloon} ${styles.trigger}`);
             }, 600)
 
         }
@@ -45,7 +46,7 @@ const Balloon = (props) => {
     return (
         <Spring delay={0} to={{ opacity: !trigger ? 1 : 0 }}>
             {({opacity}) =>
-                <div className={balloonClass} style={{ opacity, lineHeight: `${balloonHeight}px`, height: `${balloonHeight}px`, width: `${balloonWidth}px`, bottom: `${balloonY}px`}} />
+                <div className={balloonClass} style={{ lineHeight: `${balloonHeight}px`, height: `${balloonHeight}px`, width: `${balloonWidth}px`, bottom: `${balloonY}px`}} />
             }
         </Spring>
     )

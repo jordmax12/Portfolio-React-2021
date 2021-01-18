@@ -46,7 +46,7 @@ const Jordan = (props) => {
                         completeCallback();
                     }, 500);
                 }, 1900)
-            }, 570)
+            }, 100)
         }
     }, [percent, balloonY])
     return (

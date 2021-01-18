@@ -15,8 +15,9 @@
 }
 
 .trigger {
-  position: absolute;
-  display: inline-block;
+  // position: absolute;
+  // display: inline-block;
+  animation: MoveOffScreen 2s forwards;
 }
 
 .pop {
@@ -65,3 +66,16 @@
 
 .balloon:nth-child(5){ background:hsl(23,55%,57%); animation-duration:5s; }
 .balloon:nth-child(5):before { color:hsl(23,44%,46%);  }
+
+.offScreen {
+  animation: MoveOffScreen 2s forwards;
+}
+
+@keyframes MoveOffScreen {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-500px);
+  }
+}
