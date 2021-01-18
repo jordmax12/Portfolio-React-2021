@@ -15,15 +15,15 @@
     margin-left: -34px;
 }
   
-  .reverse {
-    animation: MoveDownUp 2s forwards;
-  }
+.reverse {
+  animation: MoveDownUp 2s forwards;
+}
   
-  @keyframes MoveDownUp {
-    0% {
-      transform: translateY(-500px);
-    }
-    100% {
-      transform: translateY(0);
-    }
+@keyframes MoveDownUp {
+  0% {
+    transform: translateY(-500px);
   }
+  100% {
+    transform: translateY(0);
+  }
+}
