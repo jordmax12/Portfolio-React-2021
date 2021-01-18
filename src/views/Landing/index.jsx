@@ -70,7 +70,7 @@ const Landing = (props) => {
             typeSpeed={40}
             backSpeed={50}
             ref={typedRef}
-            className={`${styles.typedTarget} ${styles.GineosMedium}`}
+            className={`${styles.typed_target} ${styles.gineos_medium}`}
             loop >
             <span ref={typedRef} id="typedTarget"></span>
         </Typed>
@@ -92,8 +92,8 @@ const Landing = (props) => {
             {
                 <Spring delay={0} to={{ opacity: !showAnimationElements ? 1 : 0 }}>
                     {({opacity}) =>
-                        <div className={styles.typedContainer}>
-                            <h1 className={styles.GineosMedium} style={{color: 'black', fontSize: normalizedFontSize, margin: '0'}}>
+                        <div className={styles.typed_container}>
+                            <h1 className={`${styles.gineos_medium} ${styles.ninety_text}`} style={{ fontSize: `${normalizedFontSize}`}}>
                                 <span  style={{opacity}}>
                                     {renderTyped()}
                                     <span style={{ verticalAlign: 'middle', color: 'grey', fontSize: '18px'}}>
@@ -116,10 +116,10 @@ const Landing = (props) => {
             }
                 <Spring delay={0} to={{ opacity: !showAnimationElements ? 1 : 0 }}>
                     {({opacity}) =>
-                        <div style={{opacity}} className={styles.navContainer}>
-                            <p className={styles.landingNavLink}>Projects</p>
-                            <p className={styles.landingNavLink}>Resume</p>
-                            <p className={styles.landingNavLink}>Blog</p>
+                        <div style={{opacity}} className={styles.nav_container}>
+                            <p className={styles.landing_nav_link}>Projects</p>
+                            <p className={styles.landing_nav_link}>Resume</p>
+                            <p className={styles.landing_nav_link}>Blog</p>
                         </div>
                     }
                 </Spring>

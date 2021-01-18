@@ -10,11 +10,16 @@ $breakpoint-large: 60em;
     src: local('GinesoMedium'), url('../../assets/fonts/GinesoMedium.woff') format('woff');
 }
 
-.GineosMedium {
+.gineos_medium {
     font-family: GinesoMedium;
 }
 
-.typedTarget {
+.ninety_text {
+    color: white;
+    margin: 0;
+}
+
+.typed_target {
     font-size: 16px;
     vertical-align: middle;
     margin-right: 5px;
@@ -28,18 +33,18 @@ $breakpoint-large: 60em;
     }
 }
 
-.landingNavLink {
+.landing_nav_link {
     color: grey;
     font-size: 1em;
     padding-left: 15px;
     cursor: pointer;
 }
 
-.landingNavLink:hover {
+.landing_nav_link:hover {
     color: white;
 }
 
-.typedContainer {
+.typed_container {
     width: 100%;
     text-align: right;
     margin-bottom: 100px;
@@ -52,7 +57,7 @@ $breakpoint-large: 60em;
     }
 }
 
-.navContainer {
+.nav_container {
     width: 100%;
     text-align: left;
     margin-bottom: 80px;
