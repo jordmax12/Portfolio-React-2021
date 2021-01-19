@@ -27,10 +27,10 @@ const Home = (props) => {
             className={styles.body_content_container}
           >
             {/* NEED TO SUPPLY PERCENT LOADED, look into Context see if we can utilize this instead */}
-            {bodyType === landingStates.NONE && ( <Landing loadingCompleted={loadingCompleted} percentLoaded={percentLoaded} pageState={bodyType} /> )}
-            {bodyType === landingStates.PROJECTS && ( <Projects /> )}
+            {bodyType === landingStates.NONE && ( <Landing loadingCompleted={loadingCompleted} percentLoaded={percentLoaded} updateBodyType={updateBodyType} /> )}
+            {bodyType === landingStates.PROJECTS && ( <Projects updateBodyType={updateBodyType} /> )}
             {/* {bodyType == landingStates.RESUME && (showMobile ? <TimelineMobile updateBodyType={this.updateBodyType} /> :  <Timeline />)} */}
-            {bodyType === landingStates.BLOG && ( <Blog />)}
+            {bodyType === landingStates.BLOG && ( <Blog updateBodyType={updateBodyType} />)}
           </div>
         )
       } 
