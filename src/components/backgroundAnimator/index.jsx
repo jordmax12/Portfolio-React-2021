@@ -1,9 +1,10 @@
 import React, { memo } from "react";
-import styles from "./header.module.scss";
-import BackgroundAnimator from "./backgroundAnimator";
+import styles from "./index.module.scss";
+import Bg from "./bg";
 import { useTransition, animated, config } from 'react-spring';
 
-const Header = ({ isFullScreen, showDescription, clientX, clientY, isFirstTime }) => {
+const BackgroundAnimator = ({ isFullScreen = true, showDescription = true, clientX = 0, clientY = 0, isFirstTime = true, children }) => {
+  console.log('here?1')
   const containerTransition = useTransition(isFullScreen, null, {
     from: {
       opacity: isFirstTime? 1 : 0,
@@ -45,7 +46,10 @@ const Header = ({ isFullScreen, showDescription, clientX, clientY, isFirstTime }
                   style={backgroundProps}
                   className={styles.header_background_container}
                 >
-                  <BackgroundAnimator clientX={clientX} clientY={clientY} />
+                  <Bg clientX={clientX} clientY={clientY}>
+                    {children}
+                  </Bg>
+                  
                 </animated.div>
               )
             ))
@@ -56,4 +60,4 @@ const Header = ({ isFullScreen, showDescription, clientX, clientY, isFirstTime }
   );
 }
 
-export default memo(Header);
+export default memo(BackgroundAnimator);
