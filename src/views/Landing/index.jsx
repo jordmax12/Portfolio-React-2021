@@ -120,7 +120,7 @@ const Landing = (props) => {
                         <div style={{opacity}} className={styles.nav_container}>
                             <p onClick={() => updateBodyType(landingStates.PROJECTS)} className={styles.landing_nav_link}>Projects</p>
                             <p className={styles.landing_nav_link}>Resume</p>
-                            <p className={styles.landing_nav_link}>Blog</p>
+                            <p onClick={() => updateBodyType(landingStates.BLOG)} className={styles.landing_nav_link}>Blog</p>
                         </div>
                     }
                 </Spring>
