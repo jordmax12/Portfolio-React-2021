@@ -80,11 +80,10 @@ const Home = (props) => {
       transform: "translate(-300px, 0px)"
     };
   }
-  console.log(bodyType)
   return (
     <div className={styles.home_container}>
-      <p onClick={() => updateBodyType(landingStates.BLOG)}> go to blog </p>
-      <p onClick={() => updateBodyType(landingStates.PROJECTS)}> go to projects </p>
+      {/* <p onClick={() => updateBodyType(landingStates.BLOG)}> go to blog </p>
+      <p onClick={() => updateBodyType(landingStates.PROJECTS)}> go to projects </p> */}
       <Transition
         items={bodyType}
         key={bodyType => bodyType}

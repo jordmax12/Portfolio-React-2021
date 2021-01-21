@@ -3,6 +3,11 @@ import styles from "./index.module.scss";
 import Bg from "./bg";
 import { useTransition, animated, config } from 'react-spring';
 
+
+// need to redo this, look at modules/timeline, and look how he does the background animation.
+// lets de-engineer and learn from this. 
+// construct a component that transitions background, maybe accepts the animation as a prop. 
+
 const BackgroundAnimator = ({ isFullScreen = true, showDescription = true, clientX = 0, clientY = 0, isFirstTime = true, children }) => {
   console.log('here?1')
   const containerTransition = useTransition(isFullScreen, null, {

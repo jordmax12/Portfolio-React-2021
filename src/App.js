@@ -21,7 +21,6 @@ function App() {
 
   return (
     <div className="App">
-      <BackgroundAnimator>
         <Router>
           <Suspense fallback={null}>
             <Switch>
@@ -34,7 +33,6 @@ function App() {
             </Switch>
           </Suspense>
         </Router>
-      </BackgroundAnimator>
     </div>
   );
 }
