@@ -14,44 +14,45 @@ const Header = (props) => {
   }, [showHeader])
 
   return (
-
-    <div className={styles.main_header_container}>
-      <Spring delay={100} to={{ opacity: showHeader ? 1 : 0 }}>
+    <>
+      <div className={styles.main_header_container}>
+        <Spring delay={100} to={{ opacity: showHeader ? 1 : 0 }}>
+            {({opacity}) =>
+            <>
+              <div className={styles.top_header_container} style={{opacity}}>
+                {
+                  (
+                    <>
+                      <span className={styles.top_header_title}>Jordan Max - Full Stack Engineer</span>
+                      <div className={styles.top_header_externals}>
+                          <span className={styles.top_header_external_link}>LinkedIn</span>
+                          <span className={styles.top_header_external_link}>Github</span>
+                          <span className={styles.top_header_external_link}>Medium</span>
+                      </div>
+                    </>
+                  )
+                }
+              </div>
+            </>
+          }
+        </Spring>
+        <Spring delay={100} to={{ opacity: showHeader ? 1 : 0 }}>
           {({opacity}) =>
-          <>
-            <div className={styles.top_header_container} style={{opacity}}>
-              {
-                (
-                  <>
-                    <span className={styles.top_header_title}>Jordan Max - Full Stack Engineer</span>
-                    <div className={styles.top_header_externals}>
-                        <span className={styles.top_header_external_link}>LinkedIn</span>
-                        <span className={styles.top_header_external_link}>Github</span>
-                        <span className={styles.top_header_external_link}>Medium</span>
-                    </div>
-                  </>
-                )
-              }
+            <div style={{ width: `${showHeaderWidth}%` }} className={styles.header_container}>
+                <span style={{opacity}} className={headerNavTextClasses}>LinkedIn</span>
+                <span style={{opacity}} className={headerNavTextClasses}>Github</span>
+                <span style={{opacity}} className={headerNavTextClasses}>Medium</span>
             </div>
-          </>
-        }
-      </Spring>
-      <Spring delay={100} to={{ opacity: showHeader ? 1 : 0 }}>
-        {({opacity}) =>
-          <div style={{ width: `${showHeaderWidth}%` }} className={styles.header_container}>
-              <span style={{opacity}} className={headerNavTextClasses}>LinkedIn</span>
-              <span style={{opacity}} className={headerNavTextClasses}>Github</span>
-              <span style={{opacity}} className={headerNavTextClasses}>Medium</span>
-          </div>
-        }
-      </Spring>
+          }
+        </Spring>
 
-      <Spring delay={100} to={{ opacity: !showHeader ? 1 : 0 }}>
-        {({opacity}) =>
-          <p style={{opacity}} className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
-        }
-      </Spring>
-    </div>
+        <Spring delay={100} to={{ opacity: !showHeader ? 1 : 0 }}>
+          {({opacity}) =>
+            <p style={{opacity}} className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
+          }
+        </Spring>
+      </div>
+    </>
   )
 }
 

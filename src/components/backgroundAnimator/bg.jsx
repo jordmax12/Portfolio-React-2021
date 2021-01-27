@@ -15,16 +15,16 @@ const Bg = ({ clientX, clientY, children }) => {
   const animationProps = useSpring({ xy: calc(clientX, clientY), config: { mass: 10, tension: 550, friction: 240 } });
   return (
       <Fragment>
-        <animated.div className={styles.background_image_layer} style={{ transform: animationProps.xy.interpolate(trans1), backgroundImage: `url(${image1})` }}>
+        <animated.div className={styles.background_image_layer} style={{ backgroundImage: `url(${image1})` }}>
           <div style={{ width: '100%', height: '100%', position: 'relative'}}>
             {children}
           </div>
         </animated.div>
-        <animated.div className={styles.background_image_layer} style={{ transform: animationProps.xy.interpolate(trans2), backgroundImage: `url(${image2})` }}>
+        {/* <animated.div className={styles.background_image_layer} style={{ transform: animationProps.xy.interpolate(trans2), backgroundImage: `url(${image2})` }}>
             <div style={{ width: '100%', height: '100%', position: 'relative'}}>
               {children}
             </div>
-        </animated.div>
+        </animated.div> */}
         {/* <animated.div className={styles.background_image_layer} style={{ transform: animationProps.xy.interpolate(trans3), backgroundImage: `url(${image2})` }}>
         </animated.div> */}
       </Fragment>

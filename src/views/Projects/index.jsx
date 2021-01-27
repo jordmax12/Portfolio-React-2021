@@ -2,7 +2,8 @@ import TimelineSelector from '../../components/timelineSelector'
 import { useState, useEffect } from 'react'
 import { getImagePosition, getBackgroundTransition, random } from '../../helpers/helper';
 import { projects } from '../../helpers/projectsConstants';
-import Gallery from '../../components/gallery'
+import Gallery from '../../components/gallery';
+import BackgroundAnimator from '../../components/backgroundAnimator';
 import styles from "./projects.module.scss";
 import Div from "../../components/div";
 import find from "lodash/find";
@@ -13,6 +14,7 @@ const Projects = () => {
   const [matchedProjects, setMatchedProjects] = useState(projects)
   const [changeProjects, setChangeProducts] = useState(false);
   const [show, setShow] = useState(false);
+  const [triggerBg, setTriggerBg] = useState(false);
   // TODO: is the following needed? review.
   /* eslint-disable no-unused-vars */
   const [isFirstAnimation, setIsFirstAnimation] = useState(false)
@@ -31,6 +33,10 @@ const Projects = () => {
       ...backgroundTransition,
       imagePosition
     }
+  })
+
+  useEffect(() => {
+    setTriggerBg(true)
   })
 
   useEffect(() => {
@@ -94,6 +100,7 @@ const Projects = () => {
           return (
             <div style={{ width: '100%', height: '100%' }}>
       <Div row fillParent align="stretch" className={styles.timeline_container}>
+        
         {/* <img alt="tech-logo" src={bgTest} className={styles.background_static_image} /> */}
         <div className="container">
           <div className="row">
@@ -166,6 +173,7 @@ const Projects = () => {
             </div>
           </div>
         </div>
+        <BackgroundAnimator triggerBg={triggerBg} />
       </Div>
     </div>
           )
