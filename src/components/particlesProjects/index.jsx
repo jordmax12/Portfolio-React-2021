@@ -8,224 +8,118 @@ const ParticlesProjects = (props) => {
     <div className={styles.particlesLandingContainer}>
       <div className={styles.particlesLandingHolder}>
         <Particles
-          height={"250px"}
+          height={"300px"}
+          width={"500px"}
+          style={{
+              backgroundColor: 'transparent'
+          }}
           params={{
-            particles: {
-              number: {
-                value: 200,
-                limit: 300,
-                density: {
-                  enable: true,
-                  value_area: 800
-                }
-              },
-              color: {
-                value: "#ffffff"
-              },
-              shape: {
-                type: "circle",
-                stroke: {
-                  width: 0,
-                  color: "#000000"
-                },
-                polygon: {
-                  nb_sides: 5
-                },
-                image: {
-                  src: "images/github.svg",
-                  width: 100,
-                  height: 100
-                }
-              },
-              opacity: {
-                value: 0.5,
-                random: true,
-                anim: {
-                  enable: true,
-                  speed: 1,
-                  opacity_min: 0.5,
-                  sync: false
-                }
-              },
-              size: {
-                value: 30,
-                random: true,
-                anim: {
-                  enable: true,
-                  speed: 10,
-                  size_min: 10,
-                  sync: false
-                }
-              },
-              line_linked: {
-                enable: false,
-                distance: 100,
-                color: "#ffffff",
-                opacity: 1,
-                width: 1
-              },
-              move: {
-                enable: true,
-                speed: 3,
-                direction: "none",
-                random: false,
-                straight: false,
-                out_mode: "out",
-                bounce: false,
-                attract: {
-                  enable: false,
-                  rotateX: 600,
-                  rotateY: 1200
-                }
-              }
+            detectRetina: false,
+            fpsLimit: 60,
+            background: {
+              color: "transparent",
             },
             interactivity: {
-              detect_on: "canvas",
+              detectsOn: "canvas",
               events: {
                 onHover: {
                   enable: true,
                   mode: "bubble",
-                  parallax: {
-                    enable: true,
-                    force: 60,
-                    smooth: 10
-                  }
                 },
-                onClick: {
-                  enable: true,
-                  mode: "push"
-                },
-                resize: true
+                resize: true,
               },
               modes: {
-                grab: {
-                  distance: 400,
-                  lineLinked: {
-                    opacity: 1
-                  }
-                },
                 bubble: {
-                  distance: 400,
-                  size: 100,
+                  color: "#fdb927",
+                  distance: 100,
                   duration: 2,
                   opacity: 1,
-                  speed: 2
+                  size: 10,
+                  speed: 3,
                 },
-                repulse: {
-                  distance: 200
-                },
-                push: {
-                  particles_nb: 4
-                },
-                remove: {
-                  particles_nb: 2
-                }
-              }
+              },
             },
-            backgroundMask: {
+            particles: {
+              color: {
+                value: "#000",
+              },
+              links: {
+                blink: false,
+                color: "#fff",
+                consent: false,
+                distance: 20,
+                enable: true,
+                opacity: 0.8,
+                width: 1,
+              },
+              move: {
+                attract: {
+                  enable: false,
+                  rotate: {
+                    x: 600,
+                    y: 1200,
+                  },
+                },
+                bounce: false,
+                direction: "none",
+                enable: true,
+                outMode: "bounce",
+                random: false,
+                speed: 1,
+                straight: false,
+              },
+              number: {
+                density: {
+                  enable: false,
+                  area: 2000,
+                },
+                limit: 0,
+                value: 150,
+              },
+              opacity: {
+                animation: {
+                  enable: true,
+                  minimumValue: 0.05,
+                  speed: 3,
+                  sync: false,
+                },
+                random: false,
+                value: 1,
+              },
+              shape: {
+                type: "circle",
+              },
+              size: {
+                animation: {
+                  enable: false,
+                  minimumValue: 0.1,
+                  speed: 40,
+                  sync: false,
+                },
+                random: true,
+                value: 3,
+              },
+            },
+            polygon: {
               enable: true,
-              cover: {
-                color: {
-                  value: {
-                    r: 34,
-                    g: 40,
-                    b: 49
-                  }
-                }
-              }
+              scale: 0.5,
+              type: "inline",
+              move: {
+                radius: 10,
+              },
+              url:
+                "https://gist.githubusercontent.com/jordmax12/cea40cc3f05ebf3a83e90b4102a6765a/raw/aae70f1aad573a2de711d189757c5afe5394c036/Test.svg",
+              inline: {
+                arrangement: "equidistant",
+              },
+              draw: {
+                enable: true,
+                stroke: {
+                  color: "rgba(255, 255, 255, .2)",
+                },
+              },
             },
-            retina_detect: true,
-            fps_limit: 30,
-            background: {
-              image:
-                "url('https://cdn.matteobruni.it/images/particles/background3.jpg')"
-            }
           }}
-        //   params={{
-        //     particles: {
-        //       number: {
-        //         value: 90,
-        //         density: {
-        //           enable: true,
-        //           value_area: 800,
-        //         },
-        //       },
-        //       color: {
-        //         value: "#ffffff",
-        //       },
-        //       shape: {
-        //         type: "circle",
-        //         stroke: {
-        //           width: 0,
-        //           color: "#000000",
-        //         },
-        //         image: {
-        //           src: "img/github.svg",
-        //           width: 100,
-        //           height: 100,
-        //         },
-        //       },
-        //       opacity: {
-        //         value: 0.4,
-        //         random: true,
-        //         anim: {
-        //           enable: true,
-        //           speed: 1,
-        //           opacity_min: 0.1,
-        //           sync: false,
-        //         },
-        //       },
-        //       size: {
-        //         value: 3,
-        //         random: true,
-        //         anim: {
-        //           enable: true,
-        //           speed: 2,
-        //           size_min: 0.1,
-        //           sync: false,
-        //         },
-        //       },
-        //       line_linked: {
-        //         enable_auto: true,
-        //         distance: 100,
-        //         color: "#fff",
-        //         opacity: 1,
-        //         width: 1,
-        //         condensed_mode: {
-        //           enable: false,
-        //           rotateX: 600,
-        //           rotateY: 600,
-        //         },
-        //       },
-        //       move: {
-        //         enable: true,
-        //         speed: 1,
-        //         direction: "none",
-        //         random: false,
-        //         straight: false,
-        //         out_mode: "out",
-        //         bounce: false,
-        //         attract: {
-        //           enable: false,
-        //           rotateX: 600,
-        //           rotateY: 1200,
-        //         },
-        //       },
-        //     },
-        //     interactivity: {
-        //       detect_on: "canvas",
-        //       events: {
-        //         onhover: {
-        //           enable: false,
-        //         },
-        //         onclick: {
-        //           enable: false,
-        //         },
-        //         resize: true,
-        //       },
-        //     },
-        //     retina_detect: true,
-        //   }}
         />
       </div>
       {props.children}
