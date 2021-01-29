@@ -4,7 +4,8 @@ import Typed from 'react-typed';
 import { Spring } from "react-spring/renderprops";
 import Balloon from '../../components/balloon';
 import Jordan from '../../components/jordan';
-import { landingStates } from '../../assets/utils'
+import { landingStates } from '../../assets/utils';
+import Particles from '../../components/particlesLanding';
 
 const generateNormalizedPercentLoaded = (percentLoaded) => {
     return percentLoaded && percentLoaded !== 0 ? Math.ceil(90 * parseFloat(percentLoaded / 100)) : 0;
@@ -89,7 +90,7 @@ const Landing = (props) => {
     }
 
     return (
-        <>
+        <Particles>
             {
                 <Spring delay={0} to={{ opacity: !showAnimationElements ? 1 : 0 }}>
                     {({opacity}) =>
@@ -124,7 +125,7 @@ const Landing = (props) => {
                         </div>
                     }
                 </Spring>
-        </>
+        </Particles>
     )
 }
 
