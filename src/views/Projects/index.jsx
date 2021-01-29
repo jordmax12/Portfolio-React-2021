@@ -9,6 +9,8 @@ import Div from "../../components/div";
 import find from "lodash/find";
 import { Transition, Spring } from "react-spring/renderprops";
 import { technologies } from '../../helpers/projectsConstants';
+import ParticlesProjects from '../../components/particlesProjects';
+
 const Projects = () => {
   const [selectedTechId, setSelectedTechId] = useState('nodejs')
   const [matchedProjects, setMatchedProjects] = useState(projects)
@@ -82,7 +84,7 @@ const Projects = () => {
     return techItem.id === selectedTechId;
   });
   return (
-    <>
+    <ParticlesProjects>
   <Transition
     items={show}
     from={{ opacity: 0 }}
@@ -176,7 +178,7 @@ const Projects = () => {
     }
     
   </Transition>
-  </>
+  </ParticlesProjects>
   );
 }
 
