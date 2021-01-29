@@ -2,7 +2,6 @@ import React from "react";
 import Particles from "react-particles-js";
 import styles from "./particlesProjects.module.scss";
 import "pathseg";
-import awsSvg from '../../assets/images/backgrounds/AWS.svg'
 
 const ParticlesProjects = (props) => {
   return (
@@ -132,7 +131,7 @@ const ParticlesProjects = (props) => {
                 move: {
                     radius: 10
                 },
-                url: "blob:https://maketext.io/8e606bea-f00c-4b60-b679-41dfcf5b79e8",
+                url: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
                 inline: {
                     arrangement: "equidistant"
                 },
