@@ -9,6 +9,7 @@ const ParticlesLanding = (props) => {
                 <Particles
                     height={'100vh'}
                     params={{
+                        fpsLimit: 30,
                         "particles": {
                             "number": {
                                 "value": 200,

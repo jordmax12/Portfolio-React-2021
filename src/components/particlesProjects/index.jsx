@@ -15,7 +15,7 @@ const ParticlesProjects = (props) => {
           }}
           params={{
             detectRetina: false,
-            fpsLimit: 60,
+            fpsLimit: 30,
             background: {
               color: "transparent",
             },
