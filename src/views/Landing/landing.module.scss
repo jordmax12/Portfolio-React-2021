@@ -34,10 +34,12 @@ $breakpoint-large: 60em;
 }
 
 .landing_nav_link {
-    color: grey;
-    font-size: 1em;
+    // color: grey;
+    color: lightblue;
+    font-size: 1.3em;
     padding-left: 15px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .landing_nav_link:hover {

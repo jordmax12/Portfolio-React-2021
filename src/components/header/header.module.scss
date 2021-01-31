@@ -45,8 +45,10 @@ $breakpoint-large: 60em; // 960px
     margin-right: 10px;
     margin-left: 10px;
     cursor: pointer;
+    color: lightblue;
+    font-weight: bold;
     &:hover {
-        color: darkgrey;
+        color: white;
     }
 
     @media only screen and (max-width: 566px) {
@@ -89,7 +91,7 @@ $breakpoint-large: 60em; // 960px
     color: black;
     cursor: pointer;
     &:hover {
-        color: darkgrey;
+        color: grey;
     }
 
     display: none;

@@ -84,7 +84,7 @@ const Projects = () => {
     return techItem.id === selectedTechId;
   });
   return (
-    <ParticlesProjects>
+    <ParticlesProjects currentStack={selectedTechId}>
   <Transition
     items={show}
     from={{ opacity: 0 }}

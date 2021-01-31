@@ -3,6 +3,11 @@ import Particles from "react-particles-js";
 import styles from "./particlesProjects.module.scss";
 import "pathseg";
 
+const svgLinks = {
+  'aws': '',
+
+}
+
 const ParticlesProjects = (props) => {
   return (
     <div className={styles.particlesLandingContainer}>
@@ -74,7 +79,7 @@ const ParticlesProjects = (props) => {
                   area: 2000,
                 },
                 limit: 0,
-                value: 150,
+                value: 100,
               },
               opacity: {
                 animation: {
