@@ -2,12 +2,12 @@ import React from "react";
 import Particles from "react-particles-js";
 import styles from "./particlesProjects.module.scss";
 import "pathseg";
-
+/* eslint-disable no-unused-vars */
 const svgLinks = {
   'aws': '',
 
 }
-
+/* eslint-enable no-unused-vars */
 const ParticlesProjects = (props) => {
   return (
     <div className={styles.particlesLandingContainer}>

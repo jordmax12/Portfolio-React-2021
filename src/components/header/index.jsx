@@ -46,7 +46,7 @@ const Header = (props) => {
           }
         </Spring>
 
-        <Spring delay={100} to={{ opacity: !showHeader ? 1 : 0 }}>
+        <Spring delay={100} to={{ opacity: !showHeader ? .5 : 0 }}>
           {({opacity}) =>
             <p style={{opacity}} className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
           }

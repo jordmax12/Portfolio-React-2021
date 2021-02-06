@@ -3,7 +3,6 @@ import './App.scss';
 import './assets/scss/simple-grid.scss';
 import { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import BackgroundAnimator from './components/backgroundAnimator'
 import Loader from './components/loader/loader';
 
 const Header = React.lazy(() => import("./components/header"));

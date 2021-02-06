@@ -17,14 +17,14 @@ const getCurrentWidth = () => window.innerWidth;
 const mapNormalizedFontSize = () => {
     const height = getCurrentHeight();
     const width = getCurrentWidth();
-    let fontSize = '15.5vh';
+    let fontSize = '12.5vh';
     if(width < 500) {
         fontSize = '8.5vh';
     } else if (width > 500 && width < 700) {
         fontSize = '15.5vh';
     }
     else if(height < 900 && height >= 721) {
-        fontSize = "25.5vh";
+        fontSize = "12.5vh";
     } else if(height < 721) {
         fontSize = "160px";
     }
@@ -98,9 +98,9 @@ const Landing = (props) => {
                             <h1 className={`${styles.gineos_medium} ${styles.ninety_text}`} style={{ fontSize: `${normalizedFontSize}`}}>
                                 <span  style={{opacity}}>
                                     {renderTyped()}
-                                    <span style={{ verticalAlign: 'middle', color: 'grey', fontSize: '18px'}}>
-                                    since
-                                </span>
+                                    <span style={{ verticalAlign: 'middle', color: 'grey', fontSize: '18px', fontFamily: 'Spartan, sans-serif'}}>
+                                        since
+                                    </span>
                                 </span> 
                                 '{normalizedPercentLoaded}
                             </h1>

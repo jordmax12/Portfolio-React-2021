@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { getImagePosition, getBackgroundTransition, random } from '../../helpers/helper';
 import { projects } from '../../helpers/projectsConstants';
 import Gallery from '../../components/gallery';
-import BackgroundAnimator from '../../components/backgroundAnimator';
 import styles from "./projects.module.scss";
 import Div from "../../components/div";
 import find from "lodash/find";

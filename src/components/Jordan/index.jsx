@@ -14,13 +14,14 @@ const Jordan = (props) => {
     const [jordanStyle, setJordanStyle] = useState({ bottom: `${jordanY}px`});
     const [show, setShow] = useState(true);
 
+    /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
         if(animationCompleted && show) {
             setShow(false);
         }
     }, [animationCompleted])
 
-
+    
     useEffect(() => {
         setJordanY(balloonY - 94);
 
@@ -49,6 +50,7 @@ const Jordan = (props) => {
             }, 100)
         }
     }, [percent, balloonY])
+    /* eslint-enable react-hooks/exhaustive-deps */
     return (
         <img src={jordanImage} className={jordanClasses} style={{...jordanStyle}} alt="jordan" />
     )

@@ -25,7 +25,7 @@ const Balloon = (props) => {
     const [balloonY, setBalloonY] = useState(findBalloonY());
     const [balloonClass, setBalloonClass] = useState(styles.balloon);
     const [trigger, setTrigger] = useState(false);
-
+    /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
         setBalloonHeight(findHeight());
         setBalloonWidth(findWidth());
@@ -38,14 +38,13 @@ const Balloon = (props) => {
             }, 600)
 
         }
-        // eslint-disable react-hooks/exhaustive-deps
     }, [percent])
-
+    /* eslint-enable react-hooks/exhaustive-deps */
 
 
     return (
         <Spring delay={0} to={{ opacity: !trigger ? 1 : 0 }}>
-            {({opacity}) =>
+            {({opacity}) =>                
                 <div className={balloonClass} style={{ lineHeight: `${balloonHeight}px`, height: `${balloonHeight}px`, width: `${balloonWidth}px`, bottom: `${balloonY}px`}} />
             }
         </Spring>
