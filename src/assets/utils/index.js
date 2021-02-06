@@ -1,4 +1,3 @@
-import React from 'react';
 import reactStringReplace from 'react-string-replace';
 
 export const random = (min, max) => { // min and max included 
