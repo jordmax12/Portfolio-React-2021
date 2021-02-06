@@ -1,10 +1,5 @@
-// @import '~Styles/colors.module';
-// @import '~Styles/mixins.module';
-
-$color-dark: #333333;
-$color-green: #4caf50;
-$color-blue: #2196f3;
-$color-brown-grey: #878787;
+@import '../../assets/scss/Styles/mixins.module.scss';
+@import '../../assets/scss/Styles/colors.module.scss';
 
 $transition-fast-in-slow-out: cubic-bezier(0.1, 0.82, 0.25, 1);//cubic-bezier(0.1, 0.82, 0.25, 1);
 $transition-slow-in-fast-out: cubic-bezier(0.550, 0.055, 0.675, 0.190);
@@ -13,39 +8,16 @@ $mobile-width: "only screen and (max-width : 450px)";
 $tablet-width: "only screen and (max-width : 720px)";
 $desktop-width: "only screen and (max-width : 1024px)";
 
-
-@mixin small {
-  @media #{$mobile-width}{
-    @content;
-  }
-}
-
-@mixin medium {
-  @media #{$tablet-width}{
-    @content;
-  }
-}
-
-@mixin large {
-  @media #{$desktop-width}{
-    @content;
-  }
-}
-
 .timeline_container {
-  // padding: 60px 0px 0px 0px;
   position: relative;
   height: 100%;
-  // overflow: hidden;
-
+  margin-top: 50px;
 
   .background_static_image {
     position: absolute;
     object-position: left top;
     object-fit: cover;
-    // background-size: cover;
     opacity: 0.04;
-
     top: 0;
     left: 0;
     width: 100vw;
@@ -58,7 +30,6 @@ $desktop-width: "only screen and (max-width : 1024px)";
     left: 0;
     bottom: 0;
     right: 0;
-    // width: 100%;
     width: 50px;
     height: 50px;
     margin-left: auto;
@@ -68,15 +39,9 @@ $desktop-width: "only screen and (max-width : 1024px)";
 
     .background_image {
       object-fit: cover;
-      // width: 280px;
       position: absolute;
-      // position: relative;
-      // height: 38px;
-      // width: 38px;
       width: 100%;
       height: auto;
-      // margin-left: auto;
-      // margin-right: auto;
     }
   }
 
@@ -85,7 +50,6 @@ $desktop-width: "only screen and (max-width : 1024px)";
       height: 250px;
     }
     .background_image {
-      // width: auto !important;
       height: 100% !important;
       text-align: center;
       object-fit: contain !important;
@@ -113,7 +77,6 @@ $desktop-width: "only screen and (max-width : 1024px)";
   .left_container {
     min-width: 40vw;
     padding-top: 6px;
-    //    background-image: linear-gradient(rgba(0,0,0,0.3), transparent);
     z-index: 3;
     position: relative;
 
@@ -139,11 +102,9 @@ $desktop-width: "only screen and (max-width : 1024px)";
         .description:first-child {
           margin-top: 0;
         }
-      
       }
     }
   }
-
 
   .right_container {
     padding-left: 100px;

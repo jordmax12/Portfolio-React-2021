@@ -1,7 +1,4 @@
-$color-dark: #333333;
-$color-green: #4caf50;
-$color-blue: #2196f3;
-$color-brown-grey: #878787;
+@import '../../assets/scss/Styles/colors.module.scss';
 
 $transition-type: cubic-bezier(0.550, 0.055, 0.675, 0.190);
 

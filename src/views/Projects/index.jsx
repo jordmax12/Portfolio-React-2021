@@ -94,7 +94,7 @@ const Projects = () => {
       show => show && (
         value => {
           return (
-            <div style={{ width: '100%', height: '100%' }}>
+            <div style={{ width: '100%', height: 'calc(100% - 150px)' }}>
               <Div row fillParent align="stretch" className={styles.timeline_container}>
                 
                 {/* <img alt="tech-logo" src={bgTest} className={styles.background_static_image} /> */}

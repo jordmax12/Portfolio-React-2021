@@ -1,3 +1,5 @@
+@import './assets/scss/Styles/colors.module.scss';
+
 html, body {
   overflow: auto;
   height: 100%;
@@ -71,7 +73,7 @@ html, body {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: $color-white;
 }
 
 .App-link {
@@ -131,7 +133,7 @@ code {
 }
 
 .source {
-  color: #4db2ec;
+  color: $color-light-blue-link;
 }
 
 .blogHeadline {
@@ -139,12 +141,12 @@ code {
 }
 
 .blogLink {
-  color: white;
+  color: $color-white;
 }
 
 .blogLink:hover {
   cursor: pointer;
-  color: #4db2ec;
+  color: $color-light-blue-link;
 }
 
 .button {
@@ -163,7 +165,7 @@ code {
 }
 
 .button:hover {
-  background-color: #4db2ec;
+  background-color: $color-light-blue-link;
 }
 
 a,p,div,h1,h2,h3,h4,h5,h6, span {
