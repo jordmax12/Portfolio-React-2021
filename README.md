@@ -7,9 +7,6 @@
 [AWS Cloudfront](https://aws.amazon.com/cloudfront/) <br />
 [AWS Route 53](https://aws.amazon.com/route53/) <br />
 
-### Inspiration taken from:
-[Riyaz Ahmed](https://github.com/riyaz942/web-portfolio) <br />
-
 ## Available Scripts
 
 In the project directory, you can run:
