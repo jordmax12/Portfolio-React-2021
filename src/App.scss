@@ -12,22 +12,8 @@ html, body {
   height: 100%;
   width: 100%;
   position: relative;
-  background-color: #222831;
-  // background-color:rgba(0, 0, 0, 0.5);
+  background-color: $color-dark;
 }
-
-// .App::after {
-//   content: "";
-//   background-image: url("./assets/images/backgrounds/Carbon.jpg");
-//   opacity: 0.5;
-//   opacity: 0.5;
-//   top: 0;
-//   left: 0;
-//   bottom: 0;
-//   right: 0;
-//   position: absolute;
-//   z-index: -1; 
-// }
 
 .tal {
   text-align: left;
@@ -59,36 +45,6 @@ html, body {
   position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: $color-white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -101,7 +57,7 @@ body {
   -ms-overflow-style: none;
   overflow: -moz-scrollbars-none;
   font-family: 'Roboto', sans-serif;
-  background-color: black;
+  background-color: $color-dark;
 }
 
 ::-webkit-scrollbar { width: 0 !important }
@@ -128,7 +84,7 @@ code {
   &:hover:not(.ignoreTextHover) {
     transform: scale(1.1);
     opacity: 0.9;
-    color: #fff;
+    color: $color-white;
   }
 }
 
@@ -150,8 +106,8 @@ code {
 }
 
 .button {
-  background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
-  color:rgb(59, 59, 59);
+  background-color: -internal-light-dark($color-white, $color-dark);
+  color:$color-dark;
   display: inline-block;
   font-size: 13px;
   font-weight: 500;
