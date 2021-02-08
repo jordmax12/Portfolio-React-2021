@@ -7,6 +7,9 @@
 [AWS Cloudfront](https://aws.amazon.com/cloudfront/) <br />
 [AWS Route 53](https://aws.amazon.com/route53/) <br />
 
+## Pre-requisites
+- Deploy script required a environment variable called `JORDAN_CLOUDFRONT_DISTRIBUTION_ID`
+
 ## Available Scripts
 
 In the project directory, you can run:
