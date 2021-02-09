@@ -26,9 +26,11 @@ jobs:
     - name: Test Env
       run: |
         echo 'The GitHub Action Secret will be masked:  '
-        echo ${{ secrets.SECRET_TOKEN }}
-        echo 'Trick to echo GitHub Actions Secret:  '
-        echo ${{secrets.SECRET_TOKEN}} | sed 's/./& /g'
+        echo ${{ secrets.GITHUB_TOKEN }}
+        echo 'Testing secret if its masked: '
+        echo ${{ secrets.AWS_ACCESS_KEY }}
+        # echo 'Trick to echo GitHub Actions Secret: '
+        # echo ${{secrets.AWS_ACCESS_KEY}} | sed 's/./& /g'
     # - name: Install Packages
     #   run: npm ci
     # - name: Build page
