@@ -26,6 +26,8 @@ jobs:
     - name: Build page
       working-directory: ./src
       run: npm run build
+    - name: Deploy
+      run: npm run deploy
 
 # This is a basic workflow to help you get started with Actions
 
