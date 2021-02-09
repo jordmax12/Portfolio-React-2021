@@ -26,11 +26,10 @@ jobs:
     - name: Setup Env
       run: |
         touch .env
-        echo AWS_ACCESS_KEY_ID =${{ secrets.AWS_ACCESS_KEY_ID }} >> .env
-        echo AWS_SECRET_ACCESS_KEY =${{ secrets.AWS_SECRET_ACCESS_KEY }} >> .env
-        echo AWS_DEFAULT_REGION =${{ secrets.AWS_REGION }} >> .env
-        echo AWS_PRODUCTION_BUCKET_NAME =${{ secrets.AWS_PRODUCTION_BUCKET_NAME }} >> .env
-        echo JORDAN_CLOUDFRONT_DISTRIBUTION_ID =${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} >> .env
+        echo AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} >> .env
+        echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} >> .env
+        echo AWS_DEFAULT_REGION=${{ secrets.AWS_REGION }} >> .env
+        echo JORDAN_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} >> .env
     - name: Deploy
       run: AWS_PRODUCTION_BUCKET_NAME=2021-portfolio-react JORDAN_CLOUDFRONT_DISTRIBUTION_ID=123 npm run deploy
       env:
