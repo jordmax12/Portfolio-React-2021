@@ -3,7 +3,7 @@ import styles from './landing.module.scss';
 import Typed from 'react-typed';
 import { Spring } from "react-spring/renderprops";
 import Balloon from '../../components/balloon';
-import Jordan from '../../components/jordan';
+import Jordan from '../../components/Jordan';
 import { landingStates } from '../../assets/utils';
 import ParticlesLanding from '../../components/particlesLanding';
 

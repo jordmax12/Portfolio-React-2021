@@ -22,7 +22,7 @@ jobs:
         key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         secret: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Install Packages
-      run: npm install
+      run: npm ci
     - name: Build page
       working-directory: ./src
       run: npm run build
