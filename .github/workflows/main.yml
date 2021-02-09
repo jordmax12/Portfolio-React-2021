@@ -27,18 +27,13 @@ jobs:
     - name: Build page
       working-directory: ./src
       run: npm run build
-    - name: Setup Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ secrets.AWS_REGION }}
     - name: Deploy
       run: |
         echo $AWS_PRODUCTION_BUCKET_NAME
         echo ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
         aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws sts assume-role --role-arn arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID}}:role/Deployment-Role --role-session-name s3-access-example
         aws s3 sync build/ s3://${{ secrets.AWS_PRODUCTION_BUCKET_NAME }} --debug
         aws cloudfront create-invalidation --distribution-id ${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} --paths \"/*\" --debug
       env:
