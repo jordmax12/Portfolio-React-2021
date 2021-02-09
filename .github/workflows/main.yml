@@ -29,9 +29,10 @@ jobs:
       run: npm run build
     - name: Deploy
       run: |
-        echo ${{ env.AWS_PRODUCTION_BUCKET_NAME }}
-        aws s3 sync build/ s3://${{ env.AWS_PRODUCTION_BUCKET_NAME }} --debug
-        aws cloudfront create-invalidation --distribution-id ${{ env.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} --paths \"/*\" --debug
+        echo $AWS_PRODUCTION_BUCKET_NAME
+        echo ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
+        aws s3 sync build/ s3://${{ secrets.AWS_PRODUCTION_BUCKET_NAME }} --debug
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} --paths \"/*\" --debug
       env:
         AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
