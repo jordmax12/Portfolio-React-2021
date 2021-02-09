@@ -41,3 +41,11 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Deploy
         run: npm run deploy
+        with:
+          profile: jordan
+          region: ${{ secrets.AWS_REGION }}
+          key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
+          SOURCE_DIR: "build"
