@@ -32,7 +32,7 @@ jobs:
         echo AWS_PRODUCTION_BUCKET_NAME =${{ secrets.AWS_PRODUCTION_BUCKET_NAME }} >> .env
         echo JORDAN_CLOUDFRONT_DISTRIBUTION_ID =${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} >> .env
     - name: Deploy
-      run: npm run deploy
+      run: AWS_PRODUCTION_BUCKET_NAME =${{ secrets.AWS_PRODUCTION_BUCKET_NAME }} JORDAN_CLOUDFRONT_DISTRIBUTION_ID =${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} npm run deploy
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
