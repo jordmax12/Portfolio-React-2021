@@ -28,7 +28,7 @@ jobs:
         echo 'The GitHub Action Secret will be masked:  '
         echo ${{ secrets.GITHUB_TOKEN }}
         echo 'Testing secret if its masked: '
-        echo ${{ secrets.AWS_ACCESS_KEY }}
+        echo ${{ env.AWS_ACCESS_KEY }}
         # echo 'Trick to echo GitHub Actions Secret: '
         # echo ${{secrets.AWS_ACCESS_KEY}} | sed 's/./& /g'
     # - name: Install Packages
