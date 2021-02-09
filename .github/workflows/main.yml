@@ -39,6 +39,7 @@ jobs:
         AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
         AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
         JORDAN_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 # This is a basic workflow to help you get started with Actions
 
