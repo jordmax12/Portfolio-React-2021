@@ -22,16 +22,20 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-        publish_dir: ./build
     - name: Test Env
       run: |
         echo 'The GitHub Action Secret will be masked:  '
         echo ${{ secrets.GITHUB_TOKEN }}
         echo 'Testing secret if its masked: '
-        echo ${{ secrets[env.AWS_ACCESS_KEY] }}
+        echo ${{ secrets[env.AWS_ACCESS_KEY_ID] }}
         printenv
         # echo 'Trick to echo GitHub Actions Secret: '
-        # echo ${{secrets.AWS_ACCESS_KEY}} | sed 's/./& /g'
+        # echo ${{secrets.AWS_ACCESS_KEY_ID}} | sed 's/./& /g'
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
     # - name: Install Packages
     #   run: npm ci
     # - name: Build page
