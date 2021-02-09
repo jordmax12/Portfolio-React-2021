@@ -8,6 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: true
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+      AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
+      JORDAN_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }}
+      AWS_PRODUCTION_BUCKET_NAME: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
       matrix:
         node-version: [14.x]
@@ -31,14 +38,7 @@ jobs:
         echo AWS_DEFAULT_REGION=${{ secrets.AWS_REGION }} >> .env
         echo JORDAN_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} >> .env
     - name: Deploy
-      run: AWS_PRODUCTION_BUCKET_NAME=2021-portfolio-react JORDAN_CLOUDFRONT_DISTRIBUTION_ID=123 npm run deploy
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
-        AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
-        JORDAN_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: AWS_PRODUCTION_BUCKET_NAME=$AWS_PRODUCTION_BUCKET_NAME JORDAN_CLOUDFRONT_DISTRIBUTION_ID=$JORDAN_CLOUDFRONT_DISTRIBUTION_ID npm run deploy
 
 # This is a basic workflow to help you get started with Actions
 
