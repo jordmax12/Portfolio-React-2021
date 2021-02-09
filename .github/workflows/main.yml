@@ -4,8 +4,10 @@ on:
     branches:
       - master
 jobs:
-  deploy:
+  cicd:
     runs-on: ubuntu-latest
+    env:
+      CI: true
     strategy:
       matrix:
         node-version: [14.x]
