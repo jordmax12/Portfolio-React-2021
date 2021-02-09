@@ -27,8 +27,8 @@ jobs:
         echo 'The GitHub Action Secret will be masked:  '
         echo ${{ secrets.GITHUB_TOKEN }}
         echo 'Testing secret if its masked: '
-        echo ${{ secrets[env.AWS_ACCESS_KEY_ID] }}
-        printenv
+        echo ${{ secrets.AWS_ACCESS_KEY_ID }}
+        echo ${{ secrets.TEST }}
         # echo 'Trick to echo GitHub Actions Secret: '
         # echo ${{secrets.AWS_ACCESS_KEY_ID}} | sed 's/./& /g'
       env:
@@ -36,6 +36,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
+        TEST: ${{ secrets.TEST }}
     # - name: Install Packages
     #   run: npm ci
     # - name: Build page
