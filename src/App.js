@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Loader from './components/loader/loader';
 
 const Header = React.lazy(() => import("./components/header"));
-const Home = React.lazy(() => import("./views/Home"));
+const Home = React.lazy(() => import("./views/home"));
 
 function App() {
   const [showHeader, setShowHeader] = useState(false);

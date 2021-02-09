@@ -58,9 +58,9 @@ const Loader = (props) => {
             images.push(preloadImage(image, incrementLoading))
         );
 
-        import("../../views/Home").then((Home) => incrementLoading());
-        import("../../views/Projects").then((Projects) => incrementLoading());
-        import("../../views/Blog").then((Home) => incrementLoading());
+        import("../../views/home").then((Home) => incrementLoading());
+        import("../../views/projects").then((Projects) => incrementLoading());
+        import("../../views/blog").then((Home) => incrementLoading());
         totalItems = images.length;
         let areImagesLoaded = true;
         if (images) {
