@@ -17,6 +17,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
         AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
         publish_dir: ./build
+        profile: jordan
+        region: ${{ secrets.AWS_REGION }}
+        key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        secret: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Install Packages
       run: npm install
     - name: Build page

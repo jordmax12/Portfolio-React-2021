@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { landingStates } from '../../assets/utils'
 import { Transition } from "react-spring/renderprops";
 import styles from './home.module.scss'
-import Projects from "../projects"
-import Blog from "../blog";
-import Landing from "../landing";
+import Projects from "../Projects"
+import Blog from "../Blog";
+import Landing from "../Landing";
 
 const Home = (props) => {
   const { percentLoaded, loadingCompleted } = props;
