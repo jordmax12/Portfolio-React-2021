@@ -30,15 +30,10 @@ jobs:
     - name: Build page
       working-directory: ./src
       run: npm run build
-    - name: Setup Env
-      run: |
-        touch .env
-        echo AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} >> .env
-        echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} >> .env
-        echo AWS_DEFAULT_REGION=${{ secrets.AWS_REGION }} >> .env
-        echo JORDAN_CLOUDFRONT_DISTRIBUTION_ID=${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} >> .env
     - name: Deploy
-      run: AWS_PRODUCTION_BUCKET_NAME=$AWS_PRODUCTION_BUCKET_NAME JORDAN_CLOUDFRONT_DISTRIBUTION_ID=$JORDAN_CLOUDFRONT_DISTRIBUTION_ID npm run deploy
+      run: |
+        aws s3 sync build/ s3://$AWS_PRODUCTION_BUCKET_NAME --debug
+        aws cloudfront create-invalidation --distribution-id $JORDAN_CLOUDFRONT_DISTRIBUTION_ID --paths \"/*\" --debug
 
 # This is a basic workflow to help you get started with Actions
 
