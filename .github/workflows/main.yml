@@ -32,8 +32,8 @@ jobs:
       run: npm run build
     - name: Deploy
       run: |
-        aws s3 sync build/ s3://$AWS_PRODUCTION_BUCKET_NAME --debug
-        aws cloudfront create-invalidation --distribution-id $JORDAN_CLOUDFRONT_DISTRIBUTION_ID --paths \"/*\" --debug
+        aws s3 sync build/ s3://${{ secrets.AWS_PRODUCTION_BUCKET_NAME }} --debug
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} --paths \"/*\" --debug
 
 # This is a basic workflow to help you get started with Actions
 
