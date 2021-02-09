@@ -27,18 +27,13 @@ jobs:
     - name: Build page
       working-directory: ./src
       run: npm run build
-    - name: Assume Role
-      uses: youyo/awscredswrap@v1
-      with:
-        role_arn: ${{ secrets.AWS_ASSUME_ROLE_ARN }}
-        duration_seconds: 3600
-        role_session_name: 'awscredswrap@GitHubActions'
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
     - name: Deploy
       run: |
+        echo $AWS_PRODUCTION_BUCKET_NAME
+        echo ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
+        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws sts assume-role --role-arn ${{ secrets.AWS_ASSUME_ROLE_ARN }} --role-session-name s3-access-example
         aws s3 sync build/ s3://${{ secrets.AWS_PRODUCTION_BUCKET_NAME }} --debug
         aws cloudfront create-invalidation --distribution-id ${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} --paths \"/*\" --debug
       env:
