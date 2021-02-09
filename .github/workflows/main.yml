@@ -27,12 +27,13 @@ jobs:
     - name: Build page
       working-directory: ./src
       run: npm run build
-    - name: Deploy
+    - name: Setup Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
+    - name: Deploy
       run: |
         echo $AWS_PRODUCTION_BUCKET_NAME
         echo ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
