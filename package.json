@@ -25,7 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "AWS_PRODUCTION_BUCKET_NAME=2021-portfolio-react JORDAN_CLOUDFRONT_DISTRIBUTION_ID=EYFSDRAKKTQYO aws s3 sync build/ s3://2021-portfolio-react --profile jordan --debug && aws cloudfront create-invalidation --distribution-id EYFSDRAKKTQYO --paths \"/*\" --profile jordan --debug",
+    "deploy": "aws s3 sync build/ s3://2021-portfolio-react --debug && aws cloudfront create-invalidation --distribution-id EYFSDRAKKTQYO --paths \"/*\" --debug",
     "invalidate-cache": "aws cloudfront create-invalidation --distribution-id $JORDAN_CLOUDFRONT_DISTRIBUTION_ID --paths \"/*\" --debug",
     "lint": "eslint --ext js --ext jsx src"
   },

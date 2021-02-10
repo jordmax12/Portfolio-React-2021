@@ -29,11 +29,7 @@ jobs:
       run: npm run build
     - name: Deploy
       run: |
-        echo $AWS_PRODUCTION_BUCKET_NAME
-        echo ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
-        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws sts assume-role --role-arn ${{ secrets.AWS_ASSUME_ROLE_ARN }} --role-session-name s3-access-example
+        eval $(aws sts assume-role --role-arn ${{ secrets.AWS_ASSUME_ROLE_ARN }} --role-session-name s3-deploy | jq -r '.Credentials | "export AWS_ACCESS_KEY_ID=\(.AccessKeyId)\nexport AWS_SECRET_ACCESS_KEY=\(.SecretAccessKey)\nexport AWS_SESSION_TOKEN=\(.SessionToken)\n"')
         aws s3 sync build/ s3://${{ secrets.AWS_PRODUCTION_BUCKET_NAME }} --debug
         aws cloudfront create-invalidation --distribution-id ${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} --paths \"/*\" --debug
       env:
