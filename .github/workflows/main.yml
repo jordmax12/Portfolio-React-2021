@@ -31,7 +31,7 @@ jobs:
       run: |
         eval $(aws sts assume-role --role-arn ${{ secrets.AWS_ASSUME_ROLE_ARN }} --role-session-name s3-deploy | jq -r '.Credentials | "export AWS_ACCESS_KEY_ID=\(.AccessKeyId)\nexport AWS_SECRET_ACCESS_KEY=\(.SecretAccessKey)\nexport AWS_SESSION_TOKEN=\(.SessionToken)\n"')
         aws s3 sync build/ s3://${{ secrets.AWS_PRODUCTION_BUCKET_NAME }} --debug
-        aws cloudfront create-invalidation --distribution-id ${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} --paths \"/*\" --debug
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.JORDAN_CLOUDFRONT_DISTRIBUTION_ID }} --paths '/*' --debug
       env:
         AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
