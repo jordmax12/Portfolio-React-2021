@@ -6,17 +6,29 @@ import Projects from "../Projects"
 import Blog from "../Blog";
 import Landing from "../Landing";
 
+const initGoBackClass = `${styles.dn} ${styles.go_back}`;
+
 const Home = (props) => {
   const { percentLoaded, loadingCompleted } = props;
   const [previousBodyType, setPreviousBodyType] = useState(landingStates.NONE);
   const [bodyType, setBodyType] = useState(landingStates.NONE);
+  const [showGoBack, setShowGoBack] = useState(initGoBackClass)
   let fromAnimation, enterAnimation, leaveAnimation;
 
   /* eslint-disable no-unused-vars */
   const updateBodyType = _bodyType => {
+    let goBackClass = initGoBackClass;
+    if(_bodyType !== landingStates.NONE) {
+      goBackClass= styles.go_back;
+    }
+    setShowGoBack(goBackClass);
     setPreviousBodyType(bodyType);
     setBodyType(_bodyType);
   };
+
+  const goBackHandler = () => {
+    updateBodyType(landingStates.NONE)
+  }
 
   const getBodyContent = bodyType => {
     return (
@@ -82,8 +94,7 @@ const Home = (props) => {
   }
   return (
     <div className={styles.home_container}>
-      {/* <p onClick={() => updateBodyType(landingStates.BLOG)}> go to blog </p>
-      <p onClick={() => updateBodyType(landingStates.PROJECTS)}> go to projects </p> */}
+      <p className={showGoBack} onClick={goBackHandler}> {'<'} Go Back </p>
       <Transition
         items={bodyType}
         key={bodyType => bodyType}

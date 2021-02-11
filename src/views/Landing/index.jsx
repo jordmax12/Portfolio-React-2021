@@ -39,6 +39,7 @@ const Landing = (props) => {
     const [showAnimationElements, setShowAnimationElements] = useState(true);
 
     useEffect(() => {
+        console.log('logging percentLoaded', percentLoaded)
         setNormalizedPercentLoaded(generateNormalizedPercentLoaded(percentLoaded));
     }, [percentLoaded])
 
