@@ -6,6 +6,7 @@
 [AWS S3](https://aws.amazon.com/s3/) <br />
 [AWS Cloudfront](https://aws.amazon.com/cloudfront/) <br />
 [AWS Route 53](https://aws.amazon.com/route53/) <br />
+[Github Actions (CICD)](https://github.com/features/actions) <br/>
 
 ## Pre-requisites
 - Deploy script required a environment variable called `JORDAN_CLOUDFRONT_DISTRIBUTION_ID`
