@@ -9,7 +9,7 @@
 [Github Actions (CICD)](https://github.com/features/actions) <br/>
 
 ## Pre-requisites
-- Deploy script required a environment variable called `JORDAN_CLOUDFRONT_DISTRIBUTION_ID`
+- Must be a human to continue.
 
 ## Available Scripts
 
