@@ -99,7 +99,7 @@ const Landing = (props) => {
                             <h1 className={`${styles.gineos_medium} ${styles.ninety_text}`} style={{ fontSize: `${normalizedFontSize}`}}>
                                 <span  style={{opacity}}>
                                     {renderTyped()}
-                                    <span style={{ verticalAlign: 'middle', color: 'grey', fontSize: '18px', fontFamily: 'Spartan, sans-serif'}}>
+                                    <span style={{ verticalAlign: 'middle', color: 'grey', fontSize: '18px', fontFamily: 'Spartan, sans-serif', display: 'inline-block', marginTop: '5px'}}>
                                         since
                                     </span>
                                 </span> 
