@@ -25,19 +25,30 @@ const Balloon = (props) => {
     const [balloonY, setBalloonY] = useState(findBalloonY());
     const [balloonClass, setBalloonClass] = useState(styles.balloon);
     const [trigger, setTrigger] = useState(false);
+    const [started, setStarted] = useState(false);
     /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
-        setBalloonHeight(findHeight());
-        setBalloonWidth(findWidth());
-        setBalloonY(findBalloonY());
-        if(percent >= 100) {
-            setBalloonClass(`${styles.balloon} ${styles.trigger}`);
-            setTimeout(() => {
-                setTrigger(true);
-                setBalloonClass(`${styles.balloon} ${styles.trigger}`);
-            }, 600)
+        if(!started) setStarted(true)
 
+        // We have already loaded page, dont do anything or show balloon animation.
+        if(!started && percent === 100) {
+            setBalloonClass(styles.dn)
+        } else {
+            console.log('here')
+            setBalloonHeight(findHeight());
+            setBalloonWidth(findWidth());
+            setBalloonY(findBalloonY());
+            if(percent >= 100) {
+                console.log('setting true')
+                setBalloonClass(`${styles.balloon} ${styles.trigger}`);
+                setTimeout(() => {
+                    setTrigger(true);
+                    setBalloonClass(`${styles.balloon} ${styles.trigger}`);
+                }, 600)
+            }
         }
+
+
     }, [percent])
     /* eslint-enable react-hooks/exhaustive-deps */
 

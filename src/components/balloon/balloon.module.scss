@@ -19,6 +19,10 @@
   animation: MoveOffScreen 2s forwards;
 }
 
+.dn {
+  display: none;
+}
+
 .pop {
     transition: width .1s cubic-bezier(.7, -.6, .4, 1.5), height .1s cubic-bezier(.7, -.6, .4, 1.5),  opacity .1s ease-out;
     animation-name: none;

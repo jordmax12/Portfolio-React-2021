@@ -13,6 +13,7 @@ const Jordan = (props) => {
     const [jordanY, setJordanY] = useState(balloonY - 94);
     const [jordanStyle, setJordanStyle] = useState({ bottom: `${jordanY}px`});
     const [show, setShow] = useState(true);
+    const [started, setStarted] = useState(false);
 
     /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
@@ -23,31 +24,39 @@ const Jordan = (props) => {
 
     
     useEffect(() => {
-        setJordanY(balloonY - 94);
+        console.log('logging percent', percent, 'logging started', started);
 
-        if(percent > 0) {
-            setJordanStyle({ bottom: `${balloonY - 114}px` });
+        if(!started && percent === 100) {
+            setJordanImage(jordanStanding);
         } else {
-            setJordanStyle({ bottom: `${balloonY - 94}px` });
-        }
-        
-        if(percent > 0 && percent < 100) {
-            setJordanClasses(`${styles.jordan_box} ${styles.inair}`);
-            setJordanImage(jordanInAir);
-        }
+            if(!started) setStarted(true);
 
-        if(percent === 100) {
-            animationFrameTimeout(() => {
-                setJordanStyle({})
-                setJordanClasses(`${styles.jordan_box} ${styles.reverse}`);
-                setJordanImage(jordanFalling);
+            setJordanY(balloonY - 94);
+    
+            if(percent > 0) {
+                setJordanStyle({ bottom: `${balloonY - 114}px` });
+            } else {
+                setJordanStyle({ bottom: `${balloonY - 94}px` });
+            }
+            
+            if(percent > 0 && percent < 100) {
+                setJordanClasses(`${styles.jordan_box} ${styles.inair}`);
+                setJordanImage(jordanInAir);
+            }
+    
+            if(percent === 100) {
                 animationFrameTimeout(() => {
-                    setJordanImage(jordanStanding);
+                    setJordanStyle({})
+                    setJordanClasses(`${styles.jordan_box} ${styles.reverse}`);
+                    setJordanImage(jordanFalling);
                     animationFrameTimeout(() => {
-                        completeCallback();
-                    }, 500);
-                }, 1900)
-            }, 100)
+                        setJordanImage(jordanStanding);
+                        animationFrameTimeout(() => {
+                            completeCallback();
+                        }, 500);
+                    }, 1900)
+                }, 100)
+            }
         }
     }, [percent, balloonY])
     /* eslint-enable react-hooks/exhaustive-deps */

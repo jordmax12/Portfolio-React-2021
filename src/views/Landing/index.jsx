@@ -37,10 +37,17 @@ const Landing = (props) => {
     const [normalizedPercentLoaded, setNormalizedPercentLoaded] = useState(generateNormalizedPercentLoaded(percentLoaded));
     const [normalizedFontSize, setNormalizedFontSize] = useState(mapNormalizedFontSize());
     const [showAnimationElements, setShowAnimationElements] = useState(true);
+    const [started, setStarted] = useState(false);
 
     useEffect(() => {
-        console.log('logging percentLoaded', percentLoaded)
-        setNormalizedPercentLoaded(generateNormalizedPercentLoaded(percentLoaded));
+        console.log('logging percentLoaded', percentLoaded, 'logging started', started)
+        if(!started && percentLoaded === 100) {
+            setShowAnimationElements(false);
+        } else {
+            if(!started) setStarted(true);
+            setNormalizedPercentLoaded(generateNormalizedPercentLoaded(percentLoaded));
+        }
+
     }, [percentLoaded])
 
     useEffect(() => {
@@ -113,7 +120,7 @@ const Landing = (props) => {
                 window.navigator.connection.effectiveType !== "4g"
                 ? null
                 : <>
-                    <Balloon percent={percentLoaded} trackBalloonY={(newBalloonY) => updateBalloonY(newBalloonY)} />
+                    <Balloon animationCompleted={!showAnimationElements} percent={percentLoaded} trackBalloonY={(newBalloonY) => updateBalloonY(newBalloonY)} />
                     <Jordan animationCompleted={!showAnimationElements} balloonY={balloonY} percent={percentLoaded} completeCallback={triggerLoadingCompleted} />
                 </>
             }
