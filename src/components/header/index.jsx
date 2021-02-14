@@ -4,12 +4,13 @@ import styles from './header.module.scss';
 
 const Header = (props) => {
   const { showHeader, showHeaderWidth } = props;
-  const [headerLoaderTextClasses] = useState(`${styles.db} ${styles.header_loader_text}`)
+  const [headerLoaderTextClasses, setHeaderLoaderTextClasses] = useState(`${styles.db} ${styles.header_loader_text}`)
   const [headerNavTextClasses, setHeaderNavTextClasses] = useState(styles.dn)
 
   useEffect(() => {
     if(showHeader) {
       setHeaderNavTextClasses(styles.header_nav_link);
+      setHeaderLoaderTextClasses(styles.dn);
     } 
   }, [showHeader])
 
@@ -46,11 +47,7 @@ const Header = (props) => {
           }
         </Spring>
 
-        <Spring delay={100} to={{ opacity: !showHeader ? .5 : 0 }}>
-          {({opacity}) =>
-            <p style={{opacity}} className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
-          }
-        </Spring>
+        <p className={headerLoaderTextClasses}> Loading Modules {showHeaderWidth}% </p>
       </div>
     </>
   )
