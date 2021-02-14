@@ -24,8 +24,6 @@ const Jordan = (props) => {
 
     
     useEffect(() => {
-        console.log('logging percent', percent, 'logging started', started);
-
         if(!started && percent === 100) {
             setJordanImage(jordanStanding);
         } else {

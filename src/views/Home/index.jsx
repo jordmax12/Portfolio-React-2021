@@ -5,13 +5,14 @@ import styles from './home.module.scss'
 import Projects from "../Projects"
 import Blog from "../Blog";
 import Landing from "../Landing";
+import animations from './animations';
 
 const initGoBackClass = `${styles.dn} ${styles.go_back}`;
 
 const Home = (props) => {
   const { percentLoaded, loadingCompleted } = props;
-  const [previousBodyType, setPreviousBodyType] = useState(landingStates.NONE);
   const [bodyType, setBodyType] = useState(landingStates.NONE);
+  const [previousBodyType, setPreviousBodyType] = useState(bodyType);
   const [showGoBack, setShowGoBack] = useState(initGoBackClass)
   let fromAnimation, enterAnimation, leaveAnimation;
 
@@ -38,7 +39,6 @@ const Home = (props) => {
             style={props}
             className={styles.body_content_container}
           >
-            {/* NEED TO SUPPLY PERCENT LOADED, look into Context see if we can utilize this instead */}
             {bodyType === landingStates.NONE && ( <Landing loadingCompleted={loadingCompleted} percentLoaded={percentLoaded} updateBodyType={updateBodyType} /> )}
             {bodyType === landingStates.PROJECTS && ( <Projects updateBodyType={updateBodyType} /> )}
             {/* {bodyType == landingStates.RESUME && (showMobile ? <TimelineMobile updateBodyType={this.updateBodyType} /> :  <Timeline />)} */}
@@ -53,44 +53,17 @@ const Home = (props) => {
     previousBodyType === landingStates.NONE ||
     bodyType === landingStates.NONE
   ) {
-    fromAnimation = {
-      opacity: 1,
-      transform: "translate(0px, 0px)"
-    };
-    enterAnimation = {
-      opacity: 1,
-      transform: "translate(0px, 0px)"
-    };
-    leaveAnimation = {
-      opacity: 0,
-      transform: "translate(0px, 300px)"
-    };
+    fromAnimation = animations.noneAnimations.fromAnimation
+    enterAnimation = animations.noneAnimations.enterAnimation
+    leaveAnimation = animations.noneAnimations.leaveAnimation
   } else if (bodyType === landingStates.BLOG) {
-    fromAnimation = {
-      opacity: 0,
-      transform: "translate(-300px, 0px)"
-    };
-    enterAnimation = {
-      opacity: 1,
-      transform: "translate(0px, 0px)"
-    };
-    leaveAnimation = {
-      opacity: 0,
-      transform: "translate(300px, 0px)"
-    };
+    fromAnimation = animations.blogAnimations.fromAnimation
+    enterAnimation = animations.blogAnimations.enterAnimation
+    leaveAnimation = animations.blogAnimations.leaveAnimation
   } else if (bodyType === landingStates.PROJECTS) {
-    fromAnimation = {
-      opacity: 0,
-      transform: "translate(300px, 0px)"
-    };
-    enterAnimation = {
-      opacity: 1,
-      transform: "translate(0px, 0px)"
-    };
-    leaveAnimation = {
-      opacity: 0,
-      transform: "translate(-300px, 0px)"
-    };
+    fromAnimation = animations.projectsAnimations.fromAnimation
+    enterAnimation = animations.projectsAnimations.enterAnimation
+    leaveAnimation = animations.projectsAnimations.leaveAnimation
   }
   return (
     <div className={styles.home_container}>

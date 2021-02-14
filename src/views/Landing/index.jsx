@@ -40,7 +40,6 @@ const Landing = (props) => {
     const [started, setStarted] = useState(false);
 
     useEffect(() => {
-        console.log('logging percentLoaded', percentLoaded, 'logging started', started)
         if(!started && percentLoaded === 100) {
             setShowAnimationElements(false);
         } else {

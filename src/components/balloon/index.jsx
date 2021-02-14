@@ -34,12 +34,10 @@ const Balloon = (props) => {
         if(!started && percent === 100) {
             setBalloonClass(styles.dn)
         } else {
-            console.log('here')
             setBalloonHeight(findHeight());
             setBalloonWidth(findWidth());
             setBalloonY(findBalloonY());
             if(percent >= 100) {
-                console.log('setting true')
                 setBalloonClass(`${styles.balloon} ${styles.trigger}`);
                 setTimeout(() => {
                     setTrigger(true);
