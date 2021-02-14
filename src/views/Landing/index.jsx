@@ -48,7 +48,7 @@ const Landing = (props) => {
             setNormalizedPercentLoaded(generateNormalizedPercentLoaded(percentLoaded));
         }
 
-    }, [percentLoaded])
+    }, [percentLoaded, started])
 
     useEffect(() => {
         const resizeListener = () => {
