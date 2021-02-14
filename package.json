@@ -25,7 +25,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "aws s3 sync build/ s3://2021-portfolio-react --debug && aws cloudfront create-invalidation --distribution-id EYFSDRAKKTQYO --paths \"/*\" --debug",
     "invalidate-cache": "aws cloudfront create-invalidation --distribution-id $JORDAN_CLOUDFRONT_DISTRIBUTION_ID --paths \"/*\" --debug",
     "lint": "eslint --ext js --ext jsx src"
   },

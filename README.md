@@ -11,6 +11,10 @@
 ## Pre-requisites
 - Must be a human to continue.
 
+## Deployment Instructions
+- CICD pipeline uses Github actions off the master branch to build, lint, test and deploy this react application.\
+PR's must be approved by admin (which is, me :grinning:).
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -22,10 +26,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
-### `npm run deploy`
-
-Deploys local build to S3.
 
 ### `npm run lint`
 
