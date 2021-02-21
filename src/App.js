@@ -4,6 +4,7 @@ import './assets/scss/simple-grid.scss';
 import { Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Loader from './components/loader/loader';
+import { landingStates } from './assets/utils'
 
 const Header = React.lazy(() => import("./components/header"));
 const Home = React.lazy(() => import("./views/Home"));
@@ -11,12 +12,27 @@ const Home = React.lazy(() => import("./views/Home"));
 function App() {
   const [showHeader, setShowHeader] = useState(false);
   const [currentPercentLoaded, setCurrentPercentLoaded] = useState(0);
-
+  const [bodyType, setBodyType] = useState(landingStates.NONE);
+  const [previousBodyType, setPreviousBodyType] = useState(bodyType);
   const loadingCompleted = () => {
     setShowHeader(true);
   }
 
   const updateCurrentPercentLoaded = (percent) => setCurrentPercentLoaded(percent);
+
+  const homeButtonClickHandler = () => {
+    goBackHandler();
+  }
+
+  const goBackHandler = () => {
+    if(bodyType !== landingStates.NONE)
+      updateBodyType(landingStates.NONE);
+  }
+
+  const updateBodyType = _bodyType => {
+    setPreviousBodyType(bodyType);
+    setBodyType(_bodyType);
+  };
 
   return (
     <div className="App">
@@ -24,9 +40,9 @@ function App() {
           <Suspense fallback={null}>
             <Switch>
               <Route path="/">
-                <Header showHeader={showHeader} showHeaderWidth={currentPercentLoaded} />
+                <Header homeButtonClickHandler={homeButtonClickHandler} showHeader={showHeader} showHeaderWidth={currentPercentLoaded} />
                 <Loader updateCurrentPercentLoaded={updateCurrentPercentLoaded}>
-                  <Home percentLoaded={currentPercentLoaded} loadingCompleted={loadingCompleted} />
+                  <Home bodyType={bodyType} previousBodyType={previousBodyType} updateBodyType={updateBodyType} percentLoaded={currentPercentLoaded} loadingCompleted={loadingCompleted} />
                 </Loader>
               </Route>
             </Switch>

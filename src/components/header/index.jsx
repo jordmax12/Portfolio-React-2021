@@ -3,7 +3,7 @@ import { Spring } from "react-spring/renderprops";
 import styles from './header.module.scss';
 
 const Header = (props) => {
-  const { showHeader, showHeaderWidth } = props;
+  const { showHeader, showHeaderWidth, homeButtonClickHandler } = props;
   const [headerLoaderTextClasses, setHeaderLoaderTextClasses] = useState(`${styles.db} ${styles.header_loader_text}`)
   const [headerNavTextClasses, setHeaderNavTextClasses] = useState(styles.dn)
 
@@ -24,7 +24,7 @@ const Header = (props) => {
                 {
                   (
                     <>
-                      <span className={styles.top_header_title}>Jordan Max - Full Stack Engineer</span>
+                      <span className={styles.top_header_title} onClick={homeButtonClickHandler}>Jordan Max - Full Stack Engineer</span>
                       <div className={styles.top_header_externals}>
                           <span className={styles.top_header_external_link}>LinkedIn</span>
                           <span className={styles.top_header_external_link}>Github</span>
