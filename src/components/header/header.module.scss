@@ -26,6 +26,9 @@
     color: $color-white;
     font-family: 'Spartan', sans-serif;
     cursor: pointer;
+    @media only screen and (max-width: 566px) {
+        font-size: .9rem;
+    }
 }
 
 .top_header_externals {
