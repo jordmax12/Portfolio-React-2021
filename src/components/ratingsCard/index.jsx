@@ -1,34 +1,24 @@
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 
-import "./styles.css";
+import styles from "./styles.module.scss";
 
-// Calculate the tilt based on the cursor position on screen rather than the card
 const calculateValues = (x, y) => [
   -(y - window.innerHeight / 2) / 40,
   (x - window.innerWidth / 2) / 40,
   1.1
 ];
 
-// Apply values to transform property
-// const transformCard = (x, y, scale) =>
-//   `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg) scale(${scale})`;
-
-// Functions that interpolate the values for the flipping animation
 const inverseOpacity = o => 1 - o;
 const inverseTransform = t => `${t} rotateY(180deg)`;
 
 export const RatingsCard = ({ title, rating, props: main_props }) => {
-  // Hold state for selection and rating
   const [selected, setSelected] = useState(false);
-
-  // Card tilt
-  /* eslint-disable no-unused-vars */
+  // TODO: look into this props
   const [props, set] = useSpring(() => ({
     state: [0, 0, 1]
   }));
-
-  // Flipping
+  console.log('TODO: look into this props', props);
   const { opacity, transform } = useSpring({
     config: {
       friction: 22,
@@ -39,22 +29,18 @@ export const RatingsCard = ({ title, rating, props: main_props }) => {
   });
 
   return (
-    // Card container
     <animated.div
-      className="RatingsCard"
+      className={styles.RatingsCard}
       onClick={() => setSelected(!selected)}
       onMouseLeave={() => set({ state: [0, 0, 1] })}
       onMouseMove={({ clientX: x, clientY: y }) =>
         set({ state: calculateValues(x, y) })
       }
-      // style={{ transform: !selected && props.state.interpolate(transformCard) }}
       style={main_props}
     >
-      {/* Front */}
       <animated.div
-        className="RatingsCard__front"
+        className={styles.RatingsCardFront}
         style={{
-          // backgroundImage: `url(${image})`,
           opacity: opacity.interpolate(inverseOpacity),
           textAlign: 'center',
           transform
@@ -62,9 +48,8 @@ export const RatingsCard = ({ title, rating, props: main_props }) => {
       >
         {title}
       </animated.div>
-      {/* Back */}
       <animated.div
-        className="RatingsCard__back"
+        className={styles.RatingsCardBack}
         style={{
           opacity,
           transform: transform.interpolate(inverseTransform)

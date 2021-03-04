@@ -1,3 +1,5 @@
+@import '../../assets/scss/Styles/colors.module.scss';
+
 .RatingsCard {
   cursor: pointer;
   /* Filter over box-shadow to support the flip effect */
@@ -15,20 +17,25 @@
     drop-shadow(0 10px 10px rgba(0, 0, 0, 0.1));
 }
 
-.RatingsCard__front,
-.RatingsCard__back {
+.RatingsCardFront,
+.RatingsCardBack {
   background-color: #ececec;
   height: 100%;
   position: absolute;
   width: 100%;
 }
 
-.RatingsCard__front {
+.RatingsCardFront {
   background-position: center;
   background-size: cover;
+  color: $color-light-blue-link;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.RatingsCard__back {
+.RatingsCardBack {
   align-items: center;
   display: flex;
   justify-content: center;
