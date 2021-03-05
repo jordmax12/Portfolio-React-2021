@@ -41,6 +41,8 @@ export const RatingsCard = ({ title, stack, externals, setShowLightboxModal, pro
     state: [0, 0, 1]
   }));
 
+  console.log('logging props', props)
+
   const { opacity, transform } = useSpring({
     config: {
       friction: 22,
