@@ -59,6 +59,9 @@ export const projects = [
     stack: [
       "npm",
       "nodejs"
+    ],
+    externals: [
+
     ]
   },
   {
@@ -68,6 +71,9 @@ export const projects = [
       "npm",
       "nodejs",
       "aws"
+    ],
+    externals: [
+      
     ]
   },
   {
@@ -76,6 +82,11 @@ export const projects = [
     stack: [
       "aws",
       "nodejs"
+    ],
+    externals: [
+      'enogen-infra-main.pdf',
+      'enogen-infra-1.pdf',
+      'enogen-infra-2.pdf'
     ]
   },
   {
@@ -84,13 +95,23 @@ export const projects = [
     stack: [
       "python",
       "aws"
+    ],
+    externals: [
+      'databus-infra.pdf'
     ]
   },
   {
     title: "agriedge",
     key: '5',
     stack: [
-      "nodejs"
+      "nodejs",
+      "react"
+    ],
+    externals: [
+      'agriedge-fe-1.png',
+      'agriedge-fe-2.png',
+      'agriedge-infra-1.pdf',
+      'agriedge-infra-2.pdf'
     ]
   },
   {
@@ -98,6 +119,9 @@ export const projects = [
     key: '6',
     stack: [
       "nodejs"
+    ],
+    externals: [
+      
     ]
   }
 ]

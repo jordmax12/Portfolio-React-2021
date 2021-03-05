@@ -1,7 +1,6 @@
 @import '../../assets/scss/Styles/colors.module.scss';
 
 .RatingsCard {
-  cursor: pointer;
   /* Filter over box-shadow to support the flip effect */
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16))
     drop-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
@@ -28,15 +27,32 @@
 .RatingsCardFront {
   background-position: center;
   background-size: cover;
-  color: $color-light-blue-link;
   display: -webkit-flex;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.techContainer {
+  cursor: pointer;
+}
+
 .RatingsCardBack {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+.logo {
+  height: 40px;
+  margin: 5px;
+}
+
+.stackContainer {
+  width: 100%;
+}
+
+.ratingsLink {
+  color: $color-light-blue-link;
+  cursor: pointer;
 }

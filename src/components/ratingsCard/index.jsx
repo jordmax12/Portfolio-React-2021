@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
-
+import reactIcon from '../../assets/images/technology/react-tech-icon.png';
+import npmIcon from '../../assets/images/technology/npm-tech-icon.png';
+import awsIcon from '../../assets/images/technology/aws-tech-icon.png';
+import nodejsIcon from '../../assets/images/technology/nodejs-tech-icon.png';
+import pythonIcon from '../../assets/images/technology/python-tech-icon.png';
 import styles from "./styles.module.scss";
 
 const calculateValues = (x, y) => [
@@ -12,7 +16,31 @@ const calculateValues = (x, y) => [
 const inverseOpacity = o => 1 - o;
 const inverseTransform = t => `${t} rotateY(180deg)`;
 
-export const RatingsCard = ({ title, rating, props: main_props }) => {
+const iconMapper = tech_id => {
+  console.log('logging tech_id', tech_id)
+  switch(tech_id) {
+    case 'react':
+      return reactIcon
+    case 'npm':
+      return npmIcon
+    case 'aws':
+      return awsIcon
+    case 'nodejs':
+      return nodejsIcon
+    case 'python':
+      return pythonIcon
+    default:
+      throw new Error('invalid tech_id.')
+  }
+}
+
+const handleViewMore = (e, project_title) => {
+  console.log('here??')
+  e.stopPropagation()
+  window.alert(project_title)
+}
+
+export const RatingsCard = ({ title, stack, externals, props: main_props }) => {
   const [selected, setSelected] = useState(false);
   // TODO: look into this props
   const [props, set] = useSpring(() => ({
@@ -27,7 +55,7 @@ export const RatingsCard = ({ title, rating, props: main_props }) => {
     opacity: selected ? 1 : 0,
     transform: `rotateY(${selected ? 180 : 0}deg)`
   });
-
+  console.log('logging opacity', opacity, 'logging selected', selected)
   return (
     <animated.div
       className={styles.RatingsCard}
@@ -39,22 +67,41 @@ export const RatingsCard = ({ title, rating, props: main_props }) => {
       style={main_props}
     >
       <animated.div
+        className={styles.RatingsCardBack}
+        style={{
+          opacity,
+          zIndex: selected ? 100 : 0,
+          transform: transform.interpolate(inverseTransform)
+        }}
+      >
+        <div>
+            <div className={styles.stackContainer}>
+              {
+                stack.map(s => {
+                  return <img alt="tech-logo" className={styles.logo} src={iconMapper(s)} />
+                })
+              }
+            </div>
+            {externals.length > 0 && 
+              <div>
+                <p onClick={(e) => handleViewMore(e, title)} className={styles.ratingsLink}>View More</p>
+              </div>
+            }
+        </div>
+
+      </animated.div>
+      <animated.div
         className={styles.RatingsCardFront}
         style={{
           opacity: opacity.interpolate(inverseOpacity),
+          zIndex: selected ? 0 : 100,
           textAlign: 'center',
           transform
         }}
       >
-        {title}
-      </animated.div>
-      <animated.div
-        className={styles.RatingsCardBack}
-        style={{
-          opacity,
-          transform: transform.interpolate(inverseTransform)
-        }}
-      >
+        <div className={styles.techContainer}>
+          <p className={styles.ratingsLink}>{title}</p>
+        </div>
       </animated.div>
     </animated.div>
   );
