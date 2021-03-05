@@ -17,7 +17,6 @@ const inverseOpacity = o => 1 - o;
 const inverseTransform = t => `${t} rotateY(180deg)`;
 
 const iconMapper = tech_id => {
-  console.log('logging tech_id', tech_id)
   switch(tech_id) {
     case 'react':
       return reactIcon
@@ -34,19 +33,14 @@ const iconMapper = tech_id => {
   }
 }
 
-const handleViewMore = (e, project_title) => {
-  console.log('here??')
-  e.stopPropagation()
-  window.alert(project_title)
-}
-
-export const RatingsCard = ({ title, stack, externals, props: main_props }) => {
+export const RatingsCard = ({ title, stack, externals, setShowLightboxModal, props: main_props }) => {
   const [selected, setSelected] = useState(false);
+  
   // TODO: look into this props
   const [props, set] = useSpring(() => ({
     state: [0, 0, 1]
   }));
-  console.log('TODO: look into this props', props);
+
   const { opacity, transform } = useSpring({
     config: {
       friction: 22,
@@ -55,8 +49,13 @@ export const RatingsCard = ({ title, stack, externals, props: main_props }) => {
     opacity: selected ? 1 : 0,
     transform: `rotateY(${selected ? 180 : 0}deg)`
   });
-  console.log('logging opacity', opacity, 'logging selected', selected)
+
+  const handleViewMore = (e, project_title) => {
+    e.stopPropagation()
+    setShowLightboxModal(externals);
+  }
   return (
+    <>
     <animated.div
       className={styles.RatingsCard}
       onClick={() => setSelected(!selected)}
@@ -104,6 +103,7 @@ export const RatingsCard = ({ title, stack, externals, props: main_props }) => {
         </div>
       </animated.div>
     </animated.div>
+    </>
   );
 };
 

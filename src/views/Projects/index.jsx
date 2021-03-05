@@ -9,12 +9,14 @@ import find from "lodash/find";
 import { Transition, Spring } from "react-spring/renderprops";
 import { technologies } from '../../helpers/projectsConstants';
 import ParticlesProjects from '../../components/particlesProjects';
+import Modal from 'react-barebones-modal';
 
 const Projects = () => {
   const [selectedTechId, setSelectedTechId] = useState('nodejs')
   const [matchedProjects, setMatchedProjects] = useState(projects)
   const [changeProjects, setChangeProducts] = useState(false);
   const [show, setShow] = useState(false);
+  const [showLightboxMoal, setShowLightboxModal] = useState(false);
   // TODO: is the following needed? review.
   /* eslint-disable no-unused-vars */
   const [isFirstAnimation, setIsFirstAnimation] = useState(false)
@@ -82,7 +84,14 @@ const Projects = () => {
   const tech = find(technologies, techItem => {
     return techItem.id === selectedTechId;
   });
+
+  const setUpLightbox = externals => {
+    console.log('logging externals', externals);
+    setShowLightboxModal(true);
+  }
+
   return (
+    <>
     <ParticlesProjects currentStack={selectedTechId}>
   <Transition
     items={show}
@@ -94,83 +103,85 @@ const Projects = () => {
       show => show && (
         value => {
           return (
-            <div style={{ width: '100%', height: 'calc(100% - 150px)' }}>
-              <Div row fillParent align="stretch" className={styles.timeline_container}>
-                
-                {/* <img alt="tech-logo" src={bgTest} className={styles.background_static_image} /> */}
-                <div className="container">
-                  <div className="row">
-                    <div className="col-2">
-                      <TimelineSelector
-                        selectedId={selectedTechId}
-                        listValue={technologies}
-                        tech={tech}
-                        onItemSelected={onTechSelected}
-                      />
-                    </div>
-                    <div className="col-10">
-                      <div className="gallery_container">
-                        <Transition
-                          items={tech}
-                          keys={tech => tech.id}
-                          from={{ opacity: 0 }}
-                          enter={{ opacity: 1 }}
-                          leave={{ opacity: 0 }}
-                        >
-                          {tech => tech.id && (
-                            value => {
-                              const { imagePosition, from, enter, leave } = techTransitionAnimation[tech.id];
-                              const fromAnimation = tech.id === selectedTechId ? from : enter;
-                              const toAnimation = tech.id === selectedTechId ? enter : leave;
-                              const isReactRelated = tech.id === "react"
-                              return (
-                                <Spring
-                                  from={{
-                                    opacity: isReactRelated ? fromAnimation.opacity : 1,
-                                    transform: fromAnimation.transform,
-                                  }}
-                                  to={{
-                                    opacity: isReactRelated ? toAnimation.opacity : 1,
-                                    transform: toAnimation.transform,
-                                  }}
-                                >
-                                  {
-                                    props => (
-                                      <Div
-                                        style={{
-                                          opacity: isReactRelated ? props.opacity : 1,
-                                          transform: !isReactRelated ? props.transform : "unset"
-                                        }}
-                                        className={styles.background_image_container}
-                                      >
-                                        <img
-                                          alt="background"
-                                          src={tech.backgroundImage}
-                                          style={{
-                                            left: 0,
-                                            right: imagePosition.right,
-                                            top: 0,
-                                            bottom: imagePosition.bottom,
-                                            transform: props.transform
-                                          }}
-                                          className={styles.background_image}
-                                        ></img>
-                                      </Div>
-                                    )
-                                  }
-                                </Spring>
-                              )
-                            }
-                          )}
-                        </Transition>
+            
+              <div style={{ width: '100%', height: 'calc(100% - 150px)' }}>
+                <Div row fillParent align="stretch" className={styles.timeline_container}>
+                  
+                  {/* <img alt="tech-logo" src={bgTest} className={styles.background_static_image} /> */}
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-2">
+                        <TimelineSelector
+                          selectedId={selectedTechId}
+                          listValue={technologies}
+                          tech={tech}
+                          onItemSelected={onTechSelected}
+                        />
                       </div>
-                      <Gallery
-                        projects={matchedProjects} />
+                      <div className="col-10">
+                        <div className="gallery_container">
+                          <Transition
+                            items={tech}
+                            keys={tech => tech.id}
+                            from={{ opacity: 0 }}
+                            enter={{ opacity: 1 }}
+                            leave={{ opacity: 0 }}
+                          >
+                            {tech => tech.id && (
+                              value => {
+                                const { imagePosition, from, enter, leave } = techTransitionAnimation[tech.id];
+                                const fromAnimation = tech.id === selectedTechId ? from : enter;
+                                const toAnimation = tech.id === selectedTechId ? enter : leave;
+                                const isReactRelated = tech.id === "react"
+                                return (
+                                  <Spring
+                                    from={{
+                                      opacity: isReactRelated ? fromAnimation.opacity : 1,
+                                      transform: fromAnimation.transform,
+                                    }}
+                                    to={{
+                                      opacity: isReactRelated ? toAnimation.opacity : 1,
+                                      transform: toAnimation.transform,
+                                    }}
+                                  >
+                                    {
+                                      props => (
+                                        <Div
+                                          style={{
+                                            opacity: isReactRelated ? props.opacity : 1,
+                                            transform: !isReactRelated ? props.transform : "unset"
+                                          }}
+                                          className={styles.background_image_container}
+                                        >
+                                          <img
+                                            alt="background"
+                                            src={tech.backgroundImage}
+                                            style={{
+                                              left: 0,
+                                              right: imagePosition.right,
+                                              top: 0,
+                                              bottom: imagePosition.bottom,
+                                              transform: props.transform
+                                            }}
+                                            className={styles.background_image}
+                                          ></img>
+                                        </Div>
+                                      )
+                                    }
+                                  </Spring>
+                                )
+                              }
+                            )}
+                          </Transition>
+                        </div>
+                        <Gallery
+                          projects={matchedProjects}
+                          setShowLightboxModal={setUpLightbox} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Div>
-            </div>
+                </Div>
+              </div>
           )
         }
       )
@@ -178,6 +189,14 @@ const Projects = () => {
     
   </Transition>
   </ParticlesProjects>
+  <Modal
+    customClassName={styles.modal}
+    show={showLightboxMoal}
+    handleClose={() => setShowLightboxModal(false)}
+  >
+      Hello World!
+  </Modal>
+  </>
   );
 }
 
