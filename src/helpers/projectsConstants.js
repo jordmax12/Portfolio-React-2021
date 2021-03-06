@@ -84,9 +84,9 @@ export const projects = [
       "nodejs"
     ],
     externals: [
-      'enogen-infra-main.pdf',
-      'enogen-infra-1.pdf',
-      'enogen-infra-2.pdf'
+      'enogen-infra-main.png',
+      'enogen-infra-1.png',
+      'enogen-infra-2.png'
     ]
   },
   {
@@ -97,7 +97,7 @@ export const projects = [
       "aws"
     ],
     externals: [
-      'databus-infra.pdf'
+      'databus-infra.png'
     ]
   },
   {
@@ -110,8 +110,8 @@ export const projects = [
     externals: [
       'agriedge-fe-1.png',
       'agriedge-fe-2.png',
-      'agriedge-infra-1.pdf',
-      'agriedge-infra-2.pdf'
+      'agriedge-infra-1.png',
+      'agriedge-infra-2.png'
     ]
   },
   {
