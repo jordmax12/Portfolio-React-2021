@@ -38,6 +38,9 @@ $transition-slow-in-fast-out: cubic-bezier(0.550, 0.055, 0.675, 0.190);
 
 .logo {
   height: 22px;
+  @media only screen and (max-width: 400px) {
+    height: 18px;
+  }
 }
 
 .first_logo_container {

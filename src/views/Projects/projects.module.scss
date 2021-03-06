@@ -65,6 +65,26 @@ $desktop-width: "only screen and (max-width : 1024px)";
     }
   }
 
+  .customContainerMaxWidth400 {
+    @media only screen and (max-width: $breakpoint-med) {
+      width: 100% !important;
+      margin-right: unset !important;
+      margin-left: unset !important;
+    }
+  }
+
+  .customOverflowYMed {
+    @media only screen and (max-width: $breakpoint-med) {
+      overflow-y: scroll;
+    }
+  }
+
+  .customNoMarginMobile {
+    @media only screen and (max-width: $breakpoint-med) {
+      margin: 0 !important;
+    }
+  }
+
   .left_background_gradient {
     display: none;
     position: absolute;
