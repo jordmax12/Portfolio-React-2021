@@ -124,7 +124,7 @@ const Projects = () => {
                   >
                     <div className={`${styles.customContainerMaxWidth400} ${styles.customOverflowYMed} container`}>
                       <div className="row">
-                        <div className={`${styles.customNoMarginMobile} col-2`}>
+                        <div className={`col-2 ${styles.customNoMarginMobile}`}>
                           <TimelineSelector
                             selectedId={selectedTechId}
                             listValue={technologies}

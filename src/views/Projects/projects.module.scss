@@ -82,6 +82,9 @@ $desktop-width: "only screen and (max-width : 1024px)";
   .customNoMarginMobile {
     @media only screen and (max-width: $breakpoint-med) {
       margin: 0 !important;
+      float: unset;
+      margin-right: auto !important;
+      margin-left: auto !important;
     }
   }
 
