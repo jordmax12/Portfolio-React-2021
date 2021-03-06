@@ -115,7 +115,7 @@ const Projects = () => {
             show &&
             ((value) => {
               return (
-                <div style={{ width: "100%", height: "calc(100% - 150px)" }}>
+                <div className={styles.timeline}>
                   <Div
                     row
                     fillParent

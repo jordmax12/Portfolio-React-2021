@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from './balloon.module.scss';
 import { Spring } from "react-spring/renderprops";
+import {
+    isMobile
+} from "react-device-detect";
 
 const Balloon = (props) => {
     const { percent, trackBalloonY } = props;
@@ -14,8 +17,19 @@ const Balloon = (props) => {
         return newHeight;
     }
 
+    const find_normalized_starting_y_pos = () => {
+        console.log('logging isMobile', isMobile)
+        if (isMobile) {
+            return 150;
+        }
+
+        return 110;
+    }
+
     const findBalloonY = () => {
-        const _y = Math.ceil(percent * 5) + 110;
+        const find_normalized_y_pos = find_normalized_starting_y_pos();
+        console.log('logging find_normalized_y_pos', find_normalized_y_pos)
+        const _y = Math.ceil(percent * 5) + find_normalized_starting_y_pos();
         trackBalloonY(_y);
         return _y;
     }

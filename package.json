@@ -10,6 +10,7 @@
     "node-sass": "^4.14.1",
     "react": "^16.3.0",
     "react-barebones-modal": "^1.0.14",
+    "react-device-detect": "^1.15.0",
     "react-dom": "^16.3.0",
     "react-dom-confetti": "^0.2.0",
     "react-lightbox-slider": "^1.0.19",

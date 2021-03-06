@@ -1,4 +1,5 @@
 @import '../../assets/scss/Styles/mixins.module.scss';
+@import '../../assets/scss/Styles/breakpoints.module.scss';
 @import '../../assets/scss/Styles/colors.module.scss';
 
 $transition-fast-in-slow-out: cubic-bezier(0.1, 0.82, 0.25, 1);//cubic-bezier(0.1, 0.82, 0.25, 1);
@@ -11,6 +12,9 @@ $desktop-width: "only screen and (max-width : 1024px)";
 .timeline_container {
   position: relative;
   height: 100%;
+  // @media only screen and (max-width: $breakpoint-med) {
+  //   overflow-y: scroll;
+  // }
 
   .background_static_image {
     position: absolute;
@@ -125,4 +129,12 @@ $desktop-width: "only screen and (max-width : 1024px)";
 
 .modal > div {
   height: 100%;
+}
+
+.timeline {
+  width: 100%;
+  height: calc(100% - 150px);
+  @media only screen and (max-width: $breakpoint-med) {
+    height: calc(100% - 50px);
+  }
 }

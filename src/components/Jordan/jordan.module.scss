@@ -1,8 +1,13 @@
+@import '../../assets/scss/Styles/breakpoints.module.scss';
+
 .jordan_box {
     width: 100px;
     height: 100px;
     position: absolute;
     bottom: 16px;
+    @media only screen and (max-width: $breakpoint-med) {
+      bottom: 56px;
+    }
     left: 50;
     z-index: 101;
 }
