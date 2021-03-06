@@ -33,7 +33,7 @@ const iconMapper = tech_id => {
   }
 }
 
-export const RatingsCard = ({ title, stack, externals, setShowLightboxModal, props: main_props }) => {
+export const RatingsCard = ({ title, stack, externals, initProjectDetails, props: main_props }) => {
   const [selected, setSelected] = useState(false);
   
   // TODO: look into this props
@@ -54,7 +54,7 @@ export const RatingsCard = ({ title, stack, externals, setShowLightboxModal, pro
 
   const handleViewMore = (e, project_title) => {
     e.stopPropagation()
-    setShowLightboxModal(externals);
+    initProjectDetails(externals);
   }
   return (
     <>

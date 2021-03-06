@@ -60,9 +60,7 @@ export const projects = [
       "npm",
       "nodejs"
     ],
-    externals: [
-
-    ]
+    externals: 'https://www.npmjs.com/package/@npmpackageschicago/simple-fs'
   },
   {
     title: "serverless-generator",
@@ -72,9 +70,7 @@ export const projects = [
       "nodejs",
       "aws"
     ],
-    externals: [
-      
-    ]
+    externals: 'https://www.npmjs.com/package/@npmpackageschicago/serverless-generator'
   },
   {
     title: "enogen",
@@ -83,11 +79,7 @@ export const projects = [
       "aws",
       "nodejs"
     ],
-    externals: [
-      'enogen-infra-main.png',
-      'enogen-infra-1.png',
-      'enogen-infra-2.png'
-    ]
+    externals: 'enogen.pdf'
   },
   {
     title: "databus",
@@ -96,9 +88,7 @@ export const projects = [
       "python",
       "aws"
     ],
-    externals: [
-      'databus-infra.png'
-    ]
+    externals: 'databus.pdf'
   },
   {
     title: "agriedge",
@@ -108,10 +98,7 @@ export const projects = [
       "react"
     ],
     externals: [
-      'agriedge-fe-1.png',
-      'agriedge-fe-2.png',
-      'agriedge-infra-1.png',
-      'agriedge-infra-2.png'
+      'agriedge.pdf'
     ]
   },
   {

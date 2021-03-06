@@ -3,7 +3,7 @@ import RatingsCard from "../ratingsCard";
 import { animated,  useTransition } from "react-spring";
 
 export const Gallery = (props) => {
-  const { projects, setShowLightboxModal } = props;
+  const { projects, initProjectDetails } = props;
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export const Gallery = (props) => {
     <div style={{maxWidth: '830px', marginRight: 'auto', marginLeft: 'auto'}}>
         {transitions.map(({ item, key, props }) =>
             item && <animated.div key={key} style={props}>
-              <RatingsCard key={key} {...item} setShowLightboxModal={setShowLightboxModal}  />
+              <RatingsCard key={key} {...item} initProjectDetails={initProjectDetails}  />
             </animated.div>
           )}
     </div>
