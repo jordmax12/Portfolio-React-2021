@@ -11,7 +11,6 @@ const Jordan = (props) => {
     const [jordanClasses, setJordanClasses] = useState(`${styles.jordan_box} ${styles.start}`);
     const [jordanImage, setJordanImage] = useState(jordanWithRope);
     const [jordanY, setJordanY] = useState(balloonY - 94);
-    console.log('logging jordanY', jordanY)
     const [jordanStyle, setJordanStyle] = useState({ bottom: `${jordanY}px`});
     const [show, setShow] = useState(true);
     const [started, setStarted] = useState(false);

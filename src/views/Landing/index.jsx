@@ -86,7 +86,6 @@ const Landing = (props) => {
     }
 
     const triggerLoadingCompleted = () => {
-        console.log('HIT TRIGGER LOADING COMPLETE')
         setShowAnimationElements(false);
         loadingCompleted();
     }

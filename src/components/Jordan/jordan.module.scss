@@ -8,6 +8,7 @@
     @media only screen and (max-width: $breakpoint-med) {
       bottom: 56px;
     }
+    // left: calc(50% - 90px);
     left: 50;
     z-index: 101;
 }
@@ -18,6 +19,16 @@
 
 .inair {
     margin-left: -34px;
+
+}
+
+// Safari hack
+@media not all and (min-resolution:.001dpcm) { 
+  @supports (-webkit-appearance:none) {
+    .inair {
+      margin-left: 15px;
+    }
+  }
 }
   
 .reverse {

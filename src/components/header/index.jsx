@@ -13,7 +13,7 @@ const Header = (props) => {
       setHeaderLoaderTextClasses(styles.dn);
     } 
   }, [showHeader])
-  console.log('logging showHeader', showHeader)
+
   return (
     <>
       <div className={styles.main_header_container}>

@@ -18,7 +18,6 @@ const Balloon = (props) => {
     }
 
     const find_normalized_starting_y_pos = () => {
-        console.log('logging isMobile', isMobile)
         if (isMobile) {
             return 150;
         }
@@ -28,8 +27,7 @@ const Balloon = (props) => {
 
     const findBalloonY = () => {
         const find_normalized_y_pos = find_normalized_starting_y_pos();
-        console.log('logging find_normalized_y_pos', find_normalized_y_pos)
-        const _y = Math.ceil(percent * 5) + find_normalized_starting_y_pos();
+        const _y = Math.ceil(percent * 5) + find_normalized_y_pos;
         trackBalloonY(_y);
         return _y;
     }
@@ -45,7 +43,6 @@ const Balloon = (props) => {
         if(!started) setStarted(true)
 
         // We have already loaded page, dont do anything or show balloon animation.
-        console.log('logging percent', percent)
         if(!started && percent === 100) {
             setBalloonClass(styles.dn)
         } else {
