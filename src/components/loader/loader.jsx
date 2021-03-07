@@ -108,7 +108,7 @@ const Loader = (props) => {
             setContentLoadedPercentage(Math.min(contentLoadedPercentage, 90));
             if (itemsLoaded >= totalItems) {
                 setTimeout(() => {
-                    // completeAnimation();
+                    completeAnimation();
                 }, 4000);
             } else {
                 valuateProgress();
