@@ -45,6 +45,7 @@ const Balloon = (props) => {
         if(!started) setStarted(true)
 
         // We have already loaded page, dont do anything or show balloon animation.
+        console.log('logging percent', percent)
         if(!started && percent === 100) {
             setBalloonClass(styles.dn)
         } else {

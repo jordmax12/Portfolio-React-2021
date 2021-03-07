@@ -25,7 +25,7 @@ function App() {
   }
 
   const goBackHandler = () => {
-    if(bodyType !== landingStates.NONE)
+    if (bodyType !== landingStates.NONE)
       updateBodyType(landingStates.NONE);
   }
 
@@ -36,18 +36,18 @@ function App() {
 
   return (
     <div className="App">
-        <Router>
-          <Suspense fallback={null}>
-            <Switch>
-              <Route path="/">
-                <Header homeButtonClickHandler={homeButtonClickHandler} showHeader={showHeader} showHeaderWidth={currentPercentLoaded} />
-                <Loader updateCurrentPercentLoaded={updateCurrentPercentLoaded}>
-                  <Home bodyType={bodyType} previousBodyType={previousBodyType} updateBodyType={updateBodyType} percentLoaded={currentPercentLoaded} loadingCompleted={loadingCompleted} />
-                </Loader>
-              </Route>
-            </Switch>
-          </Suspense>
-        </Router>
+      <Router>
+        <Suspense fallback={null}>
+          <Switch>
+            <Route path="/">
+              <Header homeButtonClickHandler={homeButtonClickHandler} showHeader={showHeader} showHeaderWidth={currentPercentLoaded} />
+              <Loader updateCurrentPercentLoaded={updateCurrentPercentLoaded}>
+                <Home bodyType={bodyType} previousBodyType={previousBodyType} updateBodyType={updateBodyType} percentLoaded={currentPercentLoaded} loadingCompleted={loadingCompleted} />
+              </Loader>
+            </Route>
+          </Switch>
+        </Suspense>
+      </Router>
     </div>
   );
 }

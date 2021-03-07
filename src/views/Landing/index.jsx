@@ -86,6 +86,7 @@ const Landing = (props) => {
     }
 
     const triggerLoadingCompleted = () => {
+        console.log('HIT TRIGGER LOADING COMPLETE')
         setShowAnimationElements(false);
         loadingCompleted();
     }
@@ -94,6 +95,15 @@ const Landing = (props) => {
 
     const updateBalloonY = (newBalloonY) => {
         setBalloonY(newBalloonY);
+    }
+
+    const isSafari = () => {
+        var ua = navigator.userAgent.toLowerCase(); 
+        if (ua.indexOf('chrome') === -1) {
+            return true
+        }
+
+        return false;
     }
 
     return (
@@ -116,7 +126,7 @@ const Landing = (props) => {
                 </Spring>
             }
             {
-                window.navigator.connection.effectiveType !== "4g"
+                !isSafari() && window.navigator.connection.effectiveType !== "4g"
                 ? null
                 : <>
                     <Balloon animationCompleted={!showAnimationElements} percent={percentLoaded} trackBalloonY={(newBalloonY) => updateBalloonY(newBalloonY)} />
