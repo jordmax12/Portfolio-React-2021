@@ -13,6 +13,7 @@ import find from "lodash/find";
 import { Transition, Spring } from "react-spring/renderprops";
 import { technologies } from "../../helpers/projectsConstants";
 import ParticlesProjects from "../../components/particlesProjects";
+import desktopBackground from '../../assets/images/backgrounds/desktop.jpg'
 
 const Projects = () => {
     const [selectedTechId, setSelectedTechId] = useState("nodejs");
@@ -104,9 +105,9 @@ const Projects = () => {
             window.open(uri);
         }
     };
-
+    console.log('desktopBackground', desktopBackground)
     return (
-        <>
+        <div className={styles.projectsBackgroundImage} style={{ width: '100%', height: '100%', backgroundImage: `url("${desktopBackground}")`, backgroundSize: 'cover' }}>
             <ParticlesProjects currentStack={selectedTechId}>
                 <Transition
                     items={show}
@@ -262,7 +263,7 @@ const Projects = () => {
                     }
                 </Transition>
             </ParticlesProjects>
-        </>
+        </div>
     );
 };
 
