@@ -4,11 +4,12 @@
   /* Filter over box-shadow to support the flip effect */
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16))
     drop-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
-  height: 12rem;
+  min-height: 18rem;
+  height: auto;
   position: relative;
   perspective: 1000px;
   transition: filter 0.5s;
-  width: 12rem;
+  width: 15rem;
 }
 
 .RatingsCard:hover {
@@ -48,11 +49,20 @@
   margin: 5px;
 }
 
-.stackContainer {
+.stackContainer, .descriptionContainer {
   width: 100%;
+}
+
+.backContainer {
+  padding: 7px;
 }
 
 .ratingsLink {
   color: $color-light-blue-link;
   cursor: pointer;
+}
+
+.descriptionText {
+  font-size: .9rem;
+  color: $color-dark;
 }

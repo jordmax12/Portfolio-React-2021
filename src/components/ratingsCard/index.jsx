@@ -33,7 +33,7 @@ const iconMapper = tech_id => {
   }
 }
 
-export const RatingsCard = ({ title, stack, externals, initProjectDetails, props: main_props }) => {
+export const RatingsCard = ({ title, stack, externals, initProjectDetails, description, props: main_props }) => {
   const [selected, setSelected] = useState(false);
   
   // TODO: look into this props
@@ -75,13 +75,9 @@ export const RatingsCard = ({ title, stack, externals, initProjectDetails, props
           transform: transform.interpolate(inverseTransform)
         }}
       >
-        <div>
-            <div className={styles.stackContainer}>
-              {
-                stack.map(s => {
-                  return <img alt="tech-logo" className={styles.logo} src={iconMapper(s)} />
-                })
-              }
+        <div className={styles.backContainer}>
+            <div className={styles.descriptionContainer}>
+              <p className={styles.descriptionText}>{description}</p>
             </div>
             {externals.length > 0 && 
               <div>
@@ -102,6 +98,15 @@ export const RatingsCard = ({ title, stack, externals, initProjectDetails, props
       >
         <div className={styles.techContainer}>
           <p className={styles.ratingsLink}>{title}</p>
+          <div>
+            <div className={styles.stackContainer}>
+              {
+                stack.map(s => {
+                  return <img alt="tech-logo" className={styles.logo} src={iconMapper(s)} />
+                })
+              }
+            </div>
+          </div>
         </div>
       </animated.div>
     </animated.div>

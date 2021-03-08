@@ -60,7 +60,8 @@ export const projects = [
       "npm",
       "nodejs"
     ],
-    externals: 'https://www.npmjs.com/package/@npmpackageschicago/simple-fs'
+    externals: 'https://www.npmjs.com/package/@npmpackageschicago/simple-fs',
+    description: 'Just a simple fs repo that helps using the fs system with promises and more functionality. Meant to be built upon over time.'
   },
   {
     title: "serverless-generator",
@@ -70,7 +71,8 @@ export const projects = [
       "nodejs",
       "aws"
     ],
-    externals: 'https://www.npmjs.com/package/@npmpackageschicago/serverless-generator'
+    externals: 'https://www.npmjs.com/package/@npmpackageschicago/serverless-generator',
+    description: 'CLI tool that prompts the user to select the options they desire, and we do all the setup work for you. Create as many resources as you like. Currently supports: Elasticsearch, DynamoDB, SQS, SNS, S3, ApiGateway, RDS MySQL and RDS Postgres.'
   },
   {
     title: "enogen",
@@ -79,16 +81,18 @@ export const projects = [
       "aws",
       "nodejs"
     ],
-    externals: 'enogen.pdf'
+    externals: 'enogen.pdf',
+    description: 'Built a series of microservices which services multiple applications interacting with modularized api\'s. This was a product being used by a multitude of our teams and is involved with millions of dollars of transactions a year.'
   },
   {
-    title: "databus",
+    title: "databus ETL",
     key: '4',
     stack: [
       "python",
       "aws"
     ],
-    externals: 'databus.pdf'
+    externals: 'databus.pdf',
+    description: 'ETL pipeline built with python. This project was fun because I\'ve never used Python before so this was a learning experience, but in a fun way. Also got to experiment with new AWS services such as Glue and Athena to query raw S3 data.'
   },
   {
     title: "agriedge",
@@ -99,7 +103,8 @@ export const projects = [
     ],
     externals: [
       'agriedge.pdf'
-    ]
+    ],
+    description: 'Web based API and React app designed to help sales reps and growers figure out how to get the most rebate out of their purchases, designed specifically to look at soil conditions, weather patterns..etc to recommend the best product.'
   },
   {
     title: 'FCB AI',
@@ -109,6 +114,7 @@ export const projects = [
     ],
     externals: [
       
-    ]
+    ],
+    description: 'Collection of small independent services that analyzed, tagged and retrieved metadata for an array of different media types using various intelligent machine learning API\'s such as: Google, AWS and Microsoft.'
   }
 ]
