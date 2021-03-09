@@ -57,8 +57,7 @@ export const projects = [
     title: "simple-fs",
     key: '1',
     stack: [
-      "npm",
-      "nodejs"
+      "npm"
     ],
     externals: 'https://www.npmjs.com/package/@npmpackageschicago/simple-fs',
     description: 'Just a simple fs repo that helps using the fs system with promises and more functionality. Meant to be built upon over time.'
@@ -67,9 +66,7 @@ export const projects = [
     title: "serverless-generator",
     key: '2',
     stack: [
-      "npm",
-      "nodejs",
-      "aws"
+      "npm"
     ],
     externals: 'https://www.npmjs.com/package/@npmpackageschicago/serverless-generator',
     description: 'CLI tool that prompts the user to select the options they desire, and we do all the setup work for you. Create as many resources as you like. Currently supports: Elasticsearch, DynamoDB, SQS, SNS, S3, ApiGateway, RDS MySQL and RDS Postgres.'
@@ -107,14 +104,82 @@ export const projects = [
     description: 'Web based API and React app designed to help sales reps and growers figure out how to get the most rebate out of their purchases, designed specifically to look at soil conditions, weather patterns..etc to recommend the best product.'
   },
   {
-    title: 'FCB AI',
+    title: 'Infusion Squad',
     key: '6',
     stack: [
-      "nodejs"
+      "nodejs",
+      "aws"
     ],
-    externals: [
-      
+    externals: 'https://www.amazon.com/Bioverativ-Infusion-Squad/dp/B07N395L84',
+    description: 'Interactive Alexa app to help the Hemophilia community, specifically children. It provides a way to interact and obtain information for patients and their care givers about their existing condition and the overall infusion process. My first Alexa app published on the Alexa store.'
+  },
+  {
+    title: 'react-barebondes-modal',
+    key: '7',
+    stack: [
+      "npm",
+      "react"
     ],
-    description: 'Collection of small independent services that analyzed, tagged and retrieved metadata for an array of different media types using various intelligent machine learning API\'s such as: Google, AWS and Microsoft.'
+    externals: 'https://www.npmjs.com/package/react-barebones-modal',
+    description: 'Simple react barebones modal component.'
+  },
+  {
+    title: 'react-lightbox-slider',
+    key: '8',
+    stack: [
+      "npm",
+      "react"
+    ],
+    externals: 'https://www.npmjs.com/package/react-barebones-modal',
+    description: 'React component that is a image slider and shows a lightbox if you click on an image.'
+  },
+  {
+    title: 'Authentication Microservice',
+    key: '9',
+    stack: [
+      "nodejs",
+      "aws"
+    ],
+    externals: 'cognito-auth-flow.pdf',
+    description: 'Microservice to handle login across all applications. Built to allow multiple forms of login including: email/pw, SSO w/ Federated Identities, and SMS passwordless login.'
+  },
+  {
+    title: 'Notification Microservice',
+    key: '10',
+    stack: [
+      "nodejs",
+      "aws"
+    ],
+    externals: [],
+    description: 'Microservice for in-house use to deliver notifications using email or sms message. Utilized AWS SES and Twilio.'
+  },
+  {
+    title: 'Alexa Analytics Miner',
+    key: '11',
+    stack: [
+      "nodejs",
+      "react",
+      "aws"
+    ],
+    externals: 'alexa-miner-project.pdf',
+    description: 'Fun tool that enabled users to use an Alexa right from their browser. Record a question, and send it off to Alexa. Our process parsed the result, sent it through transcribe and stored the text result in DynamoDB.'
+  },
+  {
+    title: 'Eloctate',
+    key: '12',
+    stack: [
+      "react"
+    ],
+    externals: 'https://www.eloctate.com/',
+    description: 'Eloctate is a medicine aimed to help people with Hemophilia A. It is a branch of Bioverativ (Sanofi). This website was developed to help people with Hemophilia A by getting them resources they need.'
+  },
+  {
+    title: 'Alprolix',
+    key: '13',
+    stack: [
+      "react"
+    ],
+    externals: 'https://www.alprolix.com/',
+    description: 'Alprolix is a medicine aimed to help people with Hemophilia B. It is a branch of Bioverativ (Sanofi). This website was developed to help people with Hemophilia B by getting them resources they need.'
   }
 ]

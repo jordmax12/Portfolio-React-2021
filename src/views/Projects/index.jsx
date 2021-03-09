@@ -145,7 +145,7 @@ const Projects = () => {
                                                     />
                                                 </div>
                                                 <div className="col-10">
-                                                    <div className="gallery_container">
+                                                    <div className={styles.galleryContainer}>
                                                         <Transition
                                                             items={tech}
                                                             keys={(tech) =>
@@ -227,7 +227,6 @@ const Projects = () => {
                                                                                             left: 0,
                                                                                             right:
                                                                                                 imagePosition.right,
-                                                                                            top: 0,
                                                                                             bottom:
                                                                                                 imagePosition.bottom,
                                                                                             transform:
