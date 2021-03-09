@@ -105,7 +105,7 @@ const Projects = () => {
             window.open(uri);
         }
     };
-    console.log('desktopBackground', desktopBackground)
+
     return (
         <div className={styles.projectsBackgroundImage} style={{ width: '100%', height: '100%', backgroundImage: `url("${desktopBackground}")`, backgroundSize: 'cover' }}>
             <ParticlesProjects currentStack={selectedTechId}>

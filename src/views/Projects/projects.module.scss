@@ -71,17 +71,6 @@ $desktop-width: "only screen and (max-width : 1024px)";
   }
 
   @include medium {
-    // .background_image_container {
-    //   width: 6rem;
-    //   height: 6rem;
-    // }
-
-    // .background_image {
-    //   height: 100% !important;
-    //   text-align: center;
-    //   object-fit: contain !important;
-    //   top: 15px;
-    // }
     .timeline_container {
       height: 250px;
       margin-top: 25px;

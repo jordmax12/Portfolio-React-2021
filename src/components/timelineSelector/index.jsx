@@ -32,8 +32,9 @@ class TimelineSelector extends Component {
             to={{
               maxWidth: item.id === selectedId ? 95 : 0,
               opacity: item.id === selectedId ? 1 : 0,
-              paddingRight: item.id === selectedId ? 10 : 0,
-              marginLeft: tech ? 38 : item.id === selectedId ? item.restMargin : 38,
+              paddingRight: item.id === selectedId ? 15 : 0,
+              paddingLeft: item.id === selectedId ? 5 : 0,
+              marginLeft: tech ? 45 : item.id === selectedId ? item.restMargin : 45,
             }}
           >
             {props => (
@@ -63,6 +64,7 @@ class TimelineSelector extends Component {
                         marginLeft: props.marginLeft,
                         maxWidth: props.maxWidth,
                         paddingRight: props.paddingRight,
+                        paddingLeft: props.paddingLeft,
                       }}
                       className={styles.title}
                     >
