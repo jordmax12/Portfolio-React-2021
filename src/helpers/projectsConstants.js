@@ -111,7 +111,7 @@ export const projects = [
       "aws"
     ],
     externals: 'https://www.amazon.com/Bioverativ-Infusion-Squad/dp/B07N395L84',
-    description: 'Interactive Alexa app to help the Hemophilia community, specifically children. It provides a way to interact and obtain information for patients and their care givers about their existing condition and the overall infusion process. My first Alexa app published on the Alexa store.'
+    description: 'Interactive Alexa app to help the Hemophilia community, specifically children. It provides a way to interact and obtain information for patients and their care givers about their existing condition and the overall infusion process.'
   },
   {
     title: 'react-barebondes-modal',
