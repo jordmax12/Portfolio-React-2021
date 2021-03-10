@@ -23,7 +23,6 @@ class TimelineSelector extends Component {
 
   render() {
     const { tech, className, listValue, selectedId } = this.props;
-
     return (
       <Div align="start" className={`${styles.container} ${className}`}>
         {map(listValue, (item, index) => (
@@ -34,7 +33,7 @@ class TimelineSelector extends Component {
               opacity: item.id === selectedId ? 1 : 0,
               paddingRight: item.id === selectedId ? 15 : 0,
               paddingLeft: item.id === selectedId ? 5 : 0,
-              marginLeft: tech ? 45 : item.id === selectedId ? item.restMargin : 45,
+              marginLeft: tech ? (window.innerWidth >= 380 ? 45 : 35) : item.id === selectedId ? item.restMargin : (window.innerWidth >= 380 ? 45 : 35),
             }}
           >
             {props => (
