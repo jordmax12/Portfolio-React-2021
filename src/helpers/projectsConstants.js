@@ -7,7 +7,7 @@ import pythonIcon from '../assets/images/technology/python-tech-icon.png';
 export const technologies = [
   {
     id: 'nodejs',
-    name: 'NodeJS',
+    name: 'Node',
     firstLogo: nodejsIcon,
     backgroundImage: nodejsIcon,
     description: `I have the most as well as recent experience in React compared to other technology in my list. I have created and architected web projects from scratch as well as jumped on ongoing projects.
