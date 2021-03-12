@@ -3,6 +3,7 @@ import { landingStates } from '../../assets/utils'
 import { Transition } from "react-spring/renderprops";
 import styles from './home.module.scss'
 import Projects from "../Projects"
+import Resume from "../Resume"
 import Blog from "../Blog";
 import Landing from "../Landing";
 import animations from './animations';
@@ -21,7 +22,7 @@ const Home = (props) => {
           >
             {bodyType === landingStates.NONE && ( <Landing loadingCompleted={loadingCompleted} percentLoaded={percentLoaded} updateBodyType={updateBodyType} /> )}
             {bodyType === landingStates.PROJECTS && ( <Projects updateBodyType={updateBodyType} /> )}
-            {/* {bodyType == landingStates.RESUME && (showMobile ? <TimelineMobile updateBodyType={this.updateBodyType} /> :  <Timeline />)} */}
+            {bodyType === landingStates.RESUME && ( <Resume updateBodyType={updateBodyType} /> )}
             {bodyType === landingStates.BLOG && ( <Blog updateBodyType={updateBodyType} />)}
           </div>
         )
