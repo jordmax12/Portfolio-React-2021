@@ -118,6 +118,7 @@ class Resume extends Component {
           <TimelineSelector
             selectedId={selectedTimelineId}
             listValue={resume}
+            tech={timeline}
             onItemSelected={this.onTimelineSelected}
           />
 

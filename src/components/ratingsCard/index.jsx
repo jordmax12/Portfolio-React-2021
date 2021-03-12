@@ -29,7 +29,7 @@ const iconMapper = tech_id => {
     case 'python':
       return pythonIcon
     default:
-      throw new Error('invalid tech_id.')
+      return null;
   }
 }
 
