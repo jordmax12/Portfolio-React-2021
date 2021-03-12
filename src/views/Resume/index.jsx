@@ -114,15 +114,30 @@ class Resume extends Component {
         <div className={styles.background_overlay}></div>
         <div className={styles.left_background_gradient}></div>
 
-        <Div className={styles.left_container}>
-          <TimelineSelector
-            selectedId={selectedTimelineId}
-            listValue={resume}
-            tech={timeline}
-            onItemSelected={this.onTimelineSelected}
-          />
+        {/* <Div className={styles.left_container}> */}
+        <Div
+            row
+            fillParent
+            align="stretch"
+            className={styles.timeline_container}
+        >
+            <div
+                className={`${styles.customContainerMaxWidth400} ${styles.customOverflowYMed} container`}
+            >
+                <div className="row">
+                    <div
+                        className={`col-2 ${styles.customNoMarginMobile}`}
+                    ></div>
+              <TimelineSelector
+                selectedId={selectedTimelineId}
+                listValue={resume}
+                tech={timeline}
+                onItemSelected={this.onTimelineSelected}
+              />
+            </div>
+          </div>
 
-          <Transition
+          {/* <Transition
             items={timeline}
             keys={timeline => timeline.id}
             from={{ opacity: 0 }}
@@ -137,11 +152,10 @@ class Resume extends Component {
                   <div className={styles.description}>{timeline.duration}</div>
                   <div className={styles.description}>{timeline.position}</div>
                   <div className={styles.description}>{timeline.description}</div>
-                  {/* <div className={styles.button}>view more</div> */}
                 </Div>
               </Div>
             )}
-          </Transition>
+          </Transition> */}
         </Div>
 
         {/* <RightContainer item={timeline} /> */}
