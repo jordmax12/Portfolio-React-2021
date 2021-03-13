@@ -124,18 +124,17 @@ class Resume extends Component {
             <div
                 className={`${styles.customContainerMaxWidth400} ${styles.customOverflowYMed} container`}
             >
-                <div className="row">
-                    <div
-                        className={`col-2 ${styles.customNoMarginMobile}`}
-                    ></div>
-              <TimelineSelector
-                selectedId={selectedTimelineId}
-                listValue={resume}
-                tech={timeline}
-                onItemSelected={this.onTimelineSelected}
-              />
+              <div className="row">
+                <div className={`col-2 ${styles.customNoMarginMobile}`}>
+                    <TimelineSelector
+                      selectedId={selectedTimelineId}
+                      listValue={resume}
+                      tech={timeline}
+                      onItemSelected={this.onTimelineSelected}
+                    />
+                </div>
+              </div>
             </div>
-          </div>
 
           {/* <Transition
             items={timeline}

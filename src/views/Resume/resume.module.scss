@@ -50,14 +50,21 @@ $desktop-width: "only screen and (max-width : 1024px)";
 .customNoMarginMobile {
   @media only screen and (max-width: $breakpoint-med) {
     margin: 0 !important;
-    float: unset;
+    float: unset !important;
     margin-right: auto !important;
     margin-left: auto !important;
   }
 }
 
+@include medium {
+  .timeline_container {
+    height: 250px;
+    margin-top: 25px;
+  }
+}
+
 .timeline_container {
-  padding: 60px 0px 0px 60px;
+  // padding: 60px 0px 0px 60px;
   position: relative;
   overflow: hidden;
   

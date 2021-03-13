@@ -23,6 +23,7 @@ class TimelineSelector extends Component {
 
   render() {
     const { tech, className, listValue, selectedId } = this.props;
+    console.log('logging className', className)
     return (
       <Div align="start" className={`${styles.container} ${className}`}>
         {map(listValue, (item, index) => (
