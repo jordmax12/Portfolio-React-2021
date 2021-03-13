@@ -93,7 +93,7 @@ class Resume extends Component {
       return timelineItem.id === selectedTimelineId;
     });
     return (
-      <Div row fillParent align="stretch" className={styles.timeline_container}>
+      <Div row fillParent align="stretch" className={`${styles.timeline_container} ${styles.resume_container}`}>
         <Transition
           items={timeline}
           keys={timeline => timeline.id}
@@ -114,7 +114,7 @@ class Resume extends Component {
         <div className={styles.background_overlay}></div>
         <div className={styles.left_background_gradient}></div>
 
-        {/* <Div className={styles.left_container}> */}
+        <Div className={styles.timeline}>
         <Div
             row
             fillParent
@@ -155,8 +155,8 @@ class Resume extends Component {
               </Div>
             )}
           </Transition> */}
+          </Div>
         </Div>
-
         {/* <RightContainer item={timeline} /> */}
       </Div>
     );
