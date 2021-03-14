@@ -22,7 +22,7 @@ const Home = (props) => {
           >
             {bodyType === landingStates.NONE && ( <Landing loadingCompleted={loadingCompleted} percentLoaded={percentLoaded} updateBodyType={updateBodyType} /> )}
             {bodyType === landingStates.PROJECTS && ( <Projects updateBodyType={updateBodyType} /> )}
-            {bodyType === landingStates.RESUME && ( <Resume updateBodyType={updateBodyType} /> )}
+            {/* {bodyType === landingStates.RESUME && ( <Resume updateBodyType={updateBodyType} /> )} */}
             {bodyType === landingStates.BLOG && ( <Blog updateBodyType={updateBodyType} />)}
           </div>
         )

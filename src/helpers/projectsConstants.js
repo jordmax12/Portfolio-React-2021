@@ -7,7 +7,9 @@ import pythonIcon from '../assets/images/technology/python-tech-icon.png';
 export const technologies = [
   {
     id: 'nodejs',
-    name: 'Node',
+    name: 'node',
+    fontColor: '#3C873A',
+    fontWeight: '900',
     firstLogo: nodejsIcon,
     backgroundImage: nodejsIcon,
     description: `I have the most as well as recent experience in React compared to other technology in my list. I have created and architected web projects from scratch as well as jumped on ongoing projects.
@@ -16,7 +18,11 @@ export const technologies = [
   },
   {
     id: 'aws',
-    name: 'AWS',
+    name: 'aws',
+    font: 'Lato sans-serif',
+    fontWeight: '900',
+    fontColor: '#FF9900',
+    fontSize: '1.2em',
     firstLogo: awsIcon,
     backgroundImage: awsIcon, //but recently have not touched on Android development so have to freshen up a bit on it.
     description: `I started my development journey with Android and have the most experience in it along with React.<br/><br/>
@@ -25,7 +31,9 @@ export const technologies = [
   },
   {
     id: 'npm',
-    name: 'NPM',
+    name: 'npm',
+    fontColor: '#CC3534',
+    fontWeight: '900',
     firstLogo: npmIcon,
     backgroundImage: npmIcon,
     description: `I have created and published a React-Native app for iOS and Android so i am familiar with its lifecycle, while working with React-Native CLI.<br/><br/>
@@ -35,7 +43,9 @@ export const technologies = [
   },
   {
     id: 'react',
-    name: 'React',
+    name: 'react',
+    fontColor: '#61DBFB',
+    fontWeight: '600',
     firstLogo: reactIcon,
     backgroundImage: reactIcon,
     description: `I have a bit of experience in Laravel and backend development although have not created any project from scratch but have worked on seperate modules and features.<br/><br/>
@@ -44,10 +54,12 @@ export const technologies = [
   },
   {
     id: 'python',
-    name: 'Python',
+    name: 'python',
+    fontColor: '#306998',
+    fontWeight: '600',
     firstLogo: pythonIcon,
     backgroundImage: pythonIcon,
-    description: 'I have experience in creating an electron app with the help of React while also considering platform specific technicalities during development like, Desktop/Web notifications, screen routing, storage.<br/><br/>Written configurations to bundle Web app and Electron app seperatly for both.',
+    description: '(3.8) I have experience in creating an electron app with the help of React while also considering platform specific technicalities during development like, Desktop/Web notifications, screen routing, storage.<br/><br/>Written configurations to bundle Web app and Electron app seperatly for both.',
     projects: ['snapteam']
   }
 ];

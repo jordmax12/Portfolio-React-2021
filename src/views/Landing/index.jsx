@@ -136,7 +136,7 @@ const Landing = (props) => {
                     {({opacity}) =>
                         <div style={{opacity}} className={styles.nav_container}>
                             <p onClick={() => updateBodyType(landingStates.PROJECTS)} className={styles.landing_nav_link}>Projects</p>
-                            <p onClick={() => updateBodyType(landingStates.RESUME)} className={styles.landing_nav_link}>Resume</p>
+                            <p onClick={() => window.open('https://www.linkedin.com/in/jordan-max-b4559b87/')} className={styles.landing_nav_link}>Resume</p>
                             <p onClick={() => updateBodyType(landingStates.BLOG)} className={styles.landing_nav_link}>Blog</p>
                         </div>
                     }

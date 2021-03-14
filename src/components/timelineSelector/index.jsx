@@ -23,7 +23,6 @@ class TimelineSelector extends Component {
 
   render() {
     const { tech, className, listValue, selectedId } = this.props;
-    console.log('logging className', className)
     return (
       <Div align="start" className={`${styles.container} ${className}`}>
         {map(listValue, (item, index) => (
@@ -32,7 +31,7 @@ class TimelineSelector extends Component {
             to={{
               maxWidth: item.id === selectedId ? 95 : 0,
               opacity: item.id === selectedId ? 1 : 0,
-              paddingRight: item.id === selectedId ? 15 : 0,
+              paddingRight: item.id === selectedId ? (window.innerWidth >= 380 ? 15 : 12) : 0,
               paddingLeft: item.id === selectedId ? 5 : 0,
               marginLeft: tech ? (window.innerWidth >= 380 ? 45 : 35) : item.id === selectedId ? item.restMargin : (window.innerWidth >= 380 ? 45 : 35),
             }}
@@ -65,6 +64,11 @@ class TimelineSelector extends Component {
                         maxWidth: props.maxWidth,
                         paddingRight: props.paddingRight,
                         paddingLeft: props.paddingLeft,
+                        fontFamily: item.font ? 'Lato' : '\'Raleway\' sens-serif',
+                        color: item.fontColor ? item.fontColor : 'black',
+                        fontWeight: item.fontWeight ? item.fontWeight : 'inherit',
+                        fontSize: item.fontSize ? item.fontSize : '1em',
+                        lineHeight: item.lineHeight ? item.lineHeight : '1em'
                       }}
                       className={styles.title}
                     >
