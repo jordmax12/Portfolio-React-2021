@@ -88,9 +88,9 @@
 }
 
 .header_nav_link {
-    margin-left: 15px;
-    margin-right: 15px;
-    color: $color-black;
+    text-align: center;
+    width: 33%;
+    color: $color-light-blue-link;
     font-family: 'Spartan', sans-serif;
     cursor: pointer;
     &:hover {
@@ -100,6 +100,8 @@
     display: none;
 
     @media only screen and (max-width: 566px) {
-        display: unset;
+        display: inline-block;
+        float: left;
+        line-height: 1.4;
     }
 }

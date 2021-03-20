@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Spring } from "react-spring/renderprops";
 import styles from './header.module.scss';
+import { landingStates } from '../../assets/utils'
 
 const Header = (props) => {
-  const { showHeader, showHeaderWidth, homeButtonClickHandler } = props;
+  const { showHeader, showHeaderWidth, homeButtonClickHandler, updateBodyType } = props;
   const [headerLoaderTextClasses, setHeaderLoaderTextClasses] = useState(`${styles.db} ${styles.header_loader_text}`)
   const [headerNavTextClasses, setHeaderNavTextClasses] = useState(styles.dn)
 
@@ -26,9 +27,9 @@ const Header = (props) => {
                     <>
                       <span className={styles.top_header_title} onClick={homeButtonClickHandler}>Jordan Max - Full Stack Engineer</span>
                       <div className={styles.top_header_externals}>
-                          <span className={styles.top_header_external_link}>LinkedIn</span>
-                          <span className={styles.top_header_external_link}>Github</span>
-                          <span className={styles.top_header_external_link}>Medium</span>
+                          <span onClick={() => updateBodyType(landingStates.PROJECTS)} className={styles.top_header_external_link}>Recent Work</span>
+                          <span onClick={() => updateBodyType(landingStates.BLOG)} className={styles.top_header_external_link}>Blog</span>
+                          <span onClick={() => window.open('https://jdmdev-portfolio.herokuapp.com')} className={styles.top_header_external_link}>2019</span>
                       </div>
                     </>
                   )
@@ -40,9 +41,9 @@ const Header = (props) => {
         <Spring delay={100} to={{ opacity: showHeader ? 1 : 0 }}>
           {({opacity}) =>
             <div style={{ width: `${showHeaderWidth}%` }} className={styles.header_container}>
-                <span style={{opacity}} className={headerNavTextClasses}>LinkedIn</span>
-                <span style={{opacity}} className={headerNavTextClasses}>Github</span>
-                <span style={{opacity}} className={headerNavTextClasses}>Medium</span>
+                <span onClick={() => updateBodyType(landingStates.PROJECTS)} style={{opacity}} className={headerNavTextClasses}>Recent Work</span>
+                <span onClick={() => updateBodyType(landingStates.BLOG)} style={{opacity}} className={headerNavTextClasses}>Blog</span>
+                <span onClick={() => window.open('https://jdmdev-portfolio.herokuapp.com')} style={{opacity}} className={headerNavTextClasses}>2019</span>
             </div>
           }
         </Spring>

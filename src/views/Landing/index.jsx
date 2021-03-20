@@ -135,9 +135,11 @@ const Landing = (props) => {
                 <Spring delay={0} to={{ opacity: !showAnimationElements ? 1 : 0 }}>
                     {({opacity}) =>
                         <div style={{opacity}} className={styles.nav_container}>
-                            <p onClick={() => updateBodyType(landingStates.PROJECTS)} className={styles.landing_nav_link}>Projects</p>
+                            {/* <p onClick={() => updateBodyType(landingStates.PROJECTS)} className={styles.landing_nav_link}>Recent Work</p> */}
                             <p onClick={() => window.open('https://www.linkedin.com/in/jordan-max-b4559b87/')} className={styles.landing_nav_link}>Resume</p>
-                            <p onClick={() => updateBodyType(landingStates.BLOG)} className={styles.landing_nav_link}>Blog</p>
+                            <p onClick={() => window.open('https://www.github.com/jordmax12')} className={styles.landing_nav_link}>Github</p>
+                            <p onClick={() => window.open('https://jordanmax.medium.com/')} className={styles.landing_nav_link}>Medium</p>
+                            {/* <p onClick={() => updateBodyType(landingStates.BLOG)} className={styles.landing_nav_link}>Blog</p> */}
                         </div>
                     }
                 </Spring>
