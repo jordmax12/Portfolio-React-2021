@@ -41,7 +41,7 @@ export const RatingsCard = ({ title, stack, externals, initProjectDetails, descr
     state: [0, 0, 1]
   }));
 
-  console.log('logging props', props)
+  // console.log('logging props', props)
 
   const { opacity, transform } = useSpring({
     config: {
@@ -60,6 +60,7 @@ export const RatingsCard = ({ title, stack, externals, initProjectDetails, descr
     <>
     <animated.div
       className={styles.RatingsCard}
+      props={props}
       onClick={() => setSelected(!selected)}
       onMouseLeave={() => set({ state: [0, 0, 1] })}
       onMouseMove={({ clientX: x, clientY: y }) =>
