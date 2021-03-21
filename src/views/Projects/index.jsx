@@ -51,16 +51,19 @@ const Projects = () => {
             projects.forEach((p) => {
                 if (p.stack.includes(selectedTechId)) build_projects.push(p);
             });
+
+            const throttle = window.innerWidth > 540 ? 500 : 800;
+
             setTimeout(() => {
                 setMatchedProjects(build_projects);
-            }, 100);
+            }, throttle);
 
             setTimeout(() => {
                 setShow(true);
-            }, 300);
+            }, throttle + 300);
         }
         /* eslint-disable react-hooks/exhaustive-deps */
-    }, [changeProjects]);
+    }, [changeProjects, window.innerWidth]);
 
     useEffect(() => {
         setMatchedProjects([]);
@@ -171,15 +174,15 @@ const Projects = () => {
                                                                         leave,
                                                                     } = techTransitionAnimation[
                                                                         tech.id
-                                                                    ];
+                                                                        ];
                                                                     const fromAnimation =
                                                                         tech.id ===
-                                                                        selectedTechId
+                                                                            selectedTechId
                                                                             ? from
                                                                             : enter;
                                                                     const toAnimation =
                                                                         tech.id ===
-                                                                        selectedTechId
+                                                                            selectedTechId
                                                                             ? enter
                                                                             : leave;
                                                                     const isReactRelated =
