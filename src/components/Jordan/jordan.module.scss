@@ -6,7 +6,13 @@
     position: absolute;
     bottom: 16px;
     @media only screen and (max-width: $breakpoint-med) {
-      bottom: 0vh;
+      @supports (-webkit-touch-callout: none) {
+        bottom: 69px;
+      }
+      
+      @supports not (-webkit-touch-callout: none) {
+        bottom: 42px;
+      }
     }
     // left: calc(50% - 90px);
     left: 50;
