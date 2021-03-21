@@ -6,7 +6,7 @@
     position: absolute;
     bottom: 16px;
     @media only screen and (max-width: $breakpoint-med) {
-      bottom: 56px;
+      bottom: 0vh;
     }
     // left: calc(50% - 90px);
     left: 50;

@@ -27,8 +27,7 @@ const Header = (props) => {
                     <>
                       <span className={styles.top_header_title} onClick={homeButtonClickHandler}>Jordan Max - Full Stack Engineer</span>
                       <div className={styles.top_header_externals}>
-                          <span onClick={() => updateBodyType(landingStates.PROJECTS)} className={styles.top_header_external_link}>Recent Work</span>
-                          <span onClick={() => updateBodyType(landingStates.BLOG)} className={styles.top_header_external_link}>Blog</span>
+                          <span onClick={() => updateBodyType(landingStates.PROJECTS)} className={styles.top_header_external_link}>Recent Work</span> 
                           <span onClick={() => window.open('https://jdmdev-portfolio.herokuapp.com')} className={styles.top_header_external_link}>2019</span>
                       </div>
                     </>
@@ -42,7 +41,6 @@ const Header = (props) => {
           {({opacity}) =>
             <div style={{ width: `${showHeaderWidth}%` }} className={styles.header_container}>
                 <span onClick={() => updateBodyType(landingStates.PROJECTS)} style={{opacity}} className={headerNavTextClasses}>Recent Work</span>
-                <span onClick={() => updateBodyType(landingStates.BLOG)} style={{opacity}} className={headerNavTextClasses}>Blog</span>
                 <span onClick={() => window.open('https://jdmdev-portfolio.herokuapp.com')} style={{opacity}} className={headerNavTextClasses}>2019</span>
             </div>
           }
