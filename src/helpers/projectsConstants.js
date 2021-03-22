@@ -91,7 +91,7 @@ export const projects = [
       "nodejs"
     ],
     externals: 'enogen.pdf',
-    description: 'Built a series of microservices which services multiple applications interacting with modularized api\'s. This was a product being used by a multitude of our teams and is involved with millions of dollars of transactions a year.'
+    description: 'Built a series of microservices using nodejs and serverless framework as IaC that assisted in the contracting of products to customers. Heavily utilized MVC and pub/sub design patterns.'
   },
   {
     title: "databus ETL",
