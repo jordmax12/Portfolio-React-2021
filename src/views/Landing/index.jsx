@@ -5,6 +5,7 @@ import { Spring } from "react-spring/renderprops";
 import Balloon from '../../components/balloon';
 import Jordan from '../../components/Jordan';
 import ParticlesLanding from '../../components/particlesLanding';
+import { landingStates } from '../../assets/utils';
 
 const generateNormalizedPercentLoaded = (percentLoaded) => {
     return percentLoaded && percentLoaded !== 0 ? Math.ceil(90 * parseFloat(percentLoaded / 100)) : 0;
@@ -32,7 +33,7 @@ const mapNormalizedFontSize = () => {
 }
 
 const Landing = (props) => {
-    const { percentLoaded, loadingCompleted } = props;
+    const { percentLoaded, loadingCompleted, updateBodyType } = props;
     const [normalizedPercentLoaded, setNormalizedPercentLoaded] = useState(generateNormalizedPercentLoaded(percentLoaded));
     const [normalizedFontSize, setNormalizedFontSize] = useState(mapNormalizedFontSize());
     const [showAnimationElements, setShowAnimationElements] = useState(true);
@@ -134,9 +135,8 @@ const Landing = (props) => {
                 <Spring delay={0} to={{ opacity: !showAnimationElements ? 1 : 0 }}>
                     {({opacity}) =>
                         <div style={{opacity}} className={styles.nav_container}>
-                            <p onClick={() => window.open('https://www.linkedin.com/in/jordan-max-b4559b87/')} className={styles.landing_nav_link}>Resume</p>
-                            <p onClick={() => window.open('https://www.github.com/jordmax12')} className={styles.landing_nav_link}>Github</p>
-                            <p onClick={() => window.open('https://jordanmax.medium.com/')} className={styles.landing_nav_link}>Medium</p>
+                            <p onClick={() => updateBodyType(landingStates.PROJECTS)} className={styles.landing_nav_link}>Recent Work</p>
+                            <p onClick={() => window.open('https://jordanmax.medium.com/')} className={styles.landing_nav_link}>Blog</p>
                         </div>
                     }
                 </Spring>

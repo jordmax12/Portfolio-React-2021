@@ -76,7 +76,7 @@ $transition-slow-in-fast-out: cubic-bezier(0.550, 0.055, 0.675, 0.190);
     flex-direction: row;
     padding: 20px;
     justify-content: space-around;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
 
     background: $color-transparent-white-light;
     border-radius: 10px;

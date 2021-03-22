@@ -3,12 +3,11 @@ import { landingStates } from '../../assets/utils'
 import { Transition } from "react-spring/renderprops";
 import styles from './home.module.scss'
 import Projects from "../Projects"
-import Blog from "../Blog";
 import Landing from "../Landing";
 import animations from './animations';
 
 const Home = (props) => {
-  const { percentLoaded, loadingCompleted, bodyType, previousBodyType } = props;
+  const { percentLoaded, loadingCompleted, bodyType, previousBodyType, updateBodyType } = props;
   let fromAnimation, enterAnimation, leaveAnimation;
 
   const getBodyContent = bodyType => {
@@ -19,9 +18,8 @@ const Home = (props) => {
             style={props}
             className={styles.body_content_container}
           >
-            {bodyType === landingStates.NONE && ( <Landing loadingCompleted={loadingCompleted} percentLoaded={percentLoaded} /> )}
+            {bodyType === landingStates.NONE && ( <Landing loadingCompleted={loadingCompleted} percentLoaded={percentLoaded} updateBodyType={updateBodyType} /> )}
             {bodyType === landingStates.PROJECTS && ( <Projects /> )}
-            {bodyType === landingStates.BLOG && ( <Blog />)}
           </div>
         )
       } 

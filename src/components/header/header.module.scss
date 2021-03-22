@@ -28,6 +28,7 @@
     cursor: pointer;
     @media only screen and (max-width: 566px) {
         font-size: .9rem;
+        float: unset;        
     }
 }
 
@@ -36,6 +37,9 @@
     margin-top: 5px;
     float: right;
     text-align: right;
+    @media only screen and (max-width: 566px) {
+        display: none;
+    }
 }
 
 .top_header_external_link {
@@ -89,7 +93,7 @@
 
 .header_nav_link {
     text-align: center;
-    width: 49%;
+    width: 33%;
     color: $color-light-blue-link;
     font-family: 'Spartan', sans-serif;
     cursor: pointer;

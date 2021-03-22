@@ -40,9 +40,9 @@ function App() {
         <Suspense fallback={null}>
           <Switch>
             <Route path="/">
-              <Header homeButtonClickHandler={homeButtonClickHandler} showHeader={showHeader} showHeaderWidth={currentPercentLoaded} updateBodyType={updateBodyType} />
+              <Header homeButtonClickHandler={homeButtonClickHandler} showHeader={showHeader} showHeaderWidth={currentPercentLoaded} bodyType={bodyType} updateBodyType={updateBodyType} />
               <Loader updateCurrentPercentLoaded={updateCurrentPercentLoaded}>
-                <Home bodyType={bodyType} previousBodyType={previousBodyType} percentLoaded={currentPercentLoaded} loadingCompleted={loadingCompleted} />
+                <Home bodyType={bodyType} previousBodyType={previousBodyType} percentLoaded={currentPercentLoaded} loadingCompleted={loadingCompleted} updateBodyType={updateBodyType} />
               </Loader>
             </Route>
           </Switch>
