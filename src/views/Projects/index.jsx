@@ -5,13 +5,13 @@ import {
     getBackgroundTransition,
     random,
 } from "../../helpers/helper";
-import { projects } from "../../helpers/projectsConstants";
+import { projects } from "../../helpers/projects";
+import { technologies } from "../../helpers/technologies";
 import Gallery from "../../components/gallery";
 import styles from "./projects.module.scss";
 import Div from "../../components/div";
 import find from "lodash/find";
 import { Transition, Spring } from "react-spring/renderprops";
-import { technologies } from "../../helpers/projectsConstants";
 import ParticlesProjects from "../../components/particlesProjects";
 import desktopBackground from '../../assets/images/backgrounds/desktop.jpg'
 
