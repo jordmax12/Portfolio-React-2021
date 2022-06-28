@@ -1,7 +1,38 @@
 export const projects = [
   {
-    title: "simple-fs",
+    title: "FightCamp Backend",
     key: '1',
+    stack: [
+      "aws",
+      "nodejs",
+      "npm"
+    ],
+    externals: 'fightcamp-backend.pdf',
+    description: 'Lucidchart diagram which shows all the different services and backend architecture I created/responsible for. Entails dozens of AWS services, a couple npm packages and lots more. I was one of the leads in creating/maintaing all these resources.'
+  },
+  {
+    title: "FightCamp Websockets",
+    key: '2',
+    stack: [
+      "aws",
+      "nodejs",
+    ],
+    externals: 'fightcamp-websockets.pdf',
+    description: 'Lucidchart diagram which shows the notification system I created while at fightcamp.'
+  },
+  {
+    title: "FightCamp Challenges",
+    key: '3',
+    stack: [
+      "aws",
+      "nodejs",
+    ],
+    externals: 'fightcamp-challenges.pdf',
+    description: 'Lucidchart diagram which shows the challenges system I created while at fightcamp.'
+  },
+  {
+    title: "simple-fs",
+    key: '4',
     stack: [
       "npm"
     ],
@@ -10,7 +41,7 @@ export const projects = [
   },
   {
     title: "serverless-generator",
-    key: '2',
+    key: '5',
     stack: [
       "npm"
     ],
@@ -19,7 +50,7 @@ export const projects = [
   },
   {
     title: "enogen",
-    key: '3',
+    key: '6',
     stack: [
       "aws",
       "nodejs"
@@ -29,7 +60,7 @@ export const projects = [
   },
   {
     title: "databus ETL",
-    key: '4',
+    key: '7',
     stack: [
       "python",
       "aws"
@@ -39,7 +70,7 @@ export const projects = [
   },
   {
     title: "agriedge",
-    key: '5',
+    key: '8',
     stack: [
       "nodejs",
       "react"
@@ -51,7 +82,7 @@ export const projects = [
   },
   {
     title: 'Infusion Squad',
-    key: '6',
+    key: '9',
     stack: [
       "nodejs",
       "aws"
@@ -61,7 +92,7 @@ export const projects = [
   },
   {
     title: 'react-barebondes-modal',
-    key: '7',
+    key: '10',
     stack: [
       "npm",
       "react"
@@ -71,7 +102,7 @@ export const projects = [
   },
   {
     title: 'react-lightbox-slider',
-    key: '8',
+    key: '11',
     stack: [
       "npm",
       "react"
@@ -81,7 +112,7 @@ export const projects = [
   },
   {
     title: 'Authentication Microservice',
-    key: '9',
+    key: '12',
     stack: [
       "nodejs",
       "aws"
@@ -91,7 +122,7 @@ export const projects = [
   },
   {
     title: 'Notification Microservice',
-    key: '10',
+    key: '13',
     stack: [
       "nodejs",
       "aws"
@@ -101,7 +132,7 @@ export const projects = [
   },
   {
     title: 'Alexa Analytics Miner',
-    key: '11',
+    key: '14',
     stack: [
       "nodejs",
       "react",
@@ -112,7 +143,7 @@ export const projects = [
   },
   {
     title: 'Eloctate',
-    key: '12',
+    key: '15',
     stack: [
       "react"
     ],
@@ -121,7 +152,7 @@ export const projects = [
   },
   {
     title: 'Alprolix',
-    key: '13',
+    key: '16',
     stack: [
       "react"
     ],
