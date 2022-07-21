@@ -68,12 +68,11 @@ const Landing = (props) => {
     const renderTyped = () => {
         return <Typed
             strings={[
-                'software engineer',
+                'serverless guru',
                 'animal lover',
                 'aws developer',
-                'blackhawks fan',
-                'computer builder',
-                'react developer',
+                'pc builder',
+                'software engineer',
                 'breaker of chains'
             ]}
             typeSpeed={40}
