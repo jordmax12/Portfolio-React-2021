@@ -1,6 +1,6 @@
 export const projects = [
   {
-    title: "FightCamp Backend",
+    title: "FightCamp Data Pipeline",
     key: '1',
     stack: [
       "aws",
