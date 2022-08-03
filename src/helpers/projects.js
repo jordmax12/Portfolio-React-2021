@@ -11,24 +11,24 @@ export const projects = [
     description: 'Lucidchart diagram which shows all the different services and backend architecture I created/responsible for. Entails dozens of AWS services, a couple npm packages and lots more. I was one of the leads in creating/maintaing all these resources.'
   },
   {
-    title: "FightCamp Websockets",
+    title: "Api Challenge",
     key: '2',
     stack: [
       "aws",
       "nodejs",
     ],
-    externals: 'fightcamp-websockets.pdf',
-    description: 'Lucidchart diagram which shows the notification system I created while at fightcamp.'
+    externals: 'https://github.com/jordmax12/queue-api-challenge',
+    description: 'Simple node CRUD app that uses elasticmq to trigger asynchronous workers to perform tasks.'
   },
   {
-    title: "FightCamp Challenges",
+    title: "Serverless Challenge",
     key: '3',
     stack: [
       "aws",
       "nodejs",
     ],
-    externals: 'fightcamp-challenges.pdf',
-    description: 'Lucidchart diagram which shows the challenges system I created while at fightcamp.'
+    externals: 'https://github.com/jordmax12/ta-challenge',
+    description: 'A wonderful demonstration of serverless based microservices, event driven architecture, and a simple react application.'
   },
   {
     title: "simple-fs",
