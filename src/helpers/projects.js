@@ -8,7 +8,7 @@ export const projects = [
       "npm"
     ],
     externals: 'fightcamp-backend.pdf',
-    description: 'Lucidchart diagram which shows all the different services and backend architecture I created/responsible for. Entails dozens of AWS services, a couple npm packages and lots more. I was one of the leads in creating/maintaing all these resources.'
+    description: 'Lucidchart diagram which shows all the different services and backend architecture I created/responsible for.'
   },
   {
     title: "Api Challenge",
