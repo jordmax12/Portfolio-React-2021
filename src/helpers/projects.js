@@ -11,13 +11,13 @@ export const projects = [
     description: 'Lucidchart diagram which shows all the different services and backend architecture I created/responsible for.'
   },
   {
-    title: "Api Challenge",
+    title: "Vizion Api Challenge",
     key: '2',
     stack: [
       "aws",
       "nodejs",
     ],
-    externals: 'https://github.com/jordmax12/queue-api-challenge',
+    externals: 'https://github.com/jordmax12/vizion-api-challenge',
     description: 'Simple node CRUD app that uses elasticmq to trigger asynchronous workers to perform tasks.'
   },
   {
