@@ -21,7 +21,7 @@ const Header = (props) => {
       <>
           <span onClick={() => window.open('Resume2023-V3.pdf')} className={_className}>Resume</span>
           <span onClick={() => window.open('https://www.github.com/jordmax12')} className={_className}>Github</span>
-          <span onClick={() => window.open('www.linkedin.com/in/jordanmaxjs')} className={_className}>LinkedIn</span>
+          <span onClick={() => window.open('https://www.linkedin.com/in/jordanmaxjs')} className={_className}>LinkedIn</span>
           {/* <span onClick={() => window.open('https://jdmdev-portfolio.herokuapp.com')} className={_className}>2019</span> */}
       </>
     )
