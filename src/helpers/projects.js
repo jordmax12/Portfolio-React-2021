@@ -1,7 +1,29 @@
 export const projects = [
   {
-    title: "FightCamp Data Pipeline",
+    title: "Feastables Purchase Validation",
     key: '1',
+    stack: [
+      "aws",
+      "nodejs",
+      "npm"
+    ],
+    externals: 'feastables-receipt-upload.pdf',
+    description: 'One part of our purchase validation tool that enabled users to upload receipt as a way to enter in promotional sweepstakes. Lucidchart diagram which shows all the different services and backend architecture I created/responsible for.'
+  },
+  {
+    title: "Feastables Login",
+    key: '2',
+    stack: [
+      "aws",
+      "nodejs",
+      "npm"
+    ],
+    externals: 'feastables-login.pdf',
+    description: 'One part of our purchase validation tool that users used to login to our various campaign types: Sweepstakes, Rebates and Loyalty. Simple diagram of how it works.'
+  },
+  {
+    title: "FightCamp Data Pipeline",
+    key: '3',
     stack: [
       "aws",
       "nodejs",
@@ -12,7 +34,7 @@ export const projects = [
   },
   {
     title: "Vizion Api Challenge",
-    key: '2',
+    key: '4',
     stack: [
       "aws",
       "nodejs",
@@ -22,7 +44,7 @@ export const projects = [
   },
   {
     title: "Serverless Challenge",
-    key: '3',
+    key: '5',
     stack: [
       "aws",
       "nodejs",
@@ -32,7 +54,7 @@ export const projects = [
   },
   {
     title: "simple-fs",
-    key: '4',
+    key: '6',
     stack: [
       "npm"
     ],
@@ -41,7 +63,7 @@ export const projects = [
   },
   {
     title: "serverless-generator",
-    key: '5',
+    key: '7',
     stack: [
       "npm"
     ],
@@ -50,7 +72,7 @@ export const projects = [
   },
   {
     title: "enogen",
-    key: '6',
+    key: '8',
     stack: [
       "aws",
       "nodejs"
@@ -60,7 +82,7 @@ export const projects = [
   },
   {
     title: "databus ETL",
-    key: '7',
+    key: '9',
     stack: [
       "python",
       "aws"
@@ -70,7 +92,7 @@ export const projects = [
   },
   {
     title: "agriedge",
-    key: '8',
+    key: '10',
     stack: [
       "nodejs",
       "react"
@@ -82,7 +104,7 @@ export const projects = [
   },
   {
     title: 'Infusion Squad',
-    key: '9',
+    key: '11',
     stack: [
       "nodejs",
       "aws"
@@ -92,7 +114,7 @@ export const projects = [
   },
   {
     title: 'react-barebondes-modal',
-    key: '10',
+    key: '12',
     stack: [
       "npm",
       "react"
@@ -102,7 +124,7 @@ export const projects = [
   },
   {
     title: 'react-lightbox-slider',
-    key: '11',
+    key: '13',
     stack: [
       "npm",
       "react"
@@ -112,7 +134,7 @@ export const projects = [
   },
   {
     title: 'Authentication Microservice',
-    key: '12',
+    key: '14',
     stack: [
       "nodejs",
       "aws"
@@ -122,7 +144,7 @@ export const projects = [
   },
   {
     title: 'Notification Microservice',
-    key: '13',
+    key: '15',
     stack: [
       "nodejs",
       "aws"
@@ -132,7 +154,7 @@ export const projects = [
   },
   {
     title: 'Alexa Analytics Miner',
-    key: '14',
+    key: '16',
     stack: [
       "nodejs",
       "react",
@@ -143,7 +165,7 @@ export const projects = [
   },
   {
     title: 'Eloctate',
-    key: '15',
+    key: '17',
     stack: [
       "react"
     ],
@@ -152,7 +174,7 @@ export const projects = [
   },
   {
     title: 'Alprolix',
-    key: '16',
+    key: '18',
     stack: [
       "react"
     ],
